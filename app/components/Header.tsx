@@ -5,7 +5,7 @@ import CompanyLogo from '@images/company-logo.svg';
 import NavToggle from '@images/icons/nav-toggle.svg';
 const Header = () => {
   return (
-    <div className="w-full h-14 px-6 bg-white shadow justify-between items-center inline-flex">
+    <div className="w-full h-14 px-6 bg-white shadow-lg justify-between items-center inline-flex">
       <div className="justify-start items-center gap-1.5 flex">
         <CompanyLogo />
       </div>
