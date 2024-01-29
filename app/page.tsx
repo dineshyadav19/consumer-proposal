@@ -1,20 +1,35 @@
-import Image from 'next/image';
-import HeaderImage from '@images/header.png';
+import SolarComponents from '@components/SolarComponents';
+import Intro from '@components/Intro';
+import Maintenance from '@components/Maintenance';
+import TrackPlant from '@components/TrackPlant';
+import BenefitsImpact from '@components/BenefitsImpact';
+import EconomicValue from '@components/EconomicValue';
+import ConnectWithUs from '@components/ConnectWithUs';
+
 export default function Home() {
   return (
     <main className="mt-5">
-      <div className="flex justify-center mb-5">
-        <div className="bg-brand-blue-100 w-fit py-2.5 px-5 rounded-[32px] flex justify-center items-center gap-x-2">
-          <span className="wave text-2xl">👋</span>
-          <span className="text-sm font-archivo">Rakesh ji</span>
+      <Intro />
+      <BenefitsImpact />
+      <EconomicValue />
+      <SolarComponents />
+
+      <div className="px-4 py-6 bg-brand-blue-100 border justify-start items-center">
+        <div className="flex-col justify-start items-center gap-4 inline-flex text-brand-grey-600 font-archivo">
+          <div className="text-xl font-medium font-archivo">
+            Our Quality Promise to you
+          </div>
+          <div className="text-base text-center">
+            If you find any other system better than us, that will generate more
+            solar energy for the given system capacity, We will give you 10%
+            rebate on your system!
+          </div>
         </div>
       </div>
-      <div className="flex justify-center flex-col items-center">
-        <h1 className="max-w-80 heading--h1 text-center text-transparent bg-clip-text bg-gradient-to-br from-[#00568D] to-[#5BB8F4]">
-          Your rooftop solar plant proposal
-        </h1>
-        <Image alt="header-image" src={HeaderImage} className="w-full h-fit" />
-      </div>
+
+      <Maintenance />
+      <TrackPlant />
+      <ConnectWithUs />
     </main>
   );
 }
