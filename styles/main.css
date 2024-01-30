@@ -5,6 +5,7 @@
 
 @import "base/_typography.css";
 @import "base/_gradients.css";
+@import "base/_utils.css";
 @import "components/_utils.css";
 
 body {

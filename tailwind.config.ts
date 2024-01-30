@@ -52,6 +52,7 @@ const config: Config = {
           green: {
             DEFAULT: '#39AA58',
             100: '#F0F7E1',
+            200: '#D2E7A6',
           },
         },
       },

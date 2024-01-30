@@ -5,11 +5,16 @@ import TrackPlant from '@components/TrackPlant';
 import BenefitsImpact from '@components/BenefitsImpact';
 import EconomicValue from '@components/EconomicValue';
 import ConnectWithUs from '@components/ConnectWithUs';
+import SystemConfig from '@components/SystemConfig';
+import PastClients from '@components/PastClients';
+import WhoWeAre from '@components/WhoWeAre';
+import OurSystemInclude from '@components/OurSystemInclude';
 
 export default function Home() {
   return (
     <main className="mt-5">
       <Intro />
+      <SystemConfig />
       <BenefitsImpact />
       <EconomicValue />
       <SolarComponents />
@@ -29,6 +34,9 @@ export default function Home() {
 
       <Maintenance />
       <TrackPlant />
+      <OurSystemInclude />
+      <WhoWeAre />
+      <PastClients />
       <ConnectWithUs />
     </main>
   );
