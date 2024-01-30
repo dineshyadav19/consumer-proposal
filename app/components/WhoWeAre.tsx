@@ -2,7 +2,7 @@ import React from 'react';
 
 import CustomerFirst from '@images/icons/customer-success.svg';
 import Reliable from '@images/icons/Reliable.svg';
-import Affordable from '@images/icons/Affordable.svg';
+import Affordable from '@images/icons/AffordableIcon.svg';
 import Efficient from '@images/icons/Efficient.svg';
 
 const data = [
