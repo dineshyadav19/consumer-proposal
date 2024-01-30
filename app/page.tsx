@@ -9,11 +9,15 @@ import SystemConfig from '@components/SystemConfig';
 import PastClients from '@components/PastClients';
 import WhoWeAre from '@components/WhoWeAre';
 import OurSystemInclude from '@components/OurSystemInclude';
+import ViewIn3D from '@components/ViewIn3D';
+import Testimonials from '@components/Testimonials';
 
 export default function Home() {
   return (
     <main className="mt-5">
       <Intro />
+      <Testimonials />
+      <ViewIn3D />
       <SystemConfig />
       <BenefitsImpact />
       <EconomicValue />

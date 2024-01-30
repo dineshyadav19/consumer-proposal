@@ -26,6 +26,9 @@ const SolarComponents = () => {
             Hot dipped galvanized iron structure, sturdy & cyclone-proof upto
             180 kmph, to keep your solar panels grounded & safe.
           </p>
+          <div className="button-animation my-3">
+            <input type="button" value="Read More" className="font-inter" />
+          </div>
           <Image src={Structure} className="w-full h-fit" alt="" />
         </div>
 
@@ -37,6 +40,9 @@ const SolarComponents = () => {
             100% A Grade panels sourced directly from manufacturers, Highly
             efficient and BIS certified for long lasting performance
           </p>
+          <div className="button-animation my-3">
+            <input type="button" value="Read More" />
+          </div>
           <Image src={SolarPanel} className="w-full h-fit" alt="" />
         </div>
 
@@ -47,6 +53,9 @@ const SolarComponents = () => {
           <p className="text-sm font-light">
             We CARE for our customer, system and personnel safety.
           </p>
+          <div className="button-animation my-3">
+            <input type="button" value="Read More" />
+          </div>
           <Image src={MCB} className="w-full h-fit" alt="" />
         </div>
       </div>
