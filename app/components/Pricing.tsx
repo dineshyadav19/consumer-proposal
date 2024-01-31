@@ -2,17 +2,19 @@ import React from 'react';
 import { IoMdCheckmark } from 'react-icons/io';
 type Props = {};
 
-const Pricing = (props: Props) => {
+const Pricing = () => {
   return (
     <div className="green-blue-gradient p-0.5 rounded-[12px]">
       <div className="px-4 py-6 rounded-[10px] bg-white flex flex-col gap-y-5">
-        <div className="text-brand-blue-500 text-sm font-medium tracking-wide py-2 px-4 border border-brand-blue rounded-full text-center w-fit">
-          ₹2,500 discount
-        </div>
+        <div className="flex flex-col gap-y-5 items-center">
+          <div className="text-brand-blue-500 text-sm font-medium tracking-wide py-2 px-4 border border-brand-blue rounded-full text-center w-fit">
+            ₹2,500 discount
+          </div>
 
-        <div className="green-blue-gradient p-0.5 rounded-full">
-          <div className="uppercase bg-black text-center px-[18px] rounded-full text-white text-2xl font-semibold font-archivo">
-            Smart
+          <div className="green-blue-gradient p-0.5 rounded-full w-fit">
+            <div className="uppercase bg-black text-center px-[18px] rounded-full text-white text-2xl font-semibold font-archivo">
+              Smart
+            </div>
           </div>
         </div>
 
@@ -29,7 +31,7 @@ const Pricing = (props: Props) => {
           </p>
         </div>
 
-        <div className="text-brand-blue-600 text-base font-medium font-archivo">
+        <div className="text-brand-blue-600 text-base font-medium font-archivo text-center">
           View detailed price breakup
         </div>
 

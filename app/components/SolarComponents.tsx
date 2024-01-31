@@ -1,10 +1,12 @@
 'use client';
 
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import Structure from '@images/structure.png';
 import SolarPanel from '@images/solar-panel.png';
 import MCB from '@images/mcb.png';
+import MicroInverter from '@images/micro-inverter.png';
+import StringInverter from '@images/string-inverter.png';
 import QualityCheck from '@images/quality-checks.png';
 import Modal from '../../components/Modal';
 import ListCard from './Modals/ListCard';
@@ -14,8 +16,72 @@ import SolarPanelComponent from './Modals/SolarPanel';
 import Inverter from './Modals/Inverter';
 import ElectricalSafety from './Modals/ElectricalSafety';
 
+type ComponentCardProps = {
+  heading: string;
+  subtext: string;
+  image: any;
+  onClickFn: () => void;
+};
+
+const ComponentCard = ({
+  heading,
+  subtext,
+  image,
+  onClickFn,
+}: ComponentCardProps) => {
+  return (
+    <div className="px-3 py-5 rounded-xl border border-stone-300 justify-start items-start gap-3 flex flex-col">
+      <h3 className="text-black text-xl font-semibold tracking-wide">
+        {heading}
+      </h3>
+      <p className="text-sm font-light">{subtext}</p>
+      <div className="button-animation my-3">
+        <input
+          type="button"
+          value="Read More"
+          className="font-inter"
+          onClick={onClickFn}
+        />
+      </div>
+      <Image src={image} className="w-full h-fit" alt="" />
+    </div>
+  );
+};
+
 const SolarComponents = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalData, setModalData] = useState<ReactNode>(<></>);
+  const [isMicroSelected, setIsMicroSelected] = useState(true);
+
+  const getData = () => {
+    if (isMicroSelected) {
+      return {
+        key: 'micro',
+        selectedClass:
+          'bg-brand-blue-200 text-brand-blue-500 rounded-full py-2.5 px-6 text-base font-semibold',
+        className:
+          'bg-transparent text-brand-grey-500 py-2.5 px-6 text-base font-semibold',
+        heading: 'For SMART & PREMIUM Systems',
+        image: MicroInverter,
+        subText:
+          'Fenice Energy branded state-of-the-art, compact, modular and future ready inverters that monitor panel level generation, reducing losses and cases of single point failures',
+      };
+    }
+    return {
+      key: 'string',
+      selectedClass:
+        'bg-brand-blue-200 text-brand-blue-500 rounded-full py-2.5 px-6 text-base font-semibold',
+      className:
+        'bg-transparent text-brand-grey-500 py-2.5 px-6 text-base font-semibold',
+      heading: 'FOR BASIC SYSTEMS ONLY',
+      image: StringInverter,
+      subText:
+        'Brain of a Solar PV system, a solar inverter converts DC to AC, that is, solar energy into electricity.',
+    };
+  };
+
+  const getCurrentInverterData = getData();
+
   return (
     <div className="px-4 mb-9">
       <h2 className="heading-gradient">
@@ -28,51 +94,91 @@ const SolarComponents = () => {
       </p>
 
       <div className="flex flex-col gap-y-[30px]">
+        <ComponentCard
+          heading="RUST-PROOF STRUCTURE"
+          subtext="Hot dipped galvanized iron structure, sturdy & cyclone-proof upto
+            180 kmph, to keep your solar panels grounded & safe."
+          image={Structure}
+          onClickFn={() => {
+            setIsModalOpen(true);
+            setModalData(<SteelStructure />);
+          }}
+        />
+        <ComponentCard
+          heading="CERTIFIED SOLAR PANELS WITH 25 YEAR WARRANTY"
+          subtext="100% A Grade panels sourced directly from manufacturers, Highly
+            efficient and BIS certified for long lasting performance"
+          image={SolarPanel}
+          onClickFn={() => {
+            setIsModalOpen(true);
+            setModalData(<SolarPanelComponent />);
+          }}
+        />
+
+        {/* Inverter */}
+
         <div className="px-3 py-5 rounded-xl border border-stone-300 justify-start items-start gap-3 flex flex-col">
-          <h3 className="text-black text-xl font-semibold tracking-wide">
-            RUST-PROOF STRUCTURE
-          </h3>
-          <p className="text-sm font-light">
-            Hot dipped galvanized iron structure, sturdy & cyclone-proof upto
-            180 kmph, to keep your solar panels grounded & safe.
+          <div>
+            <h3 className="text-black text-xl font-semibold tracking-wide">
+              INVERTER
+            </h3>
+            <p className="text-base leading-snug">2 options to choose from</p>
+          </div>
+
+          <div className="flex my-2 py-1.5 justify-between">
+            <button
+              className={
+                isMicroSelected
+                  ? getCurrentInverterData.selectedClass
+                  : getCurrentInverterData.className
+              }
+              onClick={() => setIsMicroSelected(true)}
+            >
+              Micro-Inverters
+            </button>
+            <button
+              className={
+                isMicroSelected
+                  ? getCurrentInverterData.className
+                  : getCurrentInverterData.selectedClass
+              }
+              onClick={() => setIsMicroSelected(false)}
+            >
+              String Inverters
+            </button>
+          </div>
+
+          <p className="text-sm font-medium tracking-wide text-brand-blue-600">
+            {getCurrentInverterData.heading}
           </p>
+          <p className="text-sm font-light">{getCurrentInverterData.subText}</p>
           <div className="button-animation my-3">
             <input
               type="button"
               value="Read More"
               className="font-inter"
-              onClick={() => setIsModalOpen(true)}
+              onClick={() => {
+                setIsModalOpen(true);
+                setModalData(<Inverter />);
+              }}
             />
           </div>
-          <Image src={Structure} className="w-full h-fit" alt="" />
+          <Image
+            src={getCurrentInverterData.image}
+            className="w-full h-fit"
+            alt=""
+          />
         </div>
 
-        <div className="px-3 pt-5 rounded-xl border border-stone-300 justify-start items-start gap-3 flex flex-col">
-          <h3 className="text-black text-xl font-semibold tracking-wide">
-            CERTIFIED SOLAR PANELS WITH 25 YEAR WARRANTY
-          </h3>
-          <p className="text-sm font-light">
-            100% A Grade panels sourced directly from manufacturers, Highly
-            efficient and BIS certified for long lasting performance
-          </p>
-          <div className="button-animation my-3">
-            <input type="button" value="Read More" />
-          </div>
-          <Image src={SolarPanel} className="w-full h-fit" alt="" />
-        </div>
-
-        <div className="px-3 pt-5 rounded-xl border border-stone-300 justify-start items-start gap-3 flex flex-col">
-          <h3 className="text-black text-xl font-semibold tracking-wide">
-            ELECTRICAL SAFETY
-          </h3>
-          <p className="text-sm font-light">
-            We CARE for our customer, system and personnel safety.
-          </p>
-          <div className="button-animation my-3">
-            <input type="button" value="Read More" />
-          </div>
-          <Image src={MCB} className="w-full h-fit" alt="" />
-        </div>
+        <ComponentCard
+          heading="ELECTRICAL SAFETY"
+          subtext="We CARE for our customer, system and personnel safety."
+          image={MCB}
+          onClickFn={() => {
+            setIsModalOpen(true);
+            setModalData(<ElectricalSafety />);
+          }}
+        />
       </div>
 
       <div className="mt-20 ">
@@ -91,10 +197,7 @@ const SolarComponents = () => {
         />
       </div>
       <Modal isOpen={isModalOpen} onChange={setIsModalOpen}>
-        {/* <SteelStructure /> */}
-        {/* <SolarPanelComponent /> */}
-        {/* <Inverter /> */}
-        <ElectricalSafety />
+        {modalData}
       </Modal>
     </div>
   );
