@@ -8,7 +8,7 @@ import People from '@images/people-group.png';
 const RunningLine = () => {
   return (
     <div
-      className="font-medium leading-loose gap-x-1.5 items-center flex text-xl mr-4"
+      className="font-medium leading-loose gap-x-1.5 items-center flex text-xl mr-4 min-w-max"
       id="scroll-text"
     >
       <span className="text-brand-grey-500 ">Trusted by</span>
@@ -21,7 +21,7 @@ const RunningLine = () => {
 const Testimonials = () => {
   return (
     <div className="bg-brand-green-100">
-      <div className="overflow-hidden w-[1080px] flex pt-8">
+      <div className="overflow-hidden w-full flex pt-8">
         <RunningLine />
         <RunningLine />
         <RunningLine />
