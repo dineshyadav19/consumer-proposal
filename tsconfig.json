@@ -24,6 +24,9 @@
       "@images/*": [
         "./public/images/*"
       ],
+      "@icons/*": [
+        "./public/icons/*"
+      ],
       "@components/*": [
         "./app/components/*"
       ],

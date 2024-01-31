@@ -1,8 +1,7 @@
 'use client';
-import Image from 'next/image';
 import React from 'react';
 import CompanyLogo from '@images/company-logo.svg';
-import NavToggle from '@images/icons/nav-toggle.svg';
+import NavToggle from '@icons/nav-toggle.svg';
 const Header = () => {
   return (
     <div className="w-full h-14 px-6 bg-white shadow-md justify-between items-center inline-flex">

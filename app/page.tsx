@@ -11,6 +11,9 @@ import WhoWeAre from '@components/WhoWeAre';
 import OurSystemInclude from '@components/OurSystemInclude';
 import ViewIn3D from '@components/ViewIn3D';
 import Testimonials from '@components/Testimonials';
+import Image from 'next/image';
+import MapImage from '@images/map-site-pins.png';
+import Pricing from '@components/Pricing';
 
 export default function Home() {
   return (
@@ -39,7 +42,13 @@ export default function Home() {
       <Maintenance />
       <TrackPlant />
       <OurSystemInclude />
+      <div className="p-4">
+        <Pricing />
+      </div>
+
       <WhoWeAre />
+      <h2 className="heading-gradient my-8 px-4">India-wide presence</h2>
+      <Image src={MapImage} alt="" />
       <PastClients />
       <ConnectWithUs />
     </main>

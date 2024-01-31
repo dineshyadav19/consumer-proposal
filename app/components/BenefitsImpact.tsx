@@ -1,5 +1,5 @@
 import React from 'react';
-import Earth from '@images/icons/Earth.svg';
+import Earth from '@icons/Earth.svg';
 type Props = {};
 
 const metrics = [

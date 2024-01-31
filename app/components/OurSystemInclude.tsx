@@ -54,14 +54,14 @@ const OurSystemInclude = () => {
 
           <div className="flex gap-x-1.5 items-center">
             <div className="w-6 h-6 p-0.5" />
-            <p className="text-base py-1 px-4 border bg-brand-green-100 rounded flex-[0.8]">
+            <p className="text-base py-1 px-4 bg-brand-green-100 rounded flex-[0.8]">
               10 year product warranty
             </p>
           </div>
 
           <div className="flex gap-x-1.5 items-center">
             <div className="w-6 h-6 p-0.5" />
-            <p className="text-base py-1 px-4 border bg-brand-green-100 rounded">
+            <p className="text-base py-1 px-4 bg-brand-green-100 rounded">
               25 year linear output warranty
             </p>
           </div>

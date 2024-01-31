@@ -39,6 +39,7 @@ const config: Config = {
             300: '#62B5EC',
             400: '#1690DF', // primary
             500: '#125F91',
+            600: '#156FAA',
           },
           grey: {
             DEFAULT: '#F4F4F4',
