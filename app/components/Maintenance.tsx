@@ -1,9 +1,9 @@
 import React, { ReactNode } from 'react';
 import Image from 'next/image';
 import MaintenanceFeature from '@images/maintennace-feature.png';
-import InspectionIcon from '@images/icons/inspection-visits.svg';
-import CleaningIcon from '@images/icons/cleaning-visits.svg';
-import WarrantyClaim from '@images/icons/warranty-claim.svg';
+import InspectionIcon from '@icons/inspection-visits.svg';
+import CleaningIcon from '@icons/cleaning-visits.svg';
+import WarrantyClaim from '@icons/warranty-claim.svg';
 import SolarEngineer from '@images/engineer.png';
 
 const IconCard = ({ icon, text }: { icon: ReactNode; text: string }) => {

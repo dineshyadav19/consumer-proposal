@@ -1,7 +1,7 @@
 import React from 'react';
 import SolarLabsPreview from '@images/solar-labs-preview.png';
 import Image from 'next/image';
-import Degree from '@images/icons/360-degree.svg';
+import Degree from '@icons/360-degree.svg';
 
 const ViewIn3D = () => {
   return (

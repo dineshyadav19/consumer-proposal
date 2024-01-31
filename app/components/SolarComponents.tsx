@@ -1,11 +1,21 @@
+'use client';
+
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 import Structure from '@images/structure.png';
 import SolarPanel from '@images/solar-panel.png';
 import MCB from '@images/mcb.png';
 import QualityCheck from '@images/quality-checks.png';
+import Modal from '../../components/Modal';
+import ListCard from './Modals/ListCard';
+import Affordable from '@icons/modal-icons/cusotmer safety.svg';
+import SteelStructure from './Modals/SteelStructure';
+import SolarPanelComponent from './Modals/SolarPanel';
+import Inverter from './Modals/Inverter';
+import ElectricalSafety from './Modals/ElectricalSafety';
 
 const SolarComponents = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <div className="px-4 mb-9">
       <h2 className="heading-gradient">
@@ -27,7 +37,12 @@ const SolarComponents = () => {
             180 kmph, to keep your solar panels grounded & safe.
           </p>
           <div className="button-animation my-3">
-            <input type="button" value="Read More" className="font-inter" />
+            <input
+              type="button"
+              value="Read More"
+              className="font-inter"
+              onClick={() => setIsModalOpen(true)}
+            />
           </div>
           <Image src={Structure} className="w-full h-fit" alt="" />
         </div>
@@ -75,6 +90,12 @@ const SolarComponents = () => {
           alt=""
         />
       </div>
+      <Modal isOpen={isModalOpen} onChange={setIsModalOpen}>
+        {/* <SteelStructure /> */}
+        {/* <SolarPanelComponent /> */}
+        {/* <Inverter /> */}
+        <ElectricalSafety />
+      </Modal>
     </div>
   );
 };
