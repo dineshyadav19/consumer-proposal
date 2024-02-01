@@ -9,12 +9,11 @@ import MicroInverter from '@images/micro-inverter.png';
 import StringInverter from '@images/string-inverter.png';
 import QualityCheck from '@images/quality-checks.png';
 import Modal from '../../components/Modal';
-import ListCard from './Modals/ListCard';
-import Affordable from '@icons/modal-icons/cusotmer safety.svg';
 import SteelStructure from './Modals/SteelStructure';
 import SolarPanelComponent from './Modals/SolarPanel';
 import Inverter from './Modals/Inverter';
 import ElectricalSafety from './Modals/ElectricalSafety';
+// import SolarInstallationVideo from "@images/So"
 
 type ComponentCardProps = {
   heading: string;
@@ -84,7 +83,41 @@ const SolarComponents = () => {
 
   return (
     <div className="px-4 mb-9">
-      <h2 className="heading-gradient">
+      <div className="my-7 flex justify-center">
+        <svg id="rotatingText" viewBox="0 0 200 200" width="120" height="120">
+          <defs>
+            <path
+              id="circle"
+              d="M 100, 100
+                m -75, 0
+                a 75, 75 0 1, 0 150, 0
+                a 75, 75 0 1, 0 -150, 0
+                "
+            ></path>
+          </defs>
+
+          <circle
+            cx="100"
+            cy="100"
+            r="70"
+            stroke="#E8F2FC"
+            strokeWidth="25"
+            fill="white"
+          />
+
+          <text width="50">
+            <textPath
+              alignmentBaseline="baseline"
+              xlinkHref="#circle"
+              className="svg-text"
+            >
+              Free Electricity | 25+ year savings |
+            </textPath>
+          </text>
+        </svg>
+      </div>
+
+      <h2 className="heading-gradient ">
         Why our systems generate continuous power for 25+ years
       </h2>
       <p className="my-7 text-brand-grey-600 text-base text-center">
@@ -190,11 +223,15 @@ const SolarComponents = () => {
           performance of your solar system.
         </p>
 
-        <Image
-          src={QualityCheck}
-          className="w-full h-fit rounded-xl border border-stone-300"
-          alt=""
-        />
+        <video
+          className="w-full h-[400px] rounded-xl border border-stone-300"
+          controls={true}
+          autoPlay
+          muted
+          playsInline
+          src="/Solar-Installation.mp4"
+          loop
+        ></video>
       </div>
       <Modal isOpen={isModalOpen} onChange={setIsModalOpen}>
         {modalData}

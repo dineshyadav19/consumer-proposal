@@ -9,7 +9,7 @@
   }
 
   .button-animation {
-    --offset: 2px;
+    --offset: 1px;
     background: white;
     border-radius: 40px;
     position: relative;
@@ -25,12 +25,12 @@
     content: '';
     background: conic-gradient(#E8F2FC 270deg, #1690DF, white);
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 70%;
+    left: 70%;
+    transform: translate(-70%, -70%);
     aspect-ratio: 1;
     width: 100%;
-    animation: rotate 2.5s linear infinite;
+    animation: rotate 3s cubic-bezier(0.36, 0.34, 0.86, 0.84) infinite;
   }
 
   /* Overlay */
