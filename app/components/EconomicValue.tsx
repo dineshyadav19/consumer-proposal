@@ -2,9 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 import Investment from '@images/good-investment-bg.png';
 
-type Props = {};
-
-const EconomicValue = (props: Props) => {
+const EconomicValue = () => {
   return (
     <div className="bg-brand-green-100 font-archivo py-6 px-4 relative w-full h-[220px] mb-8">
       <div className="relative z-30 flex flex-col gap-y-5">

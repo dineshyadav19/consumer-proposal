@@ -1,6 +1,9 @@
+import Image from 'next/image';
 import React from 'react';
 import { IoMdCheckmark } from 'react-icons/io';
-type Props = {};
+import Investment from '@images/good-investment-bg.png';
+import { BsArrowRightCircleFill } from 'react-icons/bs';
+import { GoArrowRight } from 'react-icons/go';
 
 const Pricing = () => {
   return (
@@ -106,6 +109,34 @@ const Pricing = () => {
             </div>
           </div>
         </div>
+
+        <div className="bg-gradient-to-l from-lime-50 to-lime-200 font-archivo p-3 flex items-center relative w-full h-24 rounded-[10px]">
+          <div className="relative z-30 flex gap-y-5 justify-between items-center">
+            <h3 className="text-base tracking-wide">
+              Wondering if solar is a good investment?{' '}
+              <span className="font-medium">(ROI)</span>
+            </h3>
+
+            <div className="w-12 h-12 green-blue-gradient rounded-full stroke-none">
+              <BsArrowRightCircleFill className="w-12 h-12" fill="white" />
+            </div>
+          </div>
+          <div className="absolute right-0 bottom-0">
+            <Image src={Investment} alt="" width={110} height={92} />
+          </div>
+        </div>
+
+        <p className="text-brand-grey-500 text-base text-center">
+          Discounts valid till 24th January only, don’t miss, lock the price now
+        </p>
+
+        <button className="p-5 text-xl text-white font-medium leading-none bg-gradient-to-r from-sky-700 via-sky-500 to-sky-700 rounded-[41px] shadow-inner border border-white border-opacity-50">
+          Lock this price @ ₹25,000
+        </button>
+
+        <p className="text-base leading-none text-brand-blue-600 text-center">
+          Explore financing options
+        </p>
       </div>
     </div>
   );

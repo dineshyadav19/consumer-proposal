@@ -13,7 +13,6 @@ const Modal: React.FC<ModalProps> = ({ isOpen, children, onChange }) => {
     <Dialog.Root open={isOpen} onOpenChange={onChange} defaultOpen={isOpen}>
       <Dialog.Portal>
         <Dialog.Overlay className="bg-brand-grey-400/90  fixed inset-0" />
-
         <Dialog.Content
           className="
           fixed 
@@ -26,6 +25,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, children, onChange }) => {
           h-full 
           w-[95%] 
           max-h-[90%]
+          max-w-[640px]
           translate-x-[-50%]
           translate-y-[-45%]
           rounded-[20px]
