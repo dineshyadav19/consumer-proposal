@@ -57,9 +57,9 @@ const SolarComponents = () => {
       return {
         key: 'micro',
         selectedClass:
-          'bg-brand-blue-200 text-brand-blue-500 rounded-full py-2.5 px-6 text-base font-semibold',
+          'bg-brand-blue-200 text-brand-blue-500 rounded-full py-2.5 px-6 text-base font-semibold leading-none',
         className:
-          'bg-transparent text-brand-grey-500 py-2.5 px-6 text-base font-semibold',
+          'bg-transparent text-brand-grey-500 py-2.5 px-6 text-base font-semibold leading-none',
         heading: 'For SMART & PREMIUM Systems',
         image: MicroInverter,
         subText:
@@ -69,9 +69,9 @@ const SolarComponents = () => {
     return {
       key: 'string',
       selectedClass:
-        'bg-brand-blue-200 text-brand-blue-500 rounded-full py-2.5 px-6 text-base font-semibold',
+        'bg-brand-blue-200 text-brand-blue-500 rounded-full py-2.5 px-6 text-base font-semibold leading-none',
       className:
-        'bg-transparent text-brand-grey-500 py-2.5 px-6 text-base font-semibold',
+        'bg-transparent text-brand-grey-500 py-2.5 px-6 text-base font-semibold leading-none',
       heading: 'FOR BASIC SYSTEMS ONLY',
       image: StringInverter,
       subText:
@@ -84,7 +84,7 @@ const SolarComponents = () => {
   return (
     <div className="px-4 mb-9">
       <div className="my-7 flex justify-center">
-        <svg id="rotatingText" viewBox="0 0 200 200" width="120" height="120">
+        <svg id="rotatingText" viewBox="0 0 200 200" width="150" height="150">
           <defs>
             <path
               id="circle"
@@ -101,7 +101,7 @@ const SolarComponents = () => {
             cy="100"
             r="70"
             stroke="#E8F2FC"
-            strokeWidth="25"
+            strokeWidth="35"
             fill="white"
           />
 
@@ -152,7 +152,7 @@ const SolarComponents = () => {
 
         <div className="px-3 py-5 rounded-xl border border-stone-300 justify-start items-start gap-3 flex flex-col">
           <div>
-            <h3 className="text-black text-xl font-semibold tracking-wide">
+            <h3 className="text-black text-base font-semibold tracking-wide">
               INVERTER
             </h3>
             <p className="text-base leading-snug">2 options to choose from</p>
@@ -167,7 +167,7 @@ const SolarComponents = () => {
               }
               onClick={() => setIsMicroSelected(true)}
             >
-              Micro-Inverters
+              Micro-Inverter
             </button>
             <button
               className={
@@ -177,7 +177,7 @@ const SolarComponents = () => {
               }
               onClick={() => setIsMicroSelected(false)}
             >
-              String Inverters
+              String Inverter
             </button>
           </div>
 
@@ -224,8 +224,8 @@ const SolarComponents = () => {
         </p>
 
         <video
-          className="w-full h-[400px] rounded-xl border border-stone-300"
-          controls={true}
+          className="w-full h-auto object-fill rounded-xl border border-stone-300"
+          controls={false}
           autoPlay
           muted
           playsInline

@@ -106,9 +106,9 @@ const Inverter = () => {
       return {
         key: 'micro',
         selectedClass:
-          'bg-brand-blue-200 text-brand-blue-500 rounded-full py-2.5 px-6 text-base font-semibold',
+          'bg-brand-blue-200 text-brand-blue-500 rounded-full py-2.5 px-6 text-base font-semibold leading-none',
         className:
-          'bg-transparent text-brand-grey-500 py-2.5 px-6 text-base font-semibold',
+          'bg-transparent text-brand-grey-500 py-2.5 px-6 text-base font-semibold leading-none',
         heading: 'Micro-Inverter',
         data: microInverter,
       };
@@ -116,9 +116,9 @@ const Inverter = () => {
     return {
       key: 'string',
       selectedClass:
-        'bg-brand-blue-200 text-brand-blue-500 rounded-full py-2.5 px-6 text-base font-semibold',
+        'bg-brand-blue-200 text-brand-blue-500 rounded-full py-2.5 px-6 text-base font-semibold leading-none',
       className:
-        'bg-transparent text-brand-grey-500 py-2.5 px-6 text-base font-semibold',
+        'bg-transparent text-brand-grey-500 py-2.5 px-6 text-base font-semibold leading-none',
       heading: 'String Inverter',
       data: stringInverter,
     };
@@ -137,7 +137,7 @@ const Inverter = () => {
           }
           onClick={() => setIsMicroSelected(true)}
         >
-          Micro-Inverters
+          Micro-Inverter
         </button>
         <button
           className={
@@ -147,7 +147,7 @@ const Inverter = () => {
           }
           onClick={() => setIsMicroSelected(false)}
         >
-          String Inverters
+          String Inverter
         </button>
       </div>
 

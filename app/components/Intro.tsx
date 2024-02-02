@@ -18,15 +18,15 @@ const Intro = () => {
       </div>
 
       <div className="px-4 mt-5 mb-4">
-        <div className="p-4 rounded-[10px] border border-stone-300 border-opacity-40 grid grid-cols-3 gap-5 w-full items-center">
-          <div className="flex flex-col justify-between px-3 py-4 gap-y-3">
+        <div className="p-4 rounded-[10px] border border-stone-300 border-opacity-40 grid grid-cols-12 gap-5 w-full items-center">
+          <div className="flex flex-col justify-between px-3 py-4 gap-y-3 col-span-5">
             <span className="text-[13px] text-brand-blue-500 font-archivo leading-none tracking-wide">
               System size
             </span>
             <span className="text-xl font-archivo font-medium">3.3 kW</span>
           </div>
-          <div className="h-12 w-[1px] bg-[#E3E3E3] justify-self-center" />
-          <div className="flex flex-col justify-between px-3 py-4 gap-y-3">
+          <div className="h-12 w-[1px] bg-[#E3E3E3] justify-self-center col-span-2" />
+          <div className="flex flex-col justify-between px-3 py-4 gap-y-3 col-span-5 col-start-8">
             <span className="text-[13px] text-brand-blue-500 font-archivo leading-none tracking-wide">
               Type
             </span>
