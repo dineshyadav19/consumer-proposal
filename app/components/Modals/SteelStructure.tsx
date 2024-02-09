@@ -39,7 +39,7 @@ const SteelStructure = () => {
     <>
       <Header
         image={Structure}
-        heading="Stainless steel structure"
+        heading="Hot Dip Galvanized Iron Structure"
         subHeading="Learn more about"
       />
 

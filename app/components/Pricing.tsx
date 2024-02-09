@@ -7,11 +7,89 @@ import { BsArrowRightCircleFill } from 'react-icons/bs';
 import * as Dialog from '@radix-ui/react-dialog';
 import LockPrice from './Modals/LockPrice';
 import { GoArrowLeft } from 'react-icons/go';
+import DownArrow from '@icons/down-arrow.svg';
 
 const Pricing = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [planType, setPlanType] = useState<'Basic' | 'Smart' | 'Premium'>(
+    'Smart'
+  );
+  const planTypeButtonStyles =
+    'py-2.5 px-6 text-base tracking-wide text-brand-grey-600 leading-none font-semibold';
   return (
     <>
+      <h2 className="heading-gradient mt-11">Choose a system</h2>
+      <div className="flex justify-center my-4">
+        <svg id="rotatingText" viewBox="0 0 200 200" width="120" height="120">
+          <defs>
+            <path
+              id="circle"
+              d="M 100, 100
+                m -75, 0
+                a 75, 75 0 1, 0 150, 0
+                a 75, 75 0 1, 0 -150, 0
+                "
+            ></path>
+          </defs>
+
+          <circle
+            cx="100"
+            cy="100"
+            r="70"
+            stroke="#E8F2FC"
+            strokeWidth="25"
+            fill="white"
+          />
+
+          <text width="50">
+            <textPath
+              alignmentBaseline="baseline"
+              xlinkHref="#circle"
+              className="svg-text"
+            >
+              Free Electricity | 25+ year savings |
+            </textPath>
+          </text>
+        </svg>
+      </div>
+      <div className="flex flex-col font-archivo justify-center items-center">
+        <p className="text-xl font-medium heading-gradient mb-2">Pricing</p>
+
+        <p className="text-base text-brand-grey-600">
+          Valid till 24th Jan 2024
+        </p>
+      </div>
+
+      <div className="mb-2.5 mt-1.5">
+        <DownArrow />
+      </div>
+      <div className="rounded-full bg-brand-grey-100 px-2.5 py-1.5 mb-5 flex items-center gap-x-[18px]">
+        <button
+          className={`${
+            planType === 'Basic' && 'bg-brand-blue-200 rounded-full'
+          } ${planTypeButtonStyles}`}
+          onClick={() => setPlanType('Basic')}
+        >
+          Basic
+        </button>
+        <button
+          className={`${
+            planType === 'Smart' &&
+            'green-blue-gradient text-neutral-50 rounded-full'
+          } ${planTypeButtonStyles}`}
+          onClick={() => setPlanType('Smart')}
+        >
+          Smart
+        </button>
+        <button
+          className={`${
+            planType === 'Premium' && 'bg-brand-blue-200 rounded-full'
+          } ${planTypeButtonStyles}`}
+          onClick={() => setPlanType('Premium')}
+        >
+          Premium
+        </button>
+      </div>
       <div className="green-blue-gradient p-0.5 rounded-[12px]">
         <div className="px-4 py-6 rounded-[10px] bg-white flex flex-col gap-y-5">
           <div className="flex flex-col gap-y-5 items-center">

@@ -1,4 +1,5 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 import Earth from '@icons/Earth.svg';
 type Props = {};
 
@@ -14,22 +15,47 @@ const metrics = [
     metric: 'liters',
   },
   {
-    title: 'Equivalent number of Trees planted',
-    number: '1,234',
-    metric: 'trees',
+    title: 'Coal burn avoided',
+    number: '40.72',
+    metric: 'kg',
   },
 ];
 
 const BenefitsImpact = (props: Props) => {
+  const [toggle, setToggle] = useState(true);
+  const toggleClass = ' transform translate-x-5';
   return (
     <div className="mb-14">
       <div className="p-4">
         <h2 className="heading-gradient">Benefits & Impact</h2>
+        <div className="mt-3 flex justify-center">
+          <div className="flex items-center gap-x-[9px]">
+            <p className="font-archivo text-sm font-light">Monthly</p>
+            <div
+              className="w-11 h-6 flex items-center bg-white border border-brand-grey-300 rounded-full px-1 cursor-pointer"
+              onClick={() => {
+                setToggle(!toggle);
+              }}
+            >
+              {/* Switch */}
+              <div
+                className={
+                  'bg-[#00AEEF] h-4 w-4 rounded-full shadow-md transform duration-300 ease-in-out' +
+                  (toggle ? null : toggleClass)
+                }
+              ></div>
+            </div>
+            <p className="font-archivo text-sm font-light">Yearly</p>
+          </div>
+        </div>
         <div className="rounded-[10px] border border-[#79BCFF] p-4 mt-6">
           <p className="text-base font-light">Average monthly saving</p>
           <p className="mt-5 mb-6 heading--h2">₹ 1,700</p>
           <div className="p-2.5 bg-gradient-to-r from-[#DFFFCC] to-white flex gap-x-2 rounded-full items-center">
-            <Earth /> <span>upto 70% bill reduction</span>
+            <Earth />{' '}
+            <span className="text-sm text-brand-grey-600">
+              upto 70% bill reduction
+            </span>
           </div>
         </div>
         <div className="rounded-[10px] border border-[#79BCFF] p-4 mt-6">
@@ -41,7 +67,10 @@ const BenefitsImpact = (props: Props) => {
             </span>
           </p>
           <div className="p-2.5 bg-gradient-to-r from-[#DFFFCC] to-white flex gap-x-2 rounded-full items-center">
-            <Earth /> <span>upto 70% bill reduction</span>
+            <Earth />{' '}
+            <span className="text-sm text-brand-grey-600">
+              meets 70% of your energy requirement
+            </span>
           </div>
         </div>
       </div>

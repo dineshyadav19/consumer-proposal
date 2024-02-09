@@ -14,6 +14,7 @@ import Testimonials from '@components/Testimonials';
 import Image from 'next/image';
 import MapImage from '@images/map-site-pins.png';
 import Pricing from '@components/Pricing';
+import JourneyWithUs from '@components/JourneyWithUs';
 
 export default function Home() {
   return (
@@ -49,6 +50,7 @@ export default function Home() {
       <WhoWeAre />
       <h2 className="heading-gradient my-8 px-4">India-wide presence</h2>
       <Image src={MapImage} alt="" />
+      <JourneyWithUs />
       <PastClients />
       <ConnectWithUs />
     </main>

@@ -41,11 +41,11 @@ const OurSystemInclude = () => {
         All our systems include
       </h2>
       <div className="relative rounded-[10px] border border-[#DDD]">
-        <div className="w-full h-16 flex justify-center items-center absolute -top-8">
+        {/* <div className="w-full h-16 flex justify-center items-center absolute -top-8">
           <div className="w-fit border-none rounded-lg p-3 flex items-center bg-white">
             <p className="text-base font-medium">All our systems include</p>
           </div>
-        </div>
+        </div> */}
 
         <div className="flex flex-col gap-y-4 py-9 px-4">
           {offerings.map((val, index) => {
