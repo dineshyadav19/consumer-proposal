@@ -6,7 +6,7 @@ import Maintenance from '@icons/Maintenance.svg';
 import CustomerVisit from '@icons/Location.svg';
 import Financing from '@icons/Financing.svg';
 import Installation from '@icons/Installation.svg';
-
+import { IoMdCheckmark } from 'react-icons/io';
 const journeyData = [
   {
     headerBgColor: 'from-rose-400 to-red-400',
@@ -59,17 +59,36 @@ const journeyData = [
 ];
 const JourneyWithUs = () => {
   return (
-    <div className="my-16 relative">
+    <div className="mt-32 mb-16 relative">
       <div className="relative">
         <div className="w-full h-[22px] bg-slate-800 flex items-center">
           <div className="w-full h-0 border border-dashed border-white"></div>
         </div>
         <div className="h-[200px] w-full bg-white"></div>
       </div>
-      <div className="flex overflow-scroll w-full no-scrollbar absolute -top-2.5">
+      <div className="flex overflow-scroll w-full no-scrollbar absolute -top-[3.25rem]">
         {journeyData.map((data, index) => (
           <div key={index} className="min-w-full px-16 flex flex-col gap-y-3">
-            <div className="flex justify-center items-center">
+            <div className="flex flex-col justify-center items-center">
+              <div className="flex justify-center ml-[2.77rem] gap-x-1.5">
+                <div className="flex flex-col justify-center items-center">
+                  <div className="flex items-center gap-x-1.5">
+                    <div className="rounded-full w-4 h-4 bg-gradient-to-br from-[#7E58B3] to-[#5F9BD9]">
+                      <IoMdCheckmark
+                        fill="#fff"
+                        className="font-bold w-4 h-4 p-0.5"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="bg-[#7C5CB5] w-[1px] h-7"></div>
+                </div>
+
+                <p className="pt-0.5 font-medium text-[13px] leading-3 bg-gradient-to-t from-[#7E58B3] to-[#5F9BD9] bg-clip-text text-transparent">
+                  Step {index + 1}
+                </p>
+              </div>
+
               <div className="w-[45px] h-[45px] relative">
                 <div
                   className={`w-[45px] h-[45px] left-0 top-0 absolute bg-gradient-to-b rounded-full ${data.headerBgColor}`}
