@@ -1,5 +1,7 @@
+import Image from 'next/image';
 import React from 'react';
-import { MdRadioButtonChecked } from 'react-icons/md';
+import { MdRadioButtonChecked, MdRadioButtonUnchecked } from 'react-icons/md';
+import QRCode from '@images/modal-images/payments-qr-code.png';
 
 const LockPrice = () => {
   return (
@@ -17,13 +19,13 @@ const LockPrice = () => {
           <div className="ml-4 font-archivo">
             <h2 className="text-base">Pay ₹25,000 as booking advance.</h2>
             <p className="text-sm text-gray-600 mt-1.5">
-              Don’t worry, this amount will be adjusted in the final payment.{' '}
+              Don’t worry, this amount will be adjusted in the final payment{' '}
             </p>
           </div>
         </div>
         <div className="flex h-full">
           <div className="h-full pt-1">
-            <MdRadioButtonChecked className="w-4 h-4" fill="#009429" />
+            <MdRadioButtonUnchecked className="w-4 h-4" fill="#009429" />
             <div className="flex items-center justify-center h-full">
               <div className="w-[1px] h-[80px] bg-brand-grey-400"></div>
             </div>
@@ -35,13 +37,13 @@ const LockPrice = () => {
             </h2>
             <p className="text-sm text-gray-600 mt-1.5">
               Share screenshot of the payment and other details with your
-              assigned fenice partner.
+              assigned fenice partner
             </p>
           </div>
         </div>
         <div className="flex h-full">
           <div className="h-full pt-1">
-            <MdRadioButtonChecked className="w-4 h-4" fill="#009429" />
+            <MdRadioButtonUnchecked className="w-4 h-4" fill="#009429" />
             <div className="flex items-center justify-center h-full"></div>
           </div>
 
@@ -55,6 +57,25 @@ const LockPrice = () => {
             </p>
           </div>
         </div>
+      </div>
+      <h5 className="heading-gradient text-left my-5">Payment options</h5>
+      <div className="rounded-[10px] border border-zinc-300 border-opacity-90 flex gap-y-4 flex-col py-3 px-4 my-6">
+        <p className="text-xl font-archivo text-center">UPI</p>
+        <div className="flex flex-col gap-y-2 justify-center items-center">
+          <p className="text-brand-grey-600 text-base font-archivo">
+            silrescom@hdfcbank
+          </p>
+          <Image
+            src={QRCode}
+            alt=""
+            width={145}
+            height={147}
+            className="mix-blend-hard-light"
+          />
+        </div>
+        <button className="text-neutral-50 text-base font-semibold p-5 bg-brand-blue rounded-full leading-none">
+          Download QR code & pay
+        </button>
       </div>
       <div className="rounded-[10px] border border-zinc-300 border-opacity-90 flex gap-y-4 flex-col py-3 px-4">
         <p className="text-xl font-archivo">Net Banking</p>

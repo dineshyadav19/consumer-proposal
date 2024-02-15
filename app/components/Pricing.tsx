@@ -8,9 +8,14 @@ import * as Dialog from '@radix-ui/react-dialog';
 import LockPrice from './Modals/LockPrice';
 import { GoArrowLeft } from 'react-icons/go';
 import DownArrow from '@icons/down-arrow.svg';
+import Modal from '../../components/Modal';
+import EmiModal from './Modals/EmiModal';
+import PriceBreakup from './Modals/PriceBreakup';
 
 const Pricing = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [emiModalOpen, setEmiModalOpen] = useState(false);
+  const [priceModalOpen, setPriceModalOpen] = useState(false);
   const [planType, setPlanType] = useState<'Basic' | 'Smart' | 'Premium'>(
     'Smart'
   );
@@ -93,9 +98,9 @@ const Pricing = () => {
       <div className="green-blue-gradient p-0.5 rounded-[12px]">
         <div className="px-4 py-6 rounded-[10px] bg-white flex flex-col gap-y-5">
           <div className="flex flex-col gap-y-5 items-center">
-            <div className="text-brand-blue-500 text-sm font-medium tracking-wide py-2 px-4 border border-brand-blue rounded-full text-center w-fit">
+            {/* <div className="text-brand-blue-500 text-sm font-medium tracking-wide py-2 px-4 border border-brand-blue rounded-full text-center w-fit">
               ₹2,500 discount
-            </div>
+            </div> */}
 
             <div className="green-blue-gradient p-0.5 rounded-full w-fit">
               <div className="uppercase bg-black text-center px-[18px] rounded-full text-white text-2xl font-semibold font-archivo">
@@ -109,15 +114,20 @@ const Pricing = () => {
               ₹ 2,55,269
             </p>
             <p className="text-brand-grey-500 font-semibold">
-              Total payable (incl. GST). GST
+              Total payable (incl. GST)
             </p>
-
+            <div className="text-xl font-medium font-archivo text-brand-grey-600 py-3 px-1.5 bg-brand-blue-100 text-center my-4 w-full">
+              Subsidy : ₹ 12,000
+            </div>
             <p className="mt-3 text-center text-base tracking-wide text-brand-grey-600">
               EMI starting from as low as ₹1483.00 per month. Lean more
             </p>
           </div>
 
-          <div className="text-brand-blue-600 text-base font-medium font-archivo text-center">
+          <div
+            className="text-brand-blue-600 text-base font-medium font-archivo text-center"
+            onClick={() => setPriceModalOpen(true)}
+          >
             View detailed price breakup
           </div>
 
@@ -143,7 +153,7 @@ const Pricing = () => {
                 fill="#009429"
                 className="font-bold w-6 h-6 p-0.5"
               />
-              <p className="text-lg font-medium">{'Micro Inverter'}</p>
+              <p className="text-lg font-medium">{'Microinverter'}</p>
             </div>
             <div className="inline-flex gap-x-1.5">
               <div className="w-6 h-6 p-0.5" />
@@ -236,7 +246,10 @@ const Pricing = () => {
             Lock this price @ ₹25,000
           </button>
 
-          <p className="text-base leading-none text-brand-blue-600 text-center">
+          <p
+            className="text-base leading-none text-brand-blue-600 text-center"
+            onClick={() => setEmiModalOpen(true)}
+          >
             Explore financing options
           </p>
         </div>
@@ -257,6 +270,12 @@ const Pricing = () => {
           </Dialog.Content>
         </Dialog.Portal>
       </Dialog.Root>
+      <Modal isOpen={emiModalOpen} onChange={setEmiModalOpen}>
+        <EmiModal />
+      </Modal>
+      <Modal isOpen={priceModalOpen} onChange={setPriceModalOpen}>
+        <PriceBreakup />
+      </Modal>
     </>
   );
 };
