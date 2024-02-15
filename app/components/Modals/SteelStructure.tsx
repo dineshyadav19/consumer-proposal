@@ -22,7 +22,7 @@ const data = [
   },
   {
     icon: <SteelBar />,
-    text: 'Galvanized Steel',
+    text: 'Space saver',
     subtext:
       'The braceless design of our High Rise structures is perfect to use the area below the solar system. No more losing terrace space!',
   },
@@ -39,7 +39,7 @@ const SteelStructure = () => {
     <>
       <Header
         image={Structure}
-        heading="Hot Dip Galvanized Iron Structure"
+        heading="Rust-Proof Structure"
         subHeading="Learn more about"
       />
 
