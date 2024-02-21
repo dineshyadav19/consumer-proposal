@@ -41,7 +41,7 @@ const Intro = ({ customerName, systemSize, plantType }: IntroProps) => {
               Type
             </span>
             <span className="text-xl font-archivo font-medium">
-              {plantType || 'On-Grid'}
+              {'On-Grid'}
             </span>
           </div>
         </div>

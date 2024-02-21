@@ -40,7 +40,7 @@ const ViewIn3D = async ({
             className="rounded-tl-[20px] rounded-tr-[20px] border border-brand-blue"
           />
 
-          <div className="absolute bottom-8 flex justify-center items-center">
+          <div className="absolute bottom-8 flex justify-center items-center w-full">
             <a
               href={solarLabsLink}
               target="_blank"

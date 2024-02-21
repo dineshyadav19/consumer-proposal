@@ -79,7 +79,7 @@ export default async function Home() {
       <OurSystemInclude />
 
       <div className="p-4">
-        <Pricing />
+        <Pricing proposalOutput={data.proposal_data.proposal_output} />
       </div>
 
       <WhoWeAre />

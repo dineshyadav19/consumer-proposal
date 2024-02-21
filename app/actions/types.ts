@@ -25,11 +25,11 @@ type LOAN_OPTION_DATA = {
 type LOAN_OPTIONS = {
   type: string;
   tenure: number;
-  data: Array<LOAN_OPTION_DATA>;
+  data: Array<LOAN_OPTION_DATA | []>;
 };
 
-type PROPOSAL_OUTPUT = {
-  system_type: string;
+export type PROPOSAL_OUTPUT = {
+  system_type: 'Basic' | 'Smart' | 'Premium';
   inverter_size: string;
   type_of_module: string;
   watt_peak: number;

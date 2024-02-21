@@ -5,6 +5,10 @@ import { FaXTwitter } from 'react-icons/fa6';
 import Image from 'next/image';
 
 const Footer = () => {
+  const generatedOn = new Date().toDateString();
+  const validTill = new Date(
+    Date.now() + 15 * 24 * 60 * 60 * 1000
+  ).toDateString();
   return (
     <div className="p-4 bg-black text-brand-grey flex flex-col gap-y-7">
       <Image src={CompanyLogo} alt="Company Logo" width={110} height={44} />
@@ -53,11 +57,11 @@ const Footer = () => {
       <div className="flex justify-between text-brand-grey-400 text-sm font-medium">
         <div className="flex flex-col">
           <span>Generated On</span>
-          <span className="text-base">09th Jan 2024</span>
+          <span className="text-base">{generatedOn}</span>
         </div>
         <div className="flex flex-col">
           <span className="text-right">Valid till</span>
-          <span className="text-base">09th Jan 2024</span>
+          <span className="text-base">{validTill}</span>
         </div>
       </div>
     </div>

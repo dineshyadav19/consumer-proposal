@@ -11,8 +11,13 @@ import DownArrow from '@icons/down-arrow.svg';
 import Modal from '../../components/Modal';
 import EmiModal from './Modals/EmiModal';
 import PriceBreakup from './Modals/PriceBreakup';
+import { PROPOSAL_OUTPUT } from '../actions/types';
 
-const Pricing = () => {
+const Pricing = ({
+  proposalOutput,
+}: {
+  proposalOutput: Array<PROPOSAL_OUTPUT>;
+}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [emiModalOpen, setEmiModalOpen] = useState(false);
   const [priceModalOpen, setPriceModalOpen] = useState(false);
@@ -69,7 +74,28 @@ const Pricing = () => {
         <DownArrow />
       </div>
       <div className="rounded-full bg-brand-grey-100 px-2.5 py-1.5 mb-5 flex items-center gap-x-[18px]">
-        <button
+        {proposalOutput.map((val) => {
+          const isActive = val.system_type === planType;
+
+          const activeClass =
+            isActive && planType === 'Smart'
+              ? 'green-blue-gradient text-neutral-50 rounded-full'
+              : isActive
+              ? 'bg-brand-blue-200 rounded-full'
+              : '';
+
+          return (
+            <button
+              key={val.system_type}
+              className={`${activeClass} ${planTypeButtonStyles}`}
+              onClick={() => setPlanType(val.system_type)}
+            >
+              {val.system_type}
+            </button>
+          );
+        })}
+
+        {/* <button
           className={`${
             planType === 'Basic' && 'bg-brand-blue-200 rounded-full'
           } ${planTypeButtonStyles}`}
@@ -93,7 +119,7 @@ const Pricing = () => {
           onClick={() => setPlanType('Premium')}
         >
           Premium
-        </button>
+        </button> */}
       </div>
       <div className="green-blue-gradient p-0.5 rounded-[12px]">
         <div className="px-4 py-6 rounded-[10px] bg-white flex flex-col gap-y-5">
