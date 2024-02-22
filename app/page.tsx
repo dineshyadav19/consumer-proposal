@@ -17,8 +17,12 @@ import Pricing from '@components/Pricing';
 import JourneyWithUs from '@components/JourneyWithUs';
 import { getProposalData } from './actions/action';
 
-export default async function Home() {
-  const data = await getProposalData();
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string };
+}) {
+  const data = await getProposalData({ dealId: searchParams?.dealId });
   return (
     <main className="mt-5">
       <Intro
@@ -78,9 +82,7 @@ export default async function Home() {
 
       <OurSystemInclude />
 
-      <div className="p-4">
-        <Pricing proposalOutput={data.proposal_data.proposal_output} />
-      </div>
+      <Pricing proposalOutput={data.proposal_data.proposal_output} />
 
       <WhoWeAre />
 

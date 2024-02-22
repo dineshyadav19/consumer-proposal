@@ -2,9 +2,13 @@ import { PROPOSAL_API_RESPONSE } from './types';
 
 const API_URL = process.env.NEXT_BACKEND_DEV_ENDPOINT;
 
-export async function getProposalData() {
+export async function getProposalData({ dealId }: { dealId: string }) {
+  console.log(dealId);
+  console.log(
+    `${API_URL}/green-partners/web-proposal/consumer/?dealId=${dealId}`
+  );
   const res = await fetch(
-    `${API_URL}/green-partners/web-proposal/consumer/?dealId=16802245025`,
+    `${API_URL}/green-partners/web-proposal/consumer/?dealId=${dealId}`,
     {
       headers: {
         'Content-type': 'application/json',
