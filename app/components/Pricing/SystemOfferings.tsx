@@ -16,11 +16,13 @@ import {
   premiumSystemoffering,
   smartSystemoffering,
 } from './SystemOfferingsCopy';
+import { PROPOSAL_OUTPUT } from '../../actions/types';
 
 type Plant_Type = 'Basic' | 'Smart' | 'Premium' | 'Standard';
 
 type Props = {
   plantType: Plant_Type;
+  proposalData: Array<PROPOSAL_OUTPUT>;
 };
 
 const SystemOfferings = (props: Props) => {
@@ -47,6 +49,10 @@ const SystemOfferings = (props: Props) => {
       ? 'green-blue-gradient p-0.5 rounded-[12px]'
       : 'border border-brand-blue-400 rounded-[10px]';
 
+  const systemValues = props.proposalData.find(
+    (val) => val.system_type === props.plantType
+  );
+
   return (
     <>
       <div className={`${offeringStyle}`}>
@@ -60,24 +66,34 @@ const SystemOfferings = (props: Props) => {
           </div>
 
           <div className="flex flex-col items-center font-archivo">
-            <div className="relative justify-center items-center mb-1">
-              <p className="green-blue-gradient text-xl font-semibold text-transparent bg-clip-text max-w-max">
-                ₹ 2,55,269
-              </p>
-              <div className="absolute inset-0 py-2">
-                <Image src={CrossArrow} alt="" />
+            {systemValues?.data.subsidy_value ? (
+              <div className="relative justify-center items-center mb-1">
+                <p className="green-blue-gradient text-xl font-semibold text-transparent bg-clip-text max-w-max">
+                  ₹ {systemValues.data.subsidy_value}
+                </p>
+                <div className="absolute inset-0 py-2">
+                  <Image src={CrossArrow} alt="" />
+                </div>
               </div>
-            </div>
+            ) : (
+              <></>
+            )}
 
             <p className="green-blue-gradient text-4.5xl font-semibold text-transparent bg-clip-text ">
-              ₹ 2,55,269
+              ₹ {systemValues?.data.total_system_price_with_gst}
             </p>
             <p className="text-brand-grey-500 font-semibold">
               Total payable (incl. GST)
             </p>
-            <div className="text-xl font-medium font-archivo text-brand-grey-600 py-3 px-1.5 bg-brand-blue-100 text-center my-4 w-full">
-              Subsidy : ₹ 12,000
-            </div>
+
+            {systemValues?.data.subsidy_value ? (
+              <div className="text-xl font-medium font-archivo text-brand-grey-600 py-3 px-1.5 bg-brand-blue-100 text-center my-4 w-full">
+                Subsidy : ₹ {systemValues?.data.subsidy_value}
+              </div>
+            ) : (
+              <></>
+            )}
+
             <p className="mt-3 text-center text-base tracking-wide text-brand-grey-600">
               EMI starting from as low as ₹1483.00 per month. Lean more
             </p>
@@ -85,7 +101,7 @@ const SystemOfferings = (props: Props) => {
 
           <div
             className="text-brand-blue-600 text-base font-medium font-archivo text-center"
-            //onClick={() => setPriceModalOpen(true)}
+            onClick={() => setPriceModalOpen(true)}
           >
             View detailed price breakup
           </div>
@@ -145,16 +161,28 @@ const SystemOfferings = (props: Props) => {
             now
           </p>
 
-          <button
-            //onClick={() => setIsModalOpen(!isModalOpen)}
-            className="p-5 text-xl text-white font-medium leading-none bg-gradient-to-r from-sky-700 via-sky-500 to-sky-700 rounded-[41px] shadow-inner border border-white border-opacity-50"
-          >
-            Lock this price @ ₹25,000
-          </button>
+          {props.plantType === 'Smart' ? (
+            <button
+              onClick={() => setIsModalOpen(!isModalOpen)}
+              className="p-5 text-xl text-white font-medium leading-none bg-gradient-to-r from-sky-700 via-sky-500 to-sky-700 rounded-[41px] shadow-inner border border-white border-opacity-50"
+            >
+              Lock this price @ ₹25,000
+            </button>
+          ) : (
+            <div className="button-animation my-3 w-full h-14">
+              <input
+                type="button"
+                value="Lock this price @ ₹25,000"
+                className="font-inter rounded-[41px] text-white font-semibold leading-none"
+                onClick={() => setIsModalOpen(!isModalOpen)}
+                style={{ fontSize: '20px' }}
+              />
+            </div>
+          )}
 
           <p
             className="text-base leading-none text-brand-blue-600 text-center"
-            //onClick={() => setEmiModalOpen(true)}
+            onClick={() => setEmiModalOpen(true)}
           >
             Explore financing options
           </p>

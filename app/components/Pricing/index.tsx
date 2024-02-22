@@ -86,7 +86,7 @@ const Pricing = ({
             );
           })}
         </div>
-        <SystemOfferings plantType={planType} />
+        <SystemOfferings plantType={planType} proposalData={proposalOutput} />
       </div>
     </>
   );
