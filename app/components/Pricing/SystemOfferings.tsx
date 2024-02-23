@@ -17,6 +17,7 @@ import {
   smartSystemoffering,
 } from './SystemOfferingsCopy';
 import { PROPOSAL_OUTPUT } from '../../actions/types';
+import EconomicValueModal from '@components/Modals/EconomicValue';
 
 type Plant_Type = 'Basic' | 'Smart' | 'Premium' | 'Standard';
 
@@ -29,6 +30,7 @@ const SystemOfferings = (props: Props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [emiModalOpen, setEmiModalOpen] = useState(false);
   const [priceModalOpen, setPriceModalOpen] = useState(false);
+  const [economicModalOpen, setEconomicModalOpen] = useState(false);
 
   const getSystemOffering = (type: Plant_Type) => {
     switch (type) {
@@ -140,7 +142,10 @@ const SystemOfferings = (props: Props) => {
             );
           })}
 
-          <div className="bg-gradient-to-l from-lime-50 to-lime-200 font-archivo p-3 flex items-center relative w-full h-24 rounded-[10px] z-10">
+          <div
+            className="bg-gradient-to-l from-lime-50 to-lime-200 font-archivo p-3 flex items-center relative w-full h-24 rounded-[10px] z-10"
+            onClick={() => setEconomicModalOpen(true)}
+          >
             <div className="relative z-30 flex gap-y-5 justify-between items-center">
               <h3 className="text-base tracking-wide">
                 Wondering if solar is a good investment?{' '}
@@ -180,12 +185,16 @@ const SystemOfferings = (props: Props) => {
             </div>
           )}
 
-          <p
-            className="text-base leading-none text-brand-blue-600 text-center"
-            onClick={() => setEmiModalOpen(true)}
-          >
-            Explore financing options
-          </p>
+          {systemValues?.data.loan_options.length ? (
+            <p
+              className="text-base leading-none text-brand-blue-600 text-center"
+              onClick={() => setEmiModalOpen(true)}
+            >
+              Explore financing options
+            </p>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
       <Dialog.Root open={isModalOpen} onOpenChange={setIsModalOpen}>
@@ -205,10 +214,13 @@ const SystemOfferings = (props: Props) => {
         </Dialog.Portal>
       </Dialog.Root>
       <Modal isOpen={emiModalOpen} onChange={setEmiModalOpen}>
-        <EmiModal />
+        <EmiModal loanOptions={systemValues?.data.loan_options} />
+      </Modal>
+      <Modal isOpen={economicModalOpen} onChange={setEconomicModalOpen}>
+        <EconomicValueModal />
       </Modal>
       <Modal isOpen={priceModalOpen} onChange={setPriceModalOpen}>
-        <PriceBreakup />
+        <PriceBreakup priceBreak={systemValues?.data} />
       </Modal>
     </>
   );

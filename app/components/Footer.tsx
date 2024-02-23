@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import CompanyLogo from '@images/fenice-logo.png';
 import { FaFacebook, FaLinkedin, FaInstagram, FaYoutube } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import Image from 'next/image';
+import Link from 'next/link';
+
+const FooterLink = ({ href, icon }: { href: string; icon: ReactNode }) => {
+  return (
+    <Link href={href} target="_blank">
+      {icon}
+    </Link>
+  );
+};
 
 const Footer = () => {
   const generatedOn = new Date().toDateString();
@@ -32,11 +41,26 @@ const Footer = () => {
       <div className="gap-y-2 flex flex-col ">
         <span className="text-sm font-medium text-white">Our presence</span>
         <div className="flex gap-x-3">
-          <FaFacebook className="w-7 h-7" fill="#EAEAEA" />
-          <FaLinkedin className="w-7 h-7" fill="#EAEAEA" />
-          <FaXTwitter className="w-7 h-7" fill="#EAEAEA" />
-          <FaInstagram className="w-7 h-7" fill="#EAEAEA" />
-          <FaYoutube className="w-7 h-7" fill="#EAEAEA" />
+          <FooterLink
+            href="https://www.facebook.com/Feniceenergy/"
+            icon={<FaFacebook className="w-7 h-7" fill="#EAEAEA" />}
+          />
+          <FooterLink
+            href="https://www.linkedin.com/company/feniceenergy/"
+            icon={<FaLinkedin className="w-7 h-7" fill="#EAEAEA" />}
+          />
+          <FooterLink
+            href="https://twitter.com/FeniceEnergy"
+            icon={<FaXTwitter className="w-7 h-7" fill="#EAEAEA" />}
+          />
+          <FooterLink
+            href="https://www.instagram.com/feniceenergy/"
+            icon={<FaInstagram className="w-7 h-7" fill="#EAEAEA" />}
+          />
+          <FooterLink
+            href="https://www.youtube.com/@feniceenergy"
+            icon={<FaYoutube className="w-7 h-7" fill="#EAEAEA" />}
+          />
         </div>
       </div>
 

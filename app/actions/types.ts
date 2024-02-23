@@ -22,10 +22,32 @@ type LOAN_OPTION_DATA = {
   offer_id: string;
 };
 
-type LOAN_OPTIONS = {
+export type LOAN_OPTIONS = {
   type: string;
   tenure: number;
-  data: Array<LOAN_OPTION_DATA | []>;
+  data: Array<LOAN_OPTION_DATA>;
+};
+
+export type SYSTEM_PRICE_DATA = {
+  spp: string;
+  add_on_spp: string;
+  system_price: string;
+  add_on_price: string;
+  gst: string;
+  total_system_price_with_gst: string;
+  name_change_charges: string;
+  load_enhancement_charges: string;
+  net_metering_charges: string;
+  discom_work_price: string;
+  onm_addon_price: string;
+  total_service_addon_without_gst: string;
+  gst_on_service: string;
+  total_service_add_on_with_gst: string;
+  total_system_and_service_including_gst: string;
+  subsidy_value: string;
+  effective_price: string;
+  gp_commission: string;
+  loan_options: Array<LOAN_OPTIONS>;
 };
 
 export type PROPOSAL_OUTPUT = {
@@ -38,27 +60,7 @@ export type PROPOSAL_OUTPUT = {
     'Safety Add-On': string;
   };
   no_of_modules: string;
-  data: {
-    spp: string;
-    add_on_spp: string;
-    system_price: string;
-    add_on_price: string;
-    gst: string;
-    total_system_price_with_gst: string;
-    name_change_charges: string;
-    load_enhancement_charges: string;
-    net_metering_charges: string;
-    discom_work_price: string;
-    onm_addon_price: string;
-    total_service_addon_without_gst: string;
-    gst_on_service: string;
-    total_service_add_on_with_gst: string;
-    total_system_and_service_including_gst: string;
-    subsidy_value: string;
-    effective_price: string;
-    gp_commission: string;
-    loan_options: Array<LOAN_OPTIONS>;
-  };
+  data: SYSTEM_PRICE_DATA;
 };
 
 export type PROPOSAL_API_RESPONSE = {

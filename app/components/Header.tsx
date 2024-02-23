@@ -5,6 +5,8 @@ import { GoChevronRight } from 'react-icons/go';
 import * as Dialog from '@radix-ui/react-dialog';
 import CompanyLogo from '@images/company-logo.svg';
 import NavToggle from '@icons/nav-toggle.svg';
+import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 
 const navigationMenu = [
   {
@@ -47,6 +49,9 @@ const navigationMenu = [
 
 const Header = () => {
   const [isNavModalOpen, setIsNavModalOpen] = useState(false);
+  const searchParams = useSearchParams();
+  const dealId = searchParams.get('dealId');
+
   return (
     <>
       <div className="w-full h-14 px-6 bg-white shadow-md justify-between items-center inline-flex">
@@ -63,7 +68,7 @@ const Header = () => {
       <Dialog.Root open={isNavModalOpen} onOpenChange={setIsNavModalOpen}>
         <Dialog.Portal>
           <Dialog.Overlay className="bg-brand-grey-400/90  fixed inset-0" />
-          <Dialog.Content className="w-full h-[95%] fixed top-0 bg-white overflow-scroll no-scrollbar z-20">
+          <Dialog.Content className="w-full h-[93vh] fixed top-0 bg-white overflow-scroll no-scrollbar z-20">
             <div>
               <div className="w-full h-14 px-6 bg-white shadow-md justify-between items-center inline-flex">
                 <div className="justify-start items-center gap-1.5 flex">
@@ -80,14 +85,17 @@ const Header = () => {
               <ul className="flex flex-col gap-y-6 p-6">
                 {navigationMenu.map((nav) => {
                   return (
-                    <div
-                      className="flex justify-between border-b border-zinc-300 pb-3"
-                      key={nav.link}
-                    >
-                      <li className="text-center text-neutral-600 text-xl tracking-wide list-none">
-                        {nav.navText}
-                      </li>
-                      <GoChevronRight className="font-bold w-6 h-6 p-0.5 bg-white text-brand-blue-600" />
+                    <div key={nav.link}>
+                      <Link
+                        className="flex justify-between border-b border-zinc-300 pb-3"
+                        href={`/?dealId=${dealId}#${nav.link}`}
+                        onClick={() => setIsNavModalOpen(false)}
+                      >
+                        <li className="text-center text-neutral-600 text-xl tracking-wide list-none">
+                          {nav.navText}
+                        </li>
+                        <GoChevronRight className="font-bold w-6 h-6 p-0.5 bg-white text-brand-blue-600" />
+                      </Link>
                     </div>
                   );
                 })}
