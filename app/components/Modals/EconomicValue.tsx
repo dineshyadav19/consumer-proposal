@@ -7,7 +7,7 @@ type Props = {};
 
 const EconomicValueModal = (props: Props) => {
   return (
-    <div>
+    <div className="z-20">
       <Header
         image={GraphImage}
         heading="Economic value"
@@ -39,7 +39,7 @@ const EconomicValueModal = (props: Props) => {
                 <span className="max-w-24 text-base text-brand-grey-500 leading-snug">
                   Without Financing
                 </span>
-                <span className="text-xl font-medium">33%</span>
+                <span className="text-xl font-medium">17%</span>
               </div>
             </div>
           </div>
@@ -62,7 +62,7 @@ const EconomicValueModal = (props: Props) => {
               <span className="max-w-24 text-base text-brand-grey-500 leading-snug">
                 FD
               </span>
-              <span className="text-xl font-medium">33%</span>
+              <span className="text-xl font-medium">7%</span>
             </div>
           </div>
         </div>
@@ -77,14 +77,14 @@ const EconomicValueModal = (props: Props) => {
                 <span className="max-w-24 text-base text-brand-grey-500 leading-snug">
                   With solar
                 </span>
-                <span className="text-xl font-medium">₹ 33</span>
+                <span className="text-xl font-medium">₹ 3.39</span>
               </div>
             </div>
             <div className="px-4 py-2 h-28 rounded-[10px] border border-zinc-300 border-opacity-90 flex flex-col justify-between items-start w-full">
               <span className="max-w-24 text-base text-brand-grey-500 leading-snug">
                 Without solar
               </span>
-              <span className="text-xl font-medium">₹ 33</span>
+              <span className="text-xl font-medium">₹ 8.85</span>
             </div>
           </div>
         </div>

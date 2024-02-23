@@ -2,33 +2,42 @@ import React from 'react';
 
 const configs = [
   {
+    key: 'capacity',
     title: 'Capacity',
     subtext: '',
-    metric: '3.3 kW',
+    metric: '3.3 kWp',
   },
   {
+    key: 'structure',
     title: 'Structure',
-    subtext: '5.3 mtr. height',
+    subtext: '',
     metric: 'High-rise',
   },
   {
+    key: 'phase',
     title: 'Phase',
     subtext: '',
     metric: '1 Phase',
   },
   {
-    title: 'Shadow free',
-    subtext: '',
-    metric: '98%',
-  },
-  {
+    key: 'noOfPanels',
     title: 'No. of panels',
     subtext: '',
     metric: '9 nos.',
   },
 ];
 
-const SystemConfig = () => {
+type Props = {
+  capacity: number | string;
+  structure: string;
+  phase: string;
+  noOfPanels: string;
+};
+
+const SystemConfig = (props: Props) => {
+  const metricsArray = configs.map((val) => {
+    return { ...val, metric: props[val.key as keyof Props] };
+  });
   return (
     <div className="mt-9 mb-16">
       <div className="flex justify-center">
@@ -38,7 +47,7 @@ const SystemConfig = () => {
       </div>
 
       <div className="flex gap-x-2 overflow-scroll w-full no-scrollbar px-4">
-        {configs.map((val, index) => {
+        {metricsArray.map((val, index) => {
           return (
             <div
               key={index}

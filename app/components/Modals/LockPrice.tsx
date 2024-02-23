@@ -73,9 +73,13 @@ const LockPrice = () => {
             className="mix-blend-hard-light"
           />
         </div>
-        <button className="text-neutral-50 text-base font-semibold p-5 bg-brand-blue rounded-full leading-none">
+        <a
+          download={'Fenice-Payments-QR'}
+          href="images/modal-images/payments-qr-code.png"
+          className="block text-neutral-50 text-base font-semibold p-5 bg-brand-blue rounded-full leading-none text-center"
+        >
           Download QR code & pay
-        </button>
+        </a>
       </div>
       <div className="rounded-[10px] border border-zinc-300 border-opacity-90 flex gap-y-4 flex-col py-3 px-4">
         <p className="text-xl font-archivo">Net Banking</p>

@@ -2,13 +2,21 @@ import Image from 'next/image';
 import React from 'react';
 import HeaderImage from '@images/header.png';
 
-const Intro = () => {
+type IntroProps = {
+  customerName: string;
+  systemSize: string;
+  plantType: string;
+};
+
+const Intro = ({ customerName, systemSize, plantType }: IntroProps) => {
   return (
     <>
       <div className="flex justify-center mb-5">
         <div className="bg-brand-blue-100 w-fit py-2.5 px-5 rounded-[32px] flex justify-center items-center gap-x-2">
           <span className="wave text-2xl">👋</span>
-          <span className="text-sm font-archivo">Rakesh ji</span>
+          <span className="text-sm font-archivo">
+            {customerName || 'Hi User'}
+          </span>
         </div>
       </div>
       <div className="flex justify-center flex-col items-center">
@@ -23,19 +31,28 @@ const Intro = () => {
             <span className="text-[13px] text-brand-blue-500 font-archivo leading-none tracking-wide">
               System size
             </span>
-            <span className="text-xl font-archivo font-medium">3.3 kW</span>
+            <span className="text-xl font-archivo font-medium">
+              {systemSize || 'N/A'} kWp
+            </span>
           </div>
           <div className="h-12 w-[1px] bg-[#E3E3E3] justify-self-center col-span-2" />
           <div className="flex flex-col justify-between px-3 py-4 gap-y-3 col-span-5 col-start-8">
             <span className="text-[13px] text-brand-blue-500 font-archivo leading-none tracking-wide">
               Type
             </span>
-            <span className="text-xl font-archivo font-medium">On-Grid</span>
+            <span className="text-xl font-archivo font-medium">
+              {'On-Grid'}
+            </span>
           </div>
         </div>
       </div>
 
-      <Image alt="header-image" src={HeaderImage} className="w-full h-fit" />
+      <Image
+        alt="header-image"
+        src={HeaderImage}
+        className="w-full h-fit"
+        priority
+      />
     </>
   );
 };

@@ -1,22 +1,46 @@
 'use client';
 import React, { useState } from 'react';
 import Earth from '@icons/Earth.svg';
-type Props = {};
 
-const metrics = [
+type Metrics = Array<{
+  key: keyof Props;
+  title: string;
+  count: { monthly: number; yearly: number } | any;
+  metric: string;
+}>;
+
+type Props = {
+  numberOfTreesPlanted: {
+    monthly: number;
+    yearly: number;
+  };
+  co2Offset: {
+    monthly: number;
+    yearly: number;
+  };
+  avgMonthlySaving: number;
+  avgYearlySaving: number;
+  monthlyGeneration: number;
+  yearlyGeneration: number;
+};
+
+const metrics: Metrics = [
   {
+    key: 'numberOfTreesPlanted',
     title: 'Equivalent number of Trees planted',
-    number: '1,234',
+    count: {
+      monthly: 40.73,
+      yearly: 40.73,
+    },
     metric: 'trees',
   },
   {
-    title: 'Petrol consumption avoided',
-    number: '40.73',
-    metric: 'liters',
-  },
-  {
+    key: 'co2Offset',
     title: 'Coal burn avoided',
-    number: '40.72',
+    count: {
+      monthly: 40.73,
+      yearly: 40.73,
+    },
     metric: 'kg',
   },
 ];
@@ -24,6 +48,11 @@ const metrics = [
 const BenefitsImpact = (props: Props) => {
   const [toggle, setToggle] = useState(true);
   const toggleClass = ' transform translate-x-5';
+
+  const metricsArray: Metrics = metrics.map((val) => {
+    return { ...val, count: props[val.key as keyof Props] };
+  });
+
   return (
     <div className="mb-14">
       <div className="p-4">
@@ -49,8 +78,15 @@ const BenefitsImpact = (props: Props) => {
           </div>
         </div>
         <div className="rounded-[10px] border border-[#79BCFF] p-4 mt-6">
-          <p className="text-base font-light">Average monthly saving</p>
-          <p className="mt-5 mb-6 heading--h2">₹ 1,700</p>
+          <p className="text-base font-light">
+            Average {toggle ? 'monthly' : 'yearly'} saving
+          </p>
+          <p className="mt-5 mb-6 heading--h2">
+            ₹{' '}
+            {toggle
+              ? Math.round(props.avgMonthlySaving)
+              : Math.round(props.avgYearlySaving)}
+          </p>
           <div className="p-2.5 bg-gradient-to-r from-[#DFFFCC] to-white flex gap-x-2 rounded-full items-center">
             <Earth />{' '}
             <span className="text-sm text-brand-grey-600">
@@ -59,9 +95,13 @@ const BenefitsImpact = (props: Props) => {
           </div>
         </div>
         <div className="rounded-[10px] border border-[#79BCFF] p-4 mt-6">
-          <p className="text-base font-light">Estimated monthly generation</p>
+          <p className="text-base font-light">
+            Estimated {toggle ? 'monthly' : 'yearly'} generation
+          </p>
           <p className="mt-5 mb-6 heading--h2">
-            250{' '}
+            {toggle
+              ? Math.round(props.monthlyGeneration)
+              : Math.round(props.yearlyGeneration)}{' '}
             <span className="text-base text-brand-grey-600 font-medium">
               units/ month
             </span>
@@ -76,17 +116,21 @@ const BenefitsImpact = (props: Props) => {
       </div>
 
       <div className="flex gap-x-4 overflow-scroll w-full no-scrollbar mt-7 px-4">
-        {metrics.map((val, index) => {
+        {metricsArray.map((val, index) => {
           return (
             <div
               key={index}
               className="min-w-[154px] h-[164px] p-4 rounded-lg border border-brand-green-200 flex flex-col justify-between items-start"
             >
-              <span className="text-brand-grey-500 text-base leading-snug">
+              <span className="text-brand-grey-500 text-base leading-snug max-w-36">
                 {val.title}
               </span>
               <div className="flex text-black font-medium items-end gap-x-1">
-                <span className="text-2xl">{val.number} </span>
+                <span className="text-2xl">
+                  {toggle
+                    ? Math.round(val.count.monthly)
+                    : Math.round(val.count.yearly)}{' '}
+                </span>
                 <span className="text-base">{val.metric}</span>
               </div>
             </div>

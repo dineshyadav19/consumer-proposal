@@ -1,20 +1,20 @@
 @layer utilities {
-    .no-scrollbar {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-  
-      &::-webkit-scrollbar {
-        display: none;
-      }
-  
-      &::-moz-scrollbar {
-        display: none;
-      }
-  
-      &::-o-scrollbar {
-        display: none;
-      }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
     }
+
+    &::-moz-scrollbar {
+      display: none;
+    }
+
+    &::-o-scrollbar {
+      display: none;
+    }
+  }
 
   #scroll-text {
     /* animation properties */
@@ -22,24 +22,24 @@
     -webkit-transform: translateX(100%);
     transform: translateX(100%);
     
-    -moz-animation: my-animation 15s linear infinite;
-    -webkit-animation: my-animation 15s linear infinite;
-    animation: my-animation 15s linear infinite;
+    -moz-animation: scroll-text-animation 15s linear infinite;
+    -webkit-animation: scroll-text-animation 15s linear infinite;
+    animation: scroll-text-animation 15s linear infinite;
   }
 
   /* for Firefox */
-  @-moz-keyframes my-animation {
+  @-moz-keyframes scroll-text-animation {
     from { -moz-transform: translateX(100%); }
     to { -moz-transform: translateX(-100%); }
   }
 
   /* for Chrome */
-  @-webkit-keyframes my-animation {
+  @-webkit-keyframes scroll-text-animation {
     from { -webkit-transform: translateX(100%); }
     to { -webkit-transform: translateX(-100%); }
   }
 
-  @keyframes my-animation {
+  @keyframes scroll-text-animation {
     from {
       -moz-transform: translateX(100%);
       -webkit-transform: translateX(100%);

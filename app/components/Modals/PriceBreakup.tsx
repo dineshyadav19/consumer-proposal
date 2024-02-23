@@ -1,4 +1,10 @@
-const PriceBreakup = () => {
+import { SYSTEM_PRICE_DATA } from '../../actions/types';
+
+type Props = {
+  priceBreak: SYSTEM_PRICE_DATA | undefined;
+};
+
+const PriceBreakup = ({ priceBreak }: Props) => {
   return (
     <div className="flex flex-col gap-y-6">
       <h4 className="text-3xl font-semibold font-archivo text-center">
@@ -7,54 +13,56 @@ const PriceBreakup = () => {
       <div>
         <span className="text-center block">System price</span>
         <p className="text-center mb-3">
-          ₹ 2,34,147{' '}
+          ₹ {priceBreak?.total_system_price_with_gst}{' '}
           <span className="text-sm text-brand-grey-600">(incl. GST)</span>
         </p>
         <div className="text-sm text-brand-grey-500 flex flex-col gap-y-3">
           <div className="flex justify-between items-center">
             <p>System price(excl. GST)</p>
-            <p>₹2,06,220</p>
+            <p>₹ {priceBreak?.system_price}</p>
           </div>
           <div className="flex justify-between items-center">
             <p>System add-on price</p>
-            <p>₹2,06,220</p>
+            <p>₹ {priceBreak?.add_on_price}</p>
           </div>
           <div className="flex justify-between items-center text-brand-green-400">
             <p>Discount</p>
-            <p>₹2,06,220</p>
+            <p>₹ {priceBreak?.subsidy_value || '0'}</p>
           </div>
           <div className="flex justify-between items-center">
             <p>GST @ 13.8%</p>
-            <p>₹2,06,220</p>
+            <p>₹ {priceBreak?.gst}</p>
           </div>
         </div>
       </div>
       <div>
         <span className="text-center block">Service & addon-ons</span>
         <p className="text-center mb-3">
-          ₹ 2,34,147{' '}
+          ₹ {priceBreak?.total_service_add_on_with_gst}{' '}
           <span className="text-sm text-brand-grey-600">(incl. GST)</span>
         </p>
         <div className="text-sm text-brand-grey-500 flex flex-col gap-y-3">
           <div className="flex justify-between items-center">
             <p>Name change charges</p>
-            <p>₹2,06,220</p>
+            <p>₹ {priceBreak?.name_change_charges}</p>
           </div>
           <div className="flex justify-between items-center">
             <p>Load enhancement charges</p>
-            <p>₹2,06,220</p>
+            <p>₹ {priceBreak?.load_enhancement_charges}</p>
           </div>
           <div className="flex justify-between items-center">
             <p>Net metering charges</p>
-            <p>₹2,06,220</p>
+            <p>₹ {priceBreak?.net_metering_charges}</p>
           </div>
           <div className="flex justify-between items-center">
-            <p>Total Service add-ons charges (excl. GST)</p>
-            <p>₹2,06,220</p>
+            <p className="grow-[0.6]">
+              Total Service add-ons charges (excl. GST)
+            </p>
+            <p>₹ {priceBreak?.total_service_addon_without_gst}</p>
           </div>
           <div className="flex justify-between items-center">
             <p>GST @ 18%</p>
-            <p>₹2,06,220</p>
+            <p>₹ {priceBreak?.gst_on_service}</p>
           </div>
         </div>
       </div>
@@ -63,12 +71,18 @@ const PriceBreakup = () => {
         <p className="text-xl font-medium text-center">
           Total payable (incl. GST)
         </p>
-        <p className="text-2xl font-medium mt-2 text-center">₹ 2,55,269</p>
+        <p className="text-2xl font-medium mt-2 text-center">
+          ₹ {priceBreak?.total_system_and_service_including_gst}
+        </p>
       </div>
 
-      <div className="text-xl font-medium font-archivo text-brand-grey-600 py-3 px-1.5 bg-brand-blue-100 text-center">
-        Subsidy : ₹ 12,000
-      </div>
+      {priceBreak?.subsidy_value ? (
+        <div className="text-xl font-medium font-archivo text-brand-grey-600 py-3 px-1.5 bg-brand-blue-100 text-center">
+          Subsidy : ₹ 12,000
+        </div>
+      ) : (
+        <></>
+      )}
 
       <div className="text-sm text-brand-grey-500">
         <span className="font-medium">Pricing Exclusions</span>

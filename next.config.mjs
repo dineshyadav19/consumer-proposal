@@ -8,6 +8,15 @@ const nextConfig = {
 
     return config;
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**.cdnp1.hubspotusercontent-na1.net',
+        port: '',
+      },
+    ],
+  },
 };
 
 export default nextConfig;
