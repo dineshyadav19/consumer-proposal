@@ -18,6 +18,8 @@ import {
 } from './SystemOfferingsCopy';
 import { PROPOSAL_OUTPUT } from '../../actions/types';
 import EconomicValueModal from '@components/Modals/EconomicValue';
+import { getProposalDates } from '@utils/date-fn';
+import { useSearchParams } from 'next/navigation';
 
 type Plant_Type = 'Basic' | 'Smart' | 'Premium' | 'Standard';
 
@@ -31,6 +33,7 @@ const SystemOfferings = (props: Props) => {
   const [emiModalOpen, setEmiModalOpen] = useState(false);
   const [priceModalOpen, setPriceModalOpen] = useState(false);
   const [economicModalOpen, setEconomicModalOpen] = useState(false);
+  const searchParams = useSearchParams();
 
   const getSystemOffering = (type: Plant_Type) => {
     switch (type) {
@@ -55,6 +58,9 @@ const SystemOfferings = (props: Props) => {
     (val) => val.system_type === props.plantType
   );
 
+  const { futureFormattedDate } = getProposalDates(
+    searchParams.get('generatedOn') as any
+  );
   return (
     <>
       <div className={`${offeringStyle}`}>
@@ -68,7 +74,7 @@ const SystemOfferings = (props: Props) => {
           </div>
 
           <div className="flex flex-col items-center font-archivo">
-            {systemValues?.data.subsidy_value ? (
+            {/* {systemValues?.data.subsidy_value ? (
               <div className="relative justify-center items-center mb-1">
                 <p className="green-blue-gradient text-xl font-semibold text-transparent bg-clip-text max-w-max">
                   ₹ {systemValues.data.subsidy_value}
@@ -79,7 +85,7 @@ const SystemOfferings = (props: Props) => {
               </div>
             ) : (
               <></>
-            )}
+            )} */}
 
             <p className="green-blue-gradient text-4.5xl font-semibold text-transparent bg-clip-text ">
               ₹ {systemValues?.data.total_system_price_with_gst}
@@ -96,9 +102,20 @@ const SystemOfferings = (props: Props) => {
               <></>
             )}
 
-            <p className="mt-3 text-center text-base tracking-wide text-brand-grey-600">
-              EMI starting from as low as ₹1483.00 per month. Lean more
-            </p>
+            {systemValues?.data?.loan_options.length ? (
+              <p className="mt-3 text-center text-base tracking-wide text-brand-grey-600">
+                EMI starting from as low as ₹{' '}
+                {systemValues?.data?.loan_options[0].data[0].emi} per month.{' '}
+                <button
+                  className="inline-flex text-brand-blue-600"
+                  onClick={() => setEmiModalOpen(true)}
+                >
+                  Lean more
+                </button>
+              </p>
+            ) : (
+              <></>
+            )}
           </div>
 
           <div
@@ -162,8 +179,8 @@ const SystemOfferings = (props: Props) => {
           </div>
 
           <p className="text-brand-grey-500 text-base text-center">
-            Discounts valid till 24th January only, don’t miss, lock the price
-            now
+            Discounts valid till {futureFormattedDate} only, don’t miss, lock
+            the price now
           </p>
 
           {props.plantType === 'Smart' ? (

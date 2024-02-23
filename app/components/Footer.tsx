@@ -1,9 +1,12 @@
+'use client';
 import React, { ReactNode } from 'react';
 import CompanyLogo from '@images/fenice-logo.png';
 import { FaFacebook, FaLinkedin, FaInstagram, FaYoutube } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import Image from 'next/image';
 import Link from 'next/link';
+import { getProposalDates } from '@utils/date-fn';
+import { useSearchParams } from 'next/navigation';
 
 const FooterLink = ({ href, icon }: { href: string; icon: ReactNode }) => {
   return (
@@ -14,10 +17,12 @@ const FooterLink = ({ href, icon }: { href: string; icon: ReactNode }) => {
 };
 
 const Footer = () => {
-  const generatedOn = new Date().toDateString();
-  const validTill = new Date(
-    Date.now() + 15 * 24 * 60 * 60 * 1000
-  ).toDateString();
+  const searchParams = useSearchParams();
+
+  const { generatedOn, futureFormattedDate } = getProposalDates(
+    searchParams.get('generatedOn') as any
+  );
+
   return (
     <div className="p-4 bg-black text-brand-grey flex flex-col gap-y-7">
       <Image src={CompanyLogo} alt="Company Logo" width={110} height={44} />
@@ -85,7 +90,7 @@ const Footer = () => {
         </div>
         <div className="flex flex-col">
           <span className="text-right">Valid till</span>
-          <span className="text-base">{validTill}</span>
+          <span className="text-base">{futureFormattedDate}</span>
         </div>
       </div>
     </div>

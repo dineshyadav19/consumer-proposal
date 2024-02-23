@@ -46,7 +46,7 @@ const ViewIn3D = async ({
             <a
               href={solarLabsLink}
               target="_blank"
-              className="block bg-gradient-to-r from-sky-700 via-sky-500 to-sky-700 leading-none px-5 py-3 text-white text-sm font-medium rounded-full"
+              className="block bg-gradient-to-r shadow from-sky-700 via-sky-500 to-sky-700 leading-none px-5 py-3 text-white text-sm font-medium rounded-full"
             >
               View in 3D
             </a>
@@ -54,7 +54,7 @@ const ViewIn3D = async ({
         </div>
 
         <div className="px-4 py-5 border border-brand-blue rounded-b-[20px]">
-          <span className="mb-4 text-[#738493] text-sm tracking-widest font-normal">
+          <span className="mb-4 block text-[#738493] text-sm tracking-widest font-normal">
             DESIGNED BY EXPERTS
           </span>
           <p className="text-brand-grey-600 text-base">

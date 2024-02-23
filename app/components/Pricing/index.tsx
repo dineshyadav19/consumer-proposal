@@ -3,17 +3,23 @@ import React, { useState } from 'react';
 import DownArrow from '@icons/down-arrow.svg';
 import { PROPOSAL_OUTPUT } from '../../actions/types';
 import SystemOfferings from './SystemOfferings';
+import { getProposalDates } from '@utils/date-fn';
+import { useSearchParams } from 'next/navigation';
 
 const Pricing = ({
   proposalOutput,
 }: {
   proposalOutput: Array<PROPOSAL_OUTPUT>;
 }) => {
+  const searchParams = useSearchParams();
   const [planType, setPlanType] = useState<
     'Basic' | 'Smart' | 'Premium' | 'Standard'
   >('Smart');
   const planTypeButtonStyles =
     'py-2.5 px-6 text-base tracking-wide text-brand-grey-600 leading-none font-semibold grow';
+  const { futureFormattedDate } = getProposalDates(
+    searchParams.get('generatedOn') as any
+  );
 
   return (
     <>
@@ -23,7 +29,7 @@ const Pricing = ({
           <div>
             <p className="text-xl font-medium heading-gradient mb-2">Pricing</p>
             <p className="text-base text-brand-grey-600">
-              Valid till 24th Jan 2024
+              Valid till {futureFormattedDate} {new Date().getFullYear()}
             </p>
           </div>
         </div>
