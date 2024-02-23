@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import * as Dialog from '@radix-ui/react-dialog';
 import { IoMdCheckmark } from 'react-icons/io';
@@ -10,58 +10,22 @@ import LockPrice from '@components/Modals/LockPrice';
 import EmiModal from '@components/Modals/EmiModal';
 import PriceBreakup from '@components/Modals/PriceBreakup';
 import Modal from '../../../components/Modal';
-import {
-  basicSystemoffering,
-  premiumSystemoffering,
-  smartSystemoffering,
-} from './SystemOfferingsCopy';
-import { PROPOSAL_OUTPUT, STRUCTURE } from '../../actions/types';
 import EconomicValueModal from '@components/Modals/EconomicValue';
 import { getProposalDates } from '@utils/date-fn';
 import { useSearchParams } from 'next/navigation';
-
-type Plant_Type = 'Basic' | 'Smart' | 'Premium' | 'Standard';
-
-type Props = {
-  plantType: Plant_Type;
-  proposalData: Array<PROPOSAL_OUTPUT>;
-  structure: STRUCTURE;
-};
-
-const getStructureHeight = (structure: STRUCTURE) => {
-  switch (structure) {
-    case 'High Rise':
-    case 'High Rise-1P':
-      return '2.60 - 3.0';
-    case 'Low Rise':
-      return '0.42 - 1.12';
-    case 'Mid Rise':
-      return '1.12 - 1.68';
-    case 'Flush Mount':
-      return '0.1';
-  }
-};
+import {
+  Modal_States,
+  Props,
+  getStructureHeight,
+  getSystemOffering,
+} from './utils';
 
 const SystemOfferings = (props: Props) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [emiModalOpen, setEmiModalOpen] = useState(false);
-  const [priceModalOpen, setPriceModalOpen] = useState(false);
-  const [economicModalOpen, setEconomicModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState<Modal_States>(undefined);
   const searchParams = useSearchParams();
 
-  const getSystemOffering = (type: Plant_Type) => {
-    switch (type) {
-      case 'Basic':
-      case 'Standard':
-        return basicSystemoffering;
-      case 'Smart':
-        return smartSystemoffering;
-      case 'Premium':
-        return premiumSystemoffering;
-    }
-  };
-
   const systemOfferings = getSystemOffering(props.plantType);
+  const structureHeight = getStructureHeight(props.structure);
 
   const offeringStyle =
     props.plantType === 'Smart'
@@ -76,7 +40,19 @@ const SystemOfferings = (props: Props) => {
     searchParams.get('generatedOn') as any
   );
 
-  const structureHeight = getStructureHeight(props.structure);
+  const getModalChild = (modalOpen: Modal_States) => {
+    switch (modalOpen) {
+      case 'emi-modal':
+        return <EmiModal loanOptions={systemValues?.data.loan_options} />;
+      case 'economic-modal':
+        return <EconomicValueModal />;
+      case 'price-breakup-modal':
+        return <PriceBreakup priceBreak={systemValues?.data} />;
+      default:
+        return <></>;
+    }
+  };
+
   return (
     <>
       <div className={`${offeringStyle}`}>
@@ -124,7 +100,7 @@ const SystemOfferings = (props: Props) => {
                 {systemValues?.data?.loan_options[0].data[0].emi} per month.{' '}
                 <button
                   className="inline-flex text-brand-blue-600"
-                  onClick={() => setEmiModalOpen(true)}
+                  onClick={() => setModalOpen('emi-modal')}
                 >
                   Lean more
                 </button>
@@ -136,7 +112,7 @@ const SystemOfferings = (props: Props) => {
 
           <div
             className="text-brand-blue-600 text-base font-medium font-archivo text-center"
-            onClick={() => setPriceModalOpen(true)}
+            onClick={() => setModalOpen('price-breakup-modal')}
           >
             View detailed price breakup
           </div>
@@ -194,7 +170,7 @@ const SystemOfferings = (props: Props) => {
           })}
           <div
             className="bg-gradient-to-l from-lime-50 to-lime-200 font-archivo p-3 flex items-center relative w-full h-24 rounded-[10px] z-10"
-            onClick={() => setEconomicModalOpen(true)}
+            onClick={() => setModalOpen('economic-modal')}
           >
             <div className="relative z-30 flex gap-y-5 justify-between items-center">
               <h3 className="text-base tracking-wide">
@@ -218,7 +194,7 @@ const SystemOfferings = (props: Props) => {
 
           {props.plantType === 'Smart' ? (
             <button
-              onClick={() => setIsModalOpen(!isModalOpen)}
+              onClick={() => setModalOpen('lock-price-modal')}
               className="p-5 text-xl text-white font-medium leading-none bg-gradient-to-r from-sky-700 via-sky-500 to-sky-700 rounded-[41px] shadow-inner border border-white border-opacity-50"
             >
               Lock this price @ ₹25,000
@@ -229,7 +205,7 @@ const SystemOfferings = (props: Props) => {
                 type="button"
                 value="Lock this price @ ₹25,000"
                 className="font-inter rounded-[41px] text-white font-semibold leading-none"
-                onClick={() => setIsModalOpen(!isModalOpen)}
+                onClick={() => setModalOpen('lock-price-modal')}
                 style={{ fontSize: '20px' }}
               />
             </div>
@@ -238,7 +214,7 @@ const SystemOfferings = (props: Props) => {
           {systemValues?.data.loan_options.length ? (
             <p
               className="text-base leading-none text-brand-blue-600 text-center"
-              onClick={() => setEmiModalOpen(true)}
+              onClick={() => setModalOpen('emi-modal')}
             >
               Explore financing options
             </p>
@@ -247,14 +223,17 @@ const SystemOfferings = (props: Props) => {
           )}
         </div>
       </div>
-      <Dialog.Root open={isModalOpen} onOpenChange={setIsModalOpen}>
+      <Dialog.Root
+        open={modalOpen && modalOpen === 'lock-price-modal'}
+        onOpenChange={() => setModalOpen(undefined)}
+      >
         <Dialog.Portal>
           <Dialog.Overlay className="bg-brand-grey-400/90  fixed inset-0" />
           <Dialog.Content className="w-full h-full fixed top-0 bg-white overflow-scroll no-scrollbar px-4 py-6 z-20">
             <div>
               <div
                 className="w-12 h-12 bg-neutral-50 rounded-full border border-zinc-300 border-opacity-90 flex justify-center items-center"
-                onClick={() => setIsModalOpen(false)}
+                onClick={() => setModalOpen(undefined)}
               >
                 <GoArrowLeft className="w-8 h-8" />
               </div>
@@ -263,14 +242,12 @@ const SystemOfferings = (props: Props) => {
           </Dialog.Content>
         </Dialog.Portal>
       </Dialog.Root>
-      <Modal isOpen={emiModalOpen} onChange={setEmiModalOpen}>
-        <EmiModal loanOptions={systemValues?.data.loan_options} />
-      </Modal>
-      <Modal isOpen={economicModalOpen} onChange={setEconomicModalOpen}>
-        <EconomicValueModal />
-      </Modal>
-      <Modal isOpen={priceModalOpen} onChange={setPriceModalOpen}>
-        <PriceBreakup priceBreak={systemValues?.data} />
+
+      <Modal
+        isOpen={modalOpen !== undefined && modalOpen !== 'lock-price-modal'}
+        onChange={() => setModalOpen(undefined)}
+      >
+        {getModalChild(modalOpen)}
       </Modal>
     </>
   );
