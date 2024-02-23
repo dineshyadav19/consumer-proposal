@@ -3,9 +3,49 @@ import Header from './Header';
 import GraphImage from '@images/modal-images/evp-graph.png';
 import RustIcon from '@icons/modal-icons/Rust.svg';
 
-type Props = {};
+const values = [
+  {
+    heading: 'Return on Investement (ROI)',
+    data: [
+      {
+        text: 'With Financing',
+        metric: '33%',
+      },
+      {
+        text: 'Without Financing',
+        metric: '17%',
+      },
+    ],
+  },
+  {
+    heading: 'Solar vs others (returns)',
+    data: [
+      {
+        text: 'Solar',
+        metric: '33%',
+      },
+      {
+        text: 'FD',
+        metric: '7%',
+      },
+    ],
+  },
+  {
+    heading: 'Electricity tariff',
+    data: [
+      {
+        text: 'With solar',
+        metric: '₹ 3.39',
+      },
+      {
+        text: 'Without solar',
+        metric: '₹ 8.85',
+      },
+    ],
+  },
+];
 
-const EconomicValueModal = (props: Props) => {
+const EconomicValueModal = () => {
   return (
     <div className="z-20">
       <Header
@@ -23,71 +63,39 @@ const EconomicValueModal = (props: Props) => {
           <p className="text-3xl font-semibold">₹ 20,400</p>
         </div>
 
-        <div className="py-[22px] px-2">
-          <p className="text-xl leading-none font-medium mt-4 mb-5">
-            Return on Investement (ROI)
-          </p>
-          <div className="flex justify-between gap-x-5">
-            <div className="px-4 py-2 h-28 rounded-[10px] border border-zinc-300 border-opacity-90 flex flex-col justify-between items-start w-full">
-              <span className="max-w-24 text-base text-brand-grey-500 leading-snug">
-                With Financing
-              </span>
-              <span className="text-xl font-medium">33%</span>
-            </div>
-            <div className="green-blue-gradient p-[1px] rounded-[10px] w-full h-28">
-              <div className="px-4 py-2 bg-white rounded-[10px] flex flex-col justify-between items-start h-full">
-                <span className="max-w-24 text-base text-brand-grey-500 leading-snug">
-                  Without Financing
-                </span>
-                <span className="text-xl font-medium">17%</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        {values.map((val) => {
+          return (
+            <div key={val.heading} className="py-[22px] px-2">
+              <p className="text-xl leading-none font-medium mt-4 mb-5">
+                {val.heading}
+              </p>
+              <div className="flex justify-between gap-x-5">
+                {val.data.map((comparison, index) => {
+                  const gradientBorder =
+                    index % 2 === 0
+                      ? 'green-blue-gradient p-[1px]'
+                      : 'border border-zinc-300 border-opacity-90';
 
-        <div className="py-[22px] px-2">
-          <p className="text-xl leading-none font-medium mt-4 mb-5">
-            Solar vs others (returns)
-          </p>
-          <div className="flex justify-between gap-x-5">
-            <div className="green-blue-gradient p-[1px] rounded-[10px] w-full h-28">
-              <div className="px-4 py-2 bg-white rounded-[10px] flex flex-col justify-between items-start h-full">
-                <span className="max-w-24 text-base text-brand-grey-500 leading-snug">
-                  Solar
-                </span>
-                <span className="text-xl font-medium">33%</span>
+                  return (
+                    <div
+                      key={index}
+                      className={`${gradientBorder} h-28 rounded-[10px] w-full`}
+                    >
+                      <div className="px-4 py-2 bg-white rounded-[10px] flex flex-col justify-between items-start h-full">
+                        <span className="max-w-24 text-base text-brand-grey-500 leading-snug">
+                          {comparison.text}
+                        </span>
+                        <span className="text-xl font-medium">
+                          {comparison.metric}
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
-            <div className="px-4 py-2 h-28 rounded-[10px] border border-zinc-300 border-opacity-90 flex flex-col justify-between items-start w-full">
-              <span className="max-w-24 text-base text-brand-grey-500 leading-snug">
-                FD
-              </span>
-              <span className="text-xl font-medium">7%</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="py-[22px] px-2">
-          <p className="text-xl leading-none font-medium mt-4 mb-5">
-            Electricity tariff
-          </p>
-          <div className="flex justify-between gap-x-5">
-            <div className="green-blue-gradient p-[1px] rounded-[10px] w-full h-28">
-              <div className="px-4 py-2 bg-white rounded-[10px] flex flex-col justify-between items-start h-full">
-                <span className="max-w-24 text-base text-brand-grey-500 leading-snug">
-                  With solar
-                </span>
-                <span className="text-xl font-medium">₹ 3.39</span>
-              </div>
-            </div>
-            <div className="px-4 py-2 h-28 rounded-[10px] border border-zinc-300 border-opacity-90 flex flex-col justify-between items-start w-full">
-              <span className="max-w-24 text-base text-brand-grey-500 leading-snug">
-                Without solar
-              </span>
-              <span className="text-xl font-medium">₹ 8.85</span>
-            </div>
-          </div>
-        </div>
+          );
+        })}
 
         <div className="py-[22px] px-2">
           <p className="text-xl leading-none font-medium mb-5">

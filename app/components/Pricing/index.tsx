@@ -1,25 +1,25 @@
 'use client';
 import React, { useState } from 'react';
 import DownArrow from '@icons/down-arrow.svg';
-import { PROPOSAL_OUTPUT } from '../../actions/types';
+import { PROPOSAL_OUTPUT, STRUCTURE } from '../../actions/types';
 import SystemOfferings from './SystemOfferings';
 import { getProposalDates } from '@utils/date-fn';
-import { useSearchParams } from 'next/navigation';
 
 const Pricing = ({
   proposalOutput,
+  date,
+  structure,
 }: {
   proposalOutput: Array<PROPOSAL_OUTPUT>;
+  date: Date;
+  structure: STRUCTURE;
 }) => {
-  const searchParams = useSearchParams();
   const [planType, setPlanType] = useState<
     'Basic' | 'Smart' | 'Premium' | 'Standard'
   >('Smart');
   const planTypeButtonStyles =
     'py-2.5 px-6 text-base tracking-wide text-brand-grey-600 leading-none font-semibold grow';
-  const { futureFormattedDate } = getProposalDates(
-    searchParams.get('generatedOn') as any
-  );
+  const { futureFormattedDate } = getProposalDates(date);
 
   return (
     <>
@@ -92,7 +92,11 @@ const Pricing = ({
             );
           })}
         </div>
-        <SystemOfferings plantType={planType} proposalData={proposalOutput} />
+        <SystemOfferings
+          plantType={planType}
+          proposalData={proposalOutput}
+          structure={structure}
+        />
       </div>
     </>
   );

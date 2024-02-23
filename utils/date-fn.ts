@@ -22,13 +22,16 @@ export function getDaySuffix(day: any) {
 export const getProposalDates = (date: Date) => {
   const today = new Date(date);
   const futureDate = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
+
+  const presentDay = today.getDate();
+  const presentMonth = today.toLocaleDateString('default', { month: 'long' });
   const day = futureDate.getDate();
   const month = futureDate.toLocaleString('default', { month: 'long' });
   const futureFormattedDate = `${day}${getDaySuffix(day)} ${month}`;
 
-  const generatedOn = `${today.getDate()}${getDaySuffix(
-    today.getDate()
-  )} ${today.toLocaleDateString('default', { month: 'long' })}`;
+  const generatedOn = `${presentDay}${getDaySuffix(
+    presentDay
+  )} ${presentMonth}`;
 
   return {
     generatedOn,
