@@ -50,6 +50,13 @@ export type SYSTEM_PRICE_DATA = {
   loan_options: Array<LOAN_OPTIONS>;
 };
 
+export type STRUCTURE =
+  | 'Flush Mount'
+  | 'High Rise'
+  | 'High Rise-1P'
+  | 'Low Rise'
+  | 'Mid Rise';
+
 export type PROPOSAL_OUTPUT = {
   system_type: 'Basic' | 'Smart' | 'Premium';
   inverter_size: string;
@@ -94,7 +101,7 @@ export type PROPOSAL_API_RESPONSE = {
       solarlabs_link: string;
       solarlabs_screenshot: string | null;
       roof_top_area: string;
-      preferred_mms: string;
+      preferred_mms: STRUCTURE;
       market_type: string;
       sanction_load: string;
       property_type: string | null;
@@ -128,6 +135,8 @@ export type PROPOSAL_API_RESPONSE = {
         ceig_cea_approval_required: boolean;
         amc_package: string | null;
         amc_tenure: number;
+        created_at: Date;
+        updated_at: Date;
       };
       proposal_output: Array<PROPOSAL_OUTPUT>;
       discom_work: string;

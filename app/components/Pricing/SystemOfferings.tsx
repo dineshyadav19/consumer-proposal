@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import Image from 'next/image';
 import * as Dialog from '@radix-ui/react-dialog';
 import { IoMdCheckmark } from 'react-icons/io';
@@ -6,7 +6,6 @@ import { GoArrowLeft } from 'react-icons/go';
 import { RxCross1 } from 'react-icons/rx';
 import { BsArrowRightCircleFill } from 'react-icons/bs';
 import Investment from '@images/good-investment-bg.png';
-import CrossArrow from '@images/cross-arrow.png';
 import LockPrice from '@components/Modals/LockPrice';
 import EmiModal from '@components/Modals/EmiModal';
 import PriceBreakup from '@components/Modals/PriceBreakup';
@@ -16,7 +15,7 @@ import {
   premiumSystemoffering,
   smartSystemoffering,
 } from './SystemOfferingsCopy';
-import { PROPOSAL_OUTPUT } from '../../actions/types';
+import { PROPOSAL_OUTPUT, STRUCTURE } from '../../actions/types';
 import EconomicValueModal from '@components/Modals/EconomicValue';
 import { getProposalDates } from '@utils/date-fn';
 import { useSearchParams } from 'next/navigation';
@@ -26,6 +25,21 @@ type Plant_Type = 'Basic' | 'Smart' | 'Premium' | 'Standard';
 type Props = {
   plantType: Plant_Type;
   proposalData: Array<PROPOSAL_OUTPUT>;
+  structure: STRUCTURE;
+};
+
+const getStructureHeight = (structure: STRUCTURE) => {
+  switch (structure) {
+    case 'High Rise':
+    case 'High Rise-1P':
+      return '2.60 - 3.0';
+    case 'Low Rise':
+      return '0.42 - 1.12';
+    case 'Mid Rise':
+      return '1.12 - 1.68';
+    case 'Flush Mount':
+      return '0.1';
+  }
 };
 
 const SystemOfferings = (props: Props) => {
@@ -61,6 +75,8 @@ const SystemOfferings = (props: Props) => {
   const { futureFormattedDate } = getProposalDates(
     searchParams.get('generatedOn') as any
   );
+
+  const structureHeight = getStructureHeight(props.structure);
   return (
     <>
       <div className={`${offeringStyle}`}>
@@ -88,7 +104,7 @@ const SystemOfferings = (props: Props) => {
             )} */}
 
             <p className="green-blue-gradient text-4.5xl font-semibold text-transparent bg-clip-text ">
-              ₹ {systemValues?.data.total_system_price_with_gst}
+              ₹ {systemValues?.data.total_system_and_service_including_gst}
             </p>
             <p className="text-brand-grey-500 font-semibold">
               Total payable (incl. GST)
@@ -125,6 +141,24 @@ const SystemOfferings = (props: Props) => {
             View detailed price breakup
           </div>
 
+          <div className="flex flex-col gap-y-2.5">
+            <div className="flex gap-x-1.5 items-center">
+              <IoMdCheckmark
+                fill="#009429"
+                className="font-bold w-6 h-6 p-0.5"
+              />
+              <p className="text-lg font-medium">{props.structure} structure</p>
+            </div>
+            <div className="inline-flex gap-x-1.5">
+              <div className="w-6 h-6 p-0.5" />
+              <div className={'rounded w-full bg-brand-green-100 py-1 px-4'}>
+                <div className="text-base bg-transparent">
+                  {structureHeight} meter height
+                </div>
+              </div>
+            </div>
+          </div>
+
           {systemOfferings.map((offering, index) => {
             const icon =
               offering.icon === 'check' ? (
@@ -142,7 +176,7 @@ const SystemOfferings = (props: Props) => {
                 : 'green-blue-gradient p-0.5 rounded-[10px]';
 
             return (
-              <div className="flex flex-col gap-y-2.5" key={index}>
+              <div key={index} className="flex flex-col gap-y-2.5">
                 <div className="flex gap-x-1.5 items-center">
                   {icon}
                   <p className="text-lg font-medium">{offering.text}</p>
@@ -158,7 +192,6 @@ const SystemOfferings = (props: Props) => {
               </div>
             );
           })}
-
           <div
             className="bg-gradient-to-l from-lime-50 to-lime-200 font-archivo p-3 flex items-center relative w-full h-24 rounded-[10px] z-10"
             onClick={() => setEconomicModalOpen(true)}

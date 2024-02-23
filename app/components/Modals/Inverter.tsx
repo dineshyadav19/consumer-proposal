@@ -109,7 +109,7 @@ const Inverter = () => {
           'bg-brand-blue-200 text-brand-blue-500 rounded-full py-2.5 px-6 text-base font-semibold leading-none',
         className:
           'bg-transparent text-brand-grey-500 py-2.5 px-6 text-base font-semibold leading-none',
-        heading: 'Micro-Inverter',
+        heading: 'Microinverter',
         data: microInverter,
       };
     }

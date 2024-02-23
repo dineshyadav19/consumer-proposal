@@ -90,6 +90,11 @@ const PriceBreakup = ({ priceBreak }: Props) => {
           <li>• Cost of SIM/internet for GSM access</li>
           <li>• Cost of additional cables (AC/DC/Earthing)</li>
         </ul>
+
+        <p className="mt-4">
+          *Discom service charges are approximate average charges, and the
+          actual costs may vary depending on the specific site requirements.
+        </p>
       </div>
     </div>
   );

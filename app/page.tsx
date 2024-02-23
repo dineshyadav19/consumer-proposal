@@ -16,6 +16,7 @@ import MapImage from '@images/map-site-pins.png';
 import Pricing from '@components/Pricing';
 import JourneyWithUs from '@components/JourneyWithUs';
 import { getProposalData } from './actions/action';
+import Footer from '@components/Footer';
 
 export default async function Home({
   searchParams,
@@ -90,7 +91,11 @@ export default async function Home({
 
       <OurSystemInclude />
 
-      <Pricing proposalOutput={data.proposal_data.proposal_output} />
+      <Pricing
+        proposalOutput={data.proposal_data.proposal_output}
+        date={data.proposal_data.proposal_input.created_at}
+        structure={data.design_data.preferred_mms}
+      />
 
       <WhoWeAre />
 
@@ -110,6 +115,8 @@ export default async function Home({
           gpAddress: '',
         }}
       />
+
+      <Footer date={data.proposal_data.proposal_input.created_at} />
     </main>
   );
 }

@@ -1,12 +1,6 @@
 const smartSystemoffering = [
   {
     icon: 'check',
-    text: 'High rise structure',
-    subText: '5.3 meter height',
-    backgroud: 'plain',
-  },
-  {
-    icon: 'check',
     text: 'Micro Inverter',
     subText: '10 years warranty',
     backgroud: 'plain',
@@ -40,12 +34,6 @@ const smartSystemoffering = [
 ];
 
 const basicSystemoffering = [
-  {
-    icon: 'check',
-    text: 'High rise structure',
-    subText: '5.3 meter height',
-    backgroud: 'plain',
-  },
   {
     icon: 'check',
     text: 'String Inverter',
@@ -82,12 +70,6 @@ const basicSystemoffering = [
 ];
 
 const premiumSystemoffering = [
-  {
-    icon: 'check',
-    text: 'High rise structure',
-    subText: '5.3 meter height',
-    backgroud: 'plain',
-  },
   {
     icon: 'check',
     text: 'Micro Inverter',

@@ -1,4 +1,3 @@
-'use client';
 import React, { ReactNode } from 'react';
 import CompanyLogo from '@images/fenice-logo.png';
 import { FaFacebook, FaLinkedin, FaInstagram, FaYoutube } from 'react-icons/fa';
@@ -6,7 +5,6 @@ import { FaXTwitter } from 'react-icons/fa6';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getProposalDates } from '@utils/date-fn';
-import { useSearchParams } from 'next/navigation';
 
 const FooterLink = ({ href, icon }: { href: string; icon: ReactNode }) => {
   return (
@@ -16,12 +14,8 @@ const FooterLink = ({ href, icon }: { href: string; icon: ReactNode }) => {
   );
 };
 
-const Footer = () => {
-  const searchParams = useSearchParams();
-
-  const { generatedOn, futureFormattedDate } = getProposalDates(
-    searchParams.get('generatedOn') as any
-  );
+const Footer = ({ date }: { date: Date }) => {
+  const { generatedOn, futureFormattedDate } = getProposalDates(date);
 
   return (
     <div className="p-4 bg-black text-brand-grey flex flex-col gap-y-7">
@@ -80,9 +74,9 @@ const Footer = () => {
         </a>
       </div>
 
-      <span className="block text-brand-grey-400 text-sm font-medium">
+      {/* <span className="block text-brand-grey-400 text-sm font-medium">
         Terms & conditions
-      </span>
+      </span> */}
       <div className="flex justify-between text-brand-grey-400 text-sm font-medium">
         <div className="flex flex-col">
           <span>Generated On</span>
