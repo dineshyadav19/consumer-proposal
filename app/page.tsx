@@ -43,10 +43,18 @@ export default async function Home({
           solarLabsImage: data.design_data.solarlabs_screenshot,
           solarLabsLink: data.design_data.solarlabs_link,
           structure: data.design_data.preferred_mms,
+          noOfpanels: data.proposal_data.proposal_output[0].no_of_modules,
         }}
       />
 
-      <SystemConfig />
+      <SystemConfig
+        {...{
+          capacity: `${data.design_data.dc_capacity} kWp`,
+          structure: data.design_data.preferred_mms,
+          noOfPanels: data.proposal_data.proposal_output[0].no_of_modules,
+          phase: data.design_data.electricity_phase,
+        }}
+      />
 
       <BenefitsImpact
         {...{
@@ -95,7 +103,13 @@ export default async function Home({
 
       <PastClients />
 
-      <ConnectWithUs />
+      <ConnectWithUs
+        {...{
+          gpName: data.deal_data.gp_name,
+          gpContact: data.deal_data.gp_mobile,
+          gpAddress: '',
+        }}
+      />
     </main>
   );
 }

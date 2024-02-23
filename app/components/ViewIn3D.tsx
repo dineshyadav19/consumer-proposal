@@ -10,6 +10,7 @@ type ViewProps = {
   structure: string;
   averageBill: string;
   rooftopArea: string;
+  noOfpanels: string;
 };
 
 const ViewIn3D = async ({
@@ -19,6 +20,7 @@ const ViewIn3D = async ({
   structure,
   averageBill,
   rooftopArea,
+  noOfpanels,
 }: ViewProps) => {
   return (
     <div className="mt-7 px-4">
@@ -57,8 +59,9 @@ const ViewIn3D = async ({
           </span>
           <p className="text-brand-grey-600 text-base">
             Your <span className="font-bold">{capacity} kWp</span> solar plant
-            system with <span className="font-bold">4 number of panels</span>{' '}
-            and a <span className="font-bold">{structure}</span> has been
+            system with{' '}
+            <span className="font-bold">{noOfpanels} number of panels</span> and
+            a <span className="font-bold">{structure}</span> structure has been
             accurately designed keeping in account your average electricity bill
             of Rs.
             <span className="font-bold">{averageBill}</span> and your shadow

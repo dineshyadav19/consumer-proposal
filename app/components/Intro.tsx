@@ -47,7 +47,12 @@ const Intro = ({ customerName, systemSize, plantType }: IntroProps) => {
         </div>
       </div>
 
-      <Image alt="header-image" src={HeaderImage} className="w-full h-fit" />
+      <Image
+        alt="header-image"
+        src={HeaderImage}
+        className="w-full h-fit"
+        priority
+      />
     </>
   );
 };
