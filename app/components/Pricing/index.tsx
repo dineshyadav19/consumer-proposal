@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DownArrow from '@icons/down-arrow.svg';
 import { PROPOSAL_OUTPUT, STRUCTURE } from '../../actions/types';
 import SystemOfferings from './SystemOfferings';
@@ -19,7 +19,13 @@ const Pricing = ({
   >('Smart');
   const planTypeButtonStyles =
     'py-2.5 px-6 text-base tracking-wide text-brand-grey-600 leading-none font-semibold grow';
-  const { futureFormattedDate } = getProposalDates(date);
+
+  const [proposalValidDate, setProposalValidDate] = useState('');
+
+  useEffect(() => {
+    const { futureFormattedDate } = getProposalDates(date);
+    setProposalValidDate(futureFormattedDate);
+  }, [date]);
 
   return (
     <>
@@ -29,7 +35,7 @@ const Pricing = ({
           <div>
             <p className="text-xl font-medium heading-gradient mb-2">Pricing</p>
             <p className="text-base text-brand-grey-600">
-              Valid till {futureFormattedDate} {new Date().getFullYear()}
+              Valid till {proposalValidDate} {new Date().getFullYear()}
             </p>
           </div>
         </div>
