@@ -135,7 +135,7 @@ export type PROPOSAL_API_RESPONSE = {
         ceig_cea_approval_required: boolean;
         amc_package: string | null;
         amc_tenure: number;
-        created_at: string;
+        created_at: Date;
         updated_at: Date;
       };
       proposal_output: Array<PROPOSAL_OUTPUT>;

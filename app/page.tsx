@@ -24,10 +24,6 @@ export default async function Home({
   searchParams: { [key: string]: string };
 }) {
   const data = await getProposalData({ dealId: searchParams?.dealId });
-
-  const extractDate = data.proposal_data.proposal_input.created_at.split(
-    'T'
-  )[0] as any;
   return (
     <main className="mt-5">
       <Intro
@@ -97,7 +93,7 @@ export default async function Home({
 
       <Pricing
         proposalOutput={data.proposal_data.proposal_output}
-        date={extractDate}
+        date={data.proposal_data.proposal_input.created_at}
         structure={data.design_data.preferred_mms}
       />
 
@@ -120,7 +116,7 @@ export default async function Home({
         }}
       />
 
-      <Footer date={extractDate} />
+      <Footer date={data.proposal_data.proposal_input.created_at} />
     </main>
   );
 }
