@@ -27,12 +27,10 @@ export const getProposalDates = (date: Date) => {
   const presentDay = today.getDate();
   const presentMonth = today.toLocaleDateString(undefined, {
     month: 'long',
-    timeZone: 'asia/calcutta',
   });
   const day = futureDate.getDate();
   const month = futureDate.toLocaleString('default', {
     month: 'long',
-    timeZone: 'asia/calcutta',
   });
   const futureFormattedDate = `${day}${getDaySuffix(day)} ${month}`;
 
