@@ -23,7 +23,7 @@ const Pricing = ({
   const [proposalValidDate, setProposalValidDate] = useState('');
 
   useEffect(() => {
-    const { futureFormattedDate } = getProposalDates('2024-01-31' as any);
+    const { futureFormattedDate } = getProposalDates(date);
     setProposalValidDate(futureFormattedDate);
   }, [date]);
 
