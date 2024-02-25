@@ -11,7 +11,7 @@ const Pricing = ({
   structure,
 }: {
   proposalOutput: Array<PROPOSAL_OUTPUT>;
-  date: any;
+  date: Date;
   structure: STRUCTURE;
 }) => {
   const [planType, setPlanType] = useState<
@@ -23,7 +23,7 @@ const Pricing = ({
   const [proposalValidDate, setProposalValidDate] = useState('');
 
   useEffect(() => {
-    const { futureFormattedDate } = getProposalDates(date);
+    const { futureFormattedDate } = getProposalDates('2024-01-31' as any);
     setProposalValidDate(futureFormattedDate);
   }, [date]);
 
@@ -35,7 +35,7 @@ const Pricing = ({
           <div>
             <p className="text-xl font-medium heading-gradient mb-2">Pricing</p>
             <p className="text-base text-brand-grey-600">
-              Valid till {date} {new Date().getFullYear()}
+              Valid till {proposalValidDate} {new Date().getFullYear()}
             </p>
           </div>
         </div>

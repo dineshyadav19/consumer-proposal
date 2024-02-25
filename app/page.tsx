@@ -93,7 +93,7 @@ export default async function Home({
 
       <Pricing
         proposalOutput={data.proposal_data.proposal_output}
-        date={data.proposal_data.proposal_input.created_at}
+        date={'2024-01-31' as any}
         structure={data.design_data.preferred_mms}
       />
 

@@ -24,12 +24,15 @@ export const getProposalDates = (date: Date) => {
   const futureDate = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
 
   const presentDay = today.getDate();
-  const presentMonth = today.toLocaleDateString('default', {
+  const presentMonth = today.toLocaleDateString(undefined, {
     month: 'long',
-    timeZone: 'asia/kolkata',
+    timeZone: 'asia/calcutta',
   });
   const day = futureDate.getDate();
-  const month = futureDate.toLocaleString('default', { month: 'long' });
+  const month = futureDate.toLocaleString('default', {
+    month: 'long',
+    timeZone: 'asia/calcutta',
+  });
   const futureFormattedDate = `${day}${getDaySuffix(day)} ${month}`;
 
   const generatedOn = `${presentDay}${getDaySuffix(
