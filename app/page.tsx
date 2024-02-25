@@ -95,7 +95,6 @@ export default async function Home({
         proposalOutput={data.proposal_data.proposal_output}
         date={data.proposal_data.proposal_input.created_at}
         structure={data.design_data.preferred_mms}
-        data={data}
       />
 
       <WhoWeAre />

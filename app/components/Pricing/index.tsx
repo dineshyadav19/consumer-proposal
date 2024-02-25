@@ -9,12 +9,10 @@ const Pricing = ({
   proposalOutput,
   date,
   structure,
-  data,
 }: {
   proposalOutput: Array<PROPOSAL_OUTPUT>;
   date: Date;
   structure: STRUCTURE;
-  data: any;
 }) => {
   const [planType, setPlanType] = useState<
     'Basic' | 'Smart' | 'Premium' | 'Standard'
@@ -22,16 +20,7 @@ const Pricing = ({
   const planTypeButtonStyles =
     'py-2.5 px-6 text-base tracking-wide text-brand-grey-600 leading-none font-semibold grow';
 
-  const [proposalValidDate, setProposalValidDate] = useState('');
-
-  console.log('datae out ', data);
-
-  useEffect(() => {
-    console.log('date in useeffect', date);
-    console.log('data in', data);
-    const { futureFormattedDate } = getProposalDates(date);
-    setProposalValidDate(futureFormattedDate);
-  }, [date]);
+  const { futureFormattedDate } = getProposalDates(date);
 
   return (
     <>
@@ -41,7 +30,7 @@ const Pricing = ({
           <div>
             <p className="text-xl font-medium heading-gradient mb-2">Pricing</p>
             <p className="text-base text-brand-grey-600">
-              Valid till {proposalValidDate} {new Date().getFullYear()}
+              Valid till {futureFormattedDate} {new Date().getFullYear()}
             </p>
           </div>
         </div>
