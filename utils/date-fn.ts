@@ -20,7 +20,8 @@ export function getDaySuffix(day: any) {
 }
 
 export const getProposalDates = (date: Date) => {
-  const today = new Date(date);
+  const convertToUtc = new Date(date).toUTCString();
+  const today = new Date(convertToUtc);
   const futureDate = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
 
   const presentDay = today.getDate();

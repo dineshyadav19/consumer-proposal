@@ -15,7 +15,7 @@ const FooterLink = ({ href, icon }: { href: string; icon: ReactNode }) => {
 };
 
 const Footer = ({ date }: { date: Date }) => {
-  // const { generatedOn, futureFormattedDate } = getProposalDates(date);
+  const { generatedOn, futureFormattedDate } = getProposalDates(date);
 
   return (
     <div className="p-4 bg-black text-brand-grey flex flex-col gap-y-7">
@@ -77,7 +77,7 @@ const Footer = ({ date }: { date: Date }) => {
       {/* <span className="block text-brand-grey-400 text-sm font-medium">
         Terms & conditions
       </span> */}
-      {/* <div className="flex justify-between text-brand-grey-400 text-sm font-medium">
+      <div className="flex justify-between text-brand-grey-400 text-sm font-medium">
         <div className="flex flex-col">
           <span>Generated On</span>
           <span className="text-base">{generatedOn}</span>
@@ -86,7 +86,7 @@ const Footer = ({ date }: { date: Date }) => {
           <span className="text-right">Valid till</span>
           <span className="text-base">{futureFormattedDate}</span>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };
