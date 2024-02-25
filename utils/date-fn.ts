@@ -1,4 +1,4 @@
-export function getDaySuffix(day: any) {
+function getDaySuffix(day: any) {
   if (day < 1 || day > 31) {
     throw new Error('Invalid day');
   }
@@ -20,15 +20,14 @@ export function getDaySuffix(day: any) {
 }
 
 export const getProposalDates = (date: Date) => {
-  const convertToUtc = new Date(date).toUTCString();
-  const today = new Date(convertToUtc);
+  const today = new Date(date);
   const futureDate = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
 
-  const presentDay = today.getDate();
+  const presentDay = today.getUTCDate();
   const presentMonth = today.toLocaleDateString(undefined, {
     month: 'long',
   });
-  const day = futureDate.getDate();
+  const day = futureDate.getUTCDate();
   const month = futureDate.toLocaleString('default', {
     month: 'long',
   });
