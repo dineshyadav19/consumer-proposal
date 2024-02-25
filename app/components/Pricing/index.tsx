@@ -9,10 +9,12 @@ const Pricing = ({
   proposalOutput,
   date,
   structure,
+  data,
 }: {
   proposalOutput: Array<PROPOSAL_OUTPUT>;
   date: Date;
   structure: STRUCTURE;
+  data: any;
 }) => {
   const [planType, setPlanType] = useState<
     'Basic' | 'Smart' | 'Premium' | 'Standard'
@@ -22,8 +24,11 @@ const Pricing = ({
 
   const [proposalValidDate, setProposalValidDate] = useState('');
 
+  console.log('datae out ', data);
+
   useEffect(() => {
     console.log('date in useeffect', date);
+    console.log('data in', data);
     const { futureFormattedDate } = getProposalDates(date);
     setProposalValidDate(futureFormattedDate);
   }, [date]);
