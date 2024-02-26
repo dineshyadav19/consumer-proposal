@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DownArrow from '@icons/down-arrow.svg';
 import { PROPOSAL_OUTPUT, STRUCTURE } from '../../actions/types';
 import SystemOfferings from './SystemOfferings';
@@ -14,11 +14,15 @@ const Pricing = ({
   date: Date;
   structure: STRUCTURE;
 }) => {
-  const [planType, setPlanType] = useState<
+  const checkIfSmartExist = proposalOutput.find(
+    (val) => val.system_type === 'Smart' || val.system_type
+  );
+  const [plantType, setPlantType] = useState<
     'Basic' | 'Smart' | 'Premium' | 'Standard'
-  >('Smart');
+  >(checkIfSmartExist?.system_type || 'Smart');
   const planTypeButtonStyles =
     'py-2.5 px-6 text-base tracking-wide text-brand-grey-600 leading-none font-semibold grow';
+
   const { futureFormattedDate } = getProposalDates(date);
 
   return (
@@ -72,10 +76,10 @@ const Pricing = ({
         </div>
         <div className="rounded-full bg-brand-grey-100 px-2.5 py-1.5 mb-5 flex items-center gap-x-[18px]">
           {proposalOutput.map((val) => {
-            const isActive = val.system_type === planType;
+            const isActive = val.system_type === plantType;
 
             const activeClass =
-              isActive && planType === 'Smart'
+              isActive && plantType === 'Smart'
                 ? 'green-blue-gradient text-neutral-50 rounded-full'
                 : isActive
                 ? 'bg-brand-blue-200 rounded-full'
@@ -85,7 +89,7 @@ const Pricing = ({
               <button
                 key={val.system_type}
                 className={`${activeClass} ${planTypeButtonStyles}`}
-                onClick={() => setPlanType(val.system_type)}
+                onClick={() => setPlantType(val.system_type)}
               >
                 {val.system_type}
               </button>
@@ -93,7 +97,7 @@ const Pricing = ({
           })}
         </div>
         <SystemOfferings
-          plantType={planType}
+          plantType={plantType}
           proposalData={proposalOutput}
           structure={structure}
         />

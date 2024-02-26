@@ -34,7 +34,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, children, onChange }) => {
           pb-6 
           bg-neutral-50
           focus:outline-none 
-          z-10
+          z-50
           overflow-scroll
           no-scrollbar
         "

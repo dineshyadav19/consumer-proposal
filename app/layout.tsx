@@ -3,10 +3,8 @@ import { Archivo, Inter } from 'next/font/google';
 import Container from '@components/Container';
 import '@styles/main.css';
 import Header from '@components/Header';
-import Footer from '@components/Footer';
 
 export const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-
 export const archivo = Archivo({
   subsets: ['latin'],
   variable: '--font-archivo',
@@ -15,6 +13,9 @@ export const archivo = Archivo({
 export const metadata: Metadata = {
   title: 'Consumer Web Proposal',
   description: 'Fenice Web Proposal',
+  openGraph: {
+    images: '../public/images/preview.png',
+  },
 };
 
 export default function RootLayout({
@@ -23,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning={true}>
       <body className={inter.className}>
         <Container>
           <Header />
