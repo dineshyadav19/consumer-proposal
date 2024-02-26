@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: 'Consumer Web Proposal',
   description: 'Fenice Web Proposal',
   openGraph: {
-    images: '../public/images/preview.png',
+    images: 'https://proposal.feniceenergy.com/public/images/preview.png',
   },
 };
 
