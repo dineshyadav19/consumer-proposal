@@ -9,7 +9,6 @@ export async function getProposalData({ dealId }: { dealId: string }) {
       headers: {
         'Content-type': 'application/json',
       },
-      cache: 'force-cache',
     }
   );
 

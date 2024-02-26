@@ -86,7 +86,7 @@ const SystemOfferings = (props: Props) => {
               Total payable (incl. GST)
             </p>
 
-            {systemValues?.data.subsidy_value ? (
+            {parseInt(systemValues?.data.subsidy_value || '') ? (
               <div className="text-xl font-medium font-archivo text-brand-grey-600 py-3 px-1.5 bg-brand-blue-100 text-center my-4 w-full">
                 Subsidy : ₹ {systemValues?.data.subsidy_value}
               </div>
@@ -94,7 +94,7 @@ const SystemOfferings = (props: Props) => {
               <></>
             )}
 
-            {systemValues?.data?.loan_options.length ? (
+            {systemValues?.data?.loan_options.some((val) => val.data.length) ? (
               <p className="mt-3 text-center text-base tracking-wide text-brand-grey-600">
                 EMI starting from as low as ₹{' '}
                 {systemValues?.data?.loan_options[0].data[0].emi} per month.{' '}
