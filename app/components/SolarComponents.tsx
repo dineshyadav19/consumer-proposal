@@ -13,6 +13,7 @@ import SteelStructure from './Modals/SteelStructure';
 import SolarPanelComponent from './Modals/SolarPanel';
 import Inverter from './Modals/Inverter';
 import ElectricalSafety from './Modals/ElectricalSafety';
+import { useSearchParams } from 'next/navigation';
 // import SolarInstallationVideo from "@images/So"
 
 type ComponentCardProps = {
@@ -48,10 +49,14 @@ const ComponentCard = ({
 };
 
 const SolarComponents = () => {
+  const searchParams = useSearchParams();
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalData, setModalData] = useState<ReactNode>(<></>);
   const [isMicroSelected, setIsMicroSelected] = useState(true);
 
+  const autoPlayVideo =
+    searchParams.get('autoPlayVideo') === 'false' ? false : true;
   const getData = () => {
     if (isMicroSelected) {
       return {
@@ -226,7 +231,7 @@ const SolarComponents = () => {
         <video
           className="w-full h-auto object-fill rounded-xl border border-stone-300"
           controls={false}
-          autoPlay
+          autoPlay={autoPlayVideo}
           muted
           playsInline
           src="/Solar-Installation.mp4"
