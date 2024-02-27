@@ -17,12 +17,6 @@ import Pricing from '@components/Pricing';
 import JourneyWithUs from '@components/JourneyWithUs';
 import { getProposalData } from './actions/action';
 import Footer from '@components/Footer';
-import { Metadata, ResolvingMetadata } from 'next';
-
-type Props = {
-  params: { id: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
 
 export default async function Home({
   searchParams,
