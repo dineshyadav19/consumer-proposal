@@ -230,7 +230,7 @@ const SolarComponents = () => {
 
         <video
           className="w-full h-auto object-fill rounded-xl border border-stone-300"
-          controls={false}
+          controls={!autoPlayVideo}
           autoPlay={autoPlayVideo}
           muted
           playsInline
