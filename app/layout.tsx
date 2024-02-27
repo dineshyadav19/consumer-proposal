@@ -19,19 +19,7 @@ export const metadata: Metadata = {
     description: 'Fenice Energy',
     url: 'https://proposal.feniceenergy.com/',
     siteName: 'Feniceenergy',
-    images: [
-      {
-        url: 'https://proposal.feniceenergy.com/preview.png',
-        width: 800,
-        height: 600,
-      },
-      {
-        url: 'https://proposal.feniceenergy.com/preview.png',
-        width: 1800,
-        height: 1600,
-        alt: 'Consumer proposal',
-      },
-    ],
+    images: ['/public/images/preview.png'],
     locale: 'en_in',
     type: 'website',
   },
