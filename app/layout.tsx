@@ -13,16 +13,16 @@ export const archivo = Archivo({
 export const metadata: Metadata = {
   title: 'Consumer Web Proposal',
   description: 'Fenice Web Proposal',
-  metadataBase: new URL('https://proposal.feniceenergy.com/'),
-  openGraph: {
-    title: 'Fenice Consumer Proposal',
-    description: 'Fenice Energy',
-    url: 'https://proposal.feniceenergy.com/',
-    siteName: 'Feniceenergy',
-    images: ['/public/images/preview.png'],
-    locale: 'en_in',
-    type: 'website',
-  },
+  // metadataBase: new URL('https://proposal.feniceenergy.com/'),
+  // openGraph: {
+  //   title: 'Fenice Consumer Proposal',
+  //   description: 'Fenice Energy',
+  //   url: 'https://proposal.feniceenergy.com/',
+  //   siteName: 'Feniceenergy',
+  //   images: ['/public/images/preview.png'],
+  //   locale: 'en_in',
+  //   type: 'website',
+  // },
 };
 
 export default function RootLayout({
