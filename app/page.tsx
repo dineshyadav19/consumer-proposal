@@ -32,7 +32,7 @@ export async function generateMetadata(
     title: 'Consumer Proposal',
     metadataBase: new URL('https://proposal.feniceenergy.com/'),
     openGraph: {
-      images: ['opengraph-image.png'],
+      images: ['./opengraph-image.png', './twitter-image.png'],
     },
   };
 }
