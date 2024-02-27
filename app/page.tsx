@@ -17,6 +17,25 @@ import Pricing from '@components/Pricing';
 import JourneyWithUs from '@components/JourneyWithUs';
 import { getProposalData } from './actions/action';
 import Footer from '@components/Footer';
+import { Metadata, ResolvingMetadata } from 'next';
+
+type Props = {
+  params: { id: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export async function generateMetadata(
+  { params, searchParams }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  return {
+    title: 'Consumer Proposal',
+    metadataBase: new URL('https://proposal.feniceenergy.com/'),
+    openGraph: {
+      images: ['opengraph-image.png'],
+    },
+  };
+}
 
 export default async function Home({
   searchParams,
