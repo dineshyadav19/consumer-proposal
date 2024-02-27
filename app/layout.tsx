@@ -13,7 +13,44 @@ export const archivo = Archivo({
 export const metadata: Metadata = {
   title: 'Consumer Web Proposal',
   description: 'Fenice Web Proposal',
-  // metadataBase: new URL('https://proposal.feniceenergy.com/'),
+  metadataBase: new URL('https://proposal.feniceenergy.com'),
+  openGraph: {
+    title: 'Fenice Consumer Proposal',
+    description: 'Fenice Energy',
+    siteName: 'Feniceenergy',
+    images: [
+      {
+        url: '/images/preview.png',
+        width: 800,
+        height: 600,
+      },
+      {
+        url: '/images/preview.png',
+        width: 1800,
+        height: 1600,
+        alt: 'Consumer proposal',
+      },
+    ],
+    locale: 'en_Us',
+    type: 'website',
+  },
+  twitter: {
+    title: 'Fenice Consumer Proposal',
+    description: 'Fenice Energy',
+    images: [
+      {
+        url: '/images/preview.png',
+        width: 800,
+        height: 600,
+      },
+      {
+        url: '/images/preview.png',
+        width: 1800,
+        height: 1600,
+        alt: 'Consumer proposal',
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -23,44 +60,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <meta name="description" content="Fenice Web Proposal" />
-        <meta property="og:title" content="Fenice Consumer Proposal" />
-        <meta property="og:description" content="Fenice Energy" />
-        <meta property="og:url" content="https://proposal.feniceenergy.com/" />
-        <meta property="og:site_name" content="Feniceenergy" />
-        <meta property="og:locale" content="en_in" />
-        <meta
-          property="og:image"
-          content="https://proposal.feniceenergy.com/public/images/preview.png"
-        />
-        <meta property="og:image:width" content="800" />
-        <meta property="og:image:height" content="600" />
-        <meta
-          property="og:image"
-          content="https://proposal.feniceenergy.com/opengraph-image.png"
-        />
-        <meta property="og:image:width" content="1800" />
-        <meta property="og:image:height" content="1600" />
-        <meta property="og:image:alt" content="Consumer proposal" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Fenice Consumer Proposal" />
-        <meta name="twitter:description" content="Fenice Energy" />
-        <meta
-          name="twitter:image"
-          content="https://proposal.feniceenergy.com/twitter-image.png"
-        />
-        <meta name="twitter:image:width" content="800" />
-        <meta name="twitter:image:height" content="600" />
-        <meta
-          name="twitter:image"
-          content="https://proposal.feniceenergy.com/twitter-image.png"
-        />
-        <meta name="twitter:image:width" content="1800" />
-        <meta name="twitter:image:height" content="1600" />
-        <meta name="twitter:image:alt" content="Consumer proposal" />
-      </head>
       <body className={inter.className}>
         <Container>
           <Header />
