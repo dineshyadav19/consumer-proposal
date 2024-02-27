@@ -13,6 +13,7 @@ export const archivo = Archivo({
 export const metadata: Metadata = {
   title: 'Consumer Web Proposal',
   description: 'Fenice Web Proposal',
+  metadataBase: new URL('https://proposal.feniceenergy.com/'),
   openGraph: {
     title: 'Fenice Consumer Proposal',
     description: 'Fenice Energy',
@@ -20,12 +21,12 @@ export const metadata: Metadata = {
     siteName: 'Feniceenergy',
     images: [
       {
-        url: 'https://proposal.feniceenergy.com/public/images/preview.png',
+        url: 'https://proposal.feniceenergy.com/preview.png',
         width: 800,
         height: 600,
       },
       {
-        url: 'https://proposal.feniceenergy.com/public/images/preview.png',
+        url: 'https://proposal.feniceenergy.com/preview.png',
         width: 1800,
         height: 1600,
         alt: 'Consumer proposal',
