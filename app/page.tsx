@@ -24,19 +24,6 @@ type Props = {
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
-export async function generateMetadata(
-  { params, searchParams }: Props,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
-  return {
-    title: 'Consumer Proposal',
-    metadataBase: new URL('https://proposal.feniceenergy.com/'),
-    openGraph: {
-      images: ['./opengraph-image.png', './twitter-image.png'],
-    },
-  };
-}
-
 export default async function Home({
   searchParams,
 }: {
