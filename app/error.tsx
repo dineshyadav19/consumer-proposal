@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import NotFoundImg from '@images/not-found.png';
 
@@ -14,8 +16,7 @@ export default function NotFound() {
       <div className="max-w-56">
         <h2 className="text-center text-3.5xl font-bold font-archivo">Oops!</h2>
         <p className="font-archivo text-base text-center mt-4">
-          This proposal does not exist anymore, ask your Fenice partner to share
-          the proposal again.
+          Something went wrong !
         </p>
       </div>
     </div>
