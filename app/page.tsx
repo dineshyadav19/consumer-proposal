@@ -24,6 +24,7 @@ export default async function Home({
   searchParams: { [key: string]: string };
 }) {
   const data = await getProposalData({ dealId: searchParams?.dealId });
+
   return (
     <main className="mt-5">
       <Intro
