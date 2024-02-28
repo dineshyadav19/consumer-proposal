@@ -110,12 +110,12 @@ const SystemOfferings = (props: Props) => {
             )}
           </div>
 
-          <div
+          <button
             className="text-brand-blue-600 text-base font-medium font-archivo text-center"
             onClick={() => setModalOpen('price-breakup-modal')}
           >
             View detailed price breakup
-          </div>
+          </button>
 
           <div className="flex flex-col gap-y-2.5">
             <div className="flex gap-x-1.5 items-center">
@@ -149,7 +149,7 @@ const SystemOfferings = (props: Props) => {
             const bgStyles =
               offering.backgroud === 'plain'
                 ? 'rounded w-full bg-brand-green-100 py-1 px-4'
-                : 'green-blue-gradient p-0.5 rounded-[10px]';
+                : 'green-blue-gradient p-0.5 rounded-[10px] w-full';
 
             return (
               <div key={index} className="flex flex-col gap-y-2.5">
@@ -172,7 +172,7 @@ const SystemOfferings = (props: Props) => {
             className="bg-gradient-to-l from-lime-50 to-lime-200 font-archivo p-3 flex items-center relative w-full h-24 rounded-[10px] z-10"
             onClick={() => setModalOpen('economic-modal')}
           >
-            <div className="relative z-30 flex gap-y-5 justify-between items-center">
+            <div className="relative z-30 flex gap-y-5 justify-between items-center w-full">
               <h3 className="text-base tracking-wide">
                 Wondering if solar is a good investment?{' '}
                 <span className="font-medium">(ROI)</span>

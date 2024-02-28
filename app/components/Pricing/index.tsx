@@ -15,11 +15,16 @@ const Pricing = ({
   structure: STRUCTURE;
 }) => {
   const checkIfSmartExist = proposalOutput.find(
-    (val) => val.system_type === 'Smart' || val.system_type
+    (val) => val.system_type === 'Smart'
   );
+
+  const getFirstSelectedValue =
+    checkIfSmartExist?.system_type || proposalOutput[0].system_type;
+
   const [plantType, setPlantType] = useState<
     'Basic' | 'Smart' | 'Premium' | 'Standard'
-  >(checkIfSmartExist?.system_type || 'Smart');
+  >(getFirstSelectedValue);
+
   const planTypeButtonStyles =
     'py-2.5 px-6 text-base tracking-wide text-brand-grey-600 leading-none font-semibold grow';
 
@@ -28,8 +33,8 @@ const Pricing = ({
   return (
     <>
       <h2 className="heading-gradient mt-11 mx-4">Choose a system</h2>
-      <div className="flex my-4">
-        <div className="flex flex-col font-archivo justify-center items-end grow">
+      <div className="flex justify-end">
+        <div className="flex flex-col font-archivo justify-end items-end grow">
           <div>
             <p className="text-xl font-medium heading-gradient mb-2">Pricing</p>
             <p className="text-base text-brand-grey-600">
@@ -37,40 +42,42 @@ const Pricing = ({
             </p>
           </div>
         </div>
-        <svg viewBox="0 0 200 200" width="120" height="120">
-          <defs>
-            <path
-              id="circle"
-              d="M 100, 100
+        <div className="pr-2">
+          <svg viewBox="0 0 180 200" width="100" height="100">
+            <defs>
+              <path
+                id="circle"
+                d="M 100, 100
                 m -75, 0
                 a 75, 75 0 1, 0 150, 0
                 a 75, 75 0 1, 0 -150, 0
                 "
-            ></path>
-          </defs>
+              ></path>
+            </defs>
 
-          <circle
-            cx="100"
-            cy="100"
-            r="70"
-            stroke="#E8F2FC"
-            strokeWidth="25"
-            fill="white"
-          />
+            <circle
+              cx="100"
+              cy="100"
+              r="70"
+              stroke="#E8F2FC"
+              strokeWidth="25"
+              fill="white"
+            />
 
-          <text width="50">
-            <textPath
-              alignmentBaseline="baseline"
-              xlinkHref="#circle"
-              className="svg-text"
-            >
-              Free Electricity | 25+ year savings |
-            </textPath>
-          </text>
-        </svg>
+            <text width="50">
+              <textPath
+                alignmentBaseline="baseline"
+                xlinkHref="#circle"
+                className="svg-text"
+              >
+                Free Electricity | 25+ year savings |
+              </textPath>
+            </text>
+          </svg>
+        </div>
       </div>
 
-      <div className="px-4">
+      <div className="px-4 -mt-4">
         <div className="mb-2.5 mt-1.5">
           <DownArrow />
         </div>

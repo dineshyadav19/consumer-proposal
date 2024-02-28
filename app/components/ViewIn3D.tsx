@@ -25,7 +25,7 @@ const ViewIn3D = async ({
   return (
     <div className="mt-7 px-4">
       <h2 className="heading-gradient mb-10">
-        Track & monitor your solar plant from anywhere
+        Our accurately customized design for your rooftop
       </h2>
 
       <div className="relative rounded-[20px]">

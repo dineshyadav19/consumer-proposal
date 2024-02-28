@@ -25,7 +25,7 @@ const smartSystemoffering = [
     icon: 'cross',
     text: 'Generation Guarantee',
     subText: (
-      <p className="bg-white py-1 px-4 rounded-[8px] text-sm text-brand-grey-600">
+      <p className="bg-white py-1 px-4 rounded-[8px] text-sm text-brand-grey-600 w-full">
         Upgrade to PREMIUM to get 1 year of generation guarantee.
       </p>
     ),
@@ -50,7 +50,7 @@ const basicSystemoffering = [
     icon: 'check',
     text: 'Cleaning & Maintenance visits ',
     subText: (
-      <p className="bg-white py-1 px-4 rounded-[8px] text-sm text-brand-grey-600">
+      <p className="bg-white py-1 px-4 rounded-[8px] text-sm text-brand-grey-600 w-full">
         Pay just ₹5000 more and upgrade to SMART system, get 5 years of cleaning
         & health checkup visits.
       </p>
@@ -61,7 +61,7 @@ const basicSystemoffering = [
     icon: 'check',
     text: 'Generation Guarantee',
     subText: (
-      <p className="bg-white py-1 px-4 rounded-[8px] text-sm text-brand-grey-600">
+      <p className="bg-white py-1 px-4 rounded-[8px] text-sm text-brand-grey-600 w-full">
         Upgrade to PREMIUM to get 1 year of generation guarantee.
       </p>
     ),

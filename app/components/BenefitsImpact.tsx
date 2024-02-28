@@ -36,7 +36,7 @@ const metrics: Metrics = [
   },
   {
     key: 'co2Offset',
-    title: 'Coal burn avoided',
+    title: 'CO2 Offset',
     count: {
       monthly: 40.73,
       yearly: 40.73,
