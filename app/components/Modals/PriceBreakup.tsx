@@ -32,10 +32,15 @@ const PriceBreakup = ({ priceBreak }: Props) => {
             <p>System add-on price</p>
             <p>{addOnMsp}</p>
           </div>
-          <div className="flex justify-between items-center text-brand-green-400">
-            <p>Discount</p>
-            <p>{discount}</p>
-          </div>
+          {discount ? (
+            <div className="flex justify-between items-center text-brand-green-400">
+              <p>Discount</p>
+              <p>{discount}</p>
+            </div>
+          ) : (
+            <></>
+          )}
+
           <div className="flex justify-between items-center">
             <p>GST @ 13.8%</p>
             <p>₹ {priceBreak?.gst}</p>

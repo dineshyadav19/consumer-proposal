@@ -44,7 +44,7 @@ export const getPriceBreakupValues = ({
 
   const msp = formatNumberToPrice(sppBeforeDiscount);
   const addOnMsp = formatNumberToPrice(addOnBeforeDiscount);
-  const discount = formatNumberToPrice(totalDiscount);
+  const discount = totalDiscount > 1 ? formatNumberToPrice(totalDiscount) : 0;
 
   return {
     msp,
