@@ -161,7 +161,7 @@ const SolarComponents = () => {
             <p className="text-base leading-snug">2 options to choose from</p>
           </div>
 
-          <div className="flex my-2 py-1.5 justify-between">
+          <div className="flex my-2 py-1.5 justify-between w-full">
             <button
               className={
                 isMicroSelected

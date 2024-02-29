@@ -39,7 +39,7 @@ const SolarPanelComponent = () => {
         <ListCard
           icon={<Warranty />}
           heading="Warranty"
-          description="We use Mono-PERC half cut cell panels. These panels are efficient for the space they consume and generate better in case of shading."
+          description="Our panels come with 25 years of linear output warranty and 10 years of product warranty. We help you in the warranty claim process."
         />
         <ListCard
           icon={<Technology />}
