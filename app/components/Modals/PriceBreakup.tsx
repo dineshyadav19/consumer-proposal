@@ -48,7 +48,7 @@ const PriceBreakup = ({ priceBreak }: Props) => {
         </div>
       </div>
       <div>
-        <span className="text-center block">Service & addon-ons</span>
+        <span className="text-center block">Service Add-Ons</span>
         <p className="text-center mb-3">
           ₹ {priceBreak?.total_service_add_on_with_gst}{' '}
           <span className="text-sm text-brand-grey-600">(incl. GST)</span>

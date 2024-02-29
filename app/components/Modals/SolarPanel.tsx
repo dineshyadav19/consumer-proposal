@@ -13,7 +13,7 @@ const SolarPanelComponent = () => {
     <>
       <Header
         image={SolarPanelImg}
-        heading="A Grade solar panels"
+        heading="Certified solar panels with 25 year warranty"
         subHeading="Learn more about"
       />
 

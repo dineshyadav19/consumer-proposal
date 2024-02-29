@@ -170,7 +170,7 @@ const SolarComponents = () => {
               }
               onClick={() => setIsMicroSelected(true)}
             >
-              Micro-Inverter
+              Microinverter
             </button>
             <button
               className={

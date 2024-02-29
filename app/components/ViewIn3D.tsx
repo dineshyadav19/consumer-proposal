@@ -1,5 +1,5 @@
 import React from 'react';
-import SolarLabsPreview from '@images/solar-labs-preview.png';
+import SolarLabsPreview from '@images/solar-labs.png';
 import Image from 'next/image';
 import Degree from '@icons/360-degree.svg';
 
@@ -42,15 +42,19 @@ const ViewIn3D = async ({
             className="rounded-tl-[20px] rounded-tr-[20px] border border-brand-blue"
           />
 
-          <div className="absolute bottom-8 flex justify-center items-center w-full">
-            <a
-              href={solarLabsLink}
-              target="_blank"
-              className="block bg-gradient-to-r shadow from-sky-700 via-sky-500 to-sky-700 leading-none px-5 py-3 text-white text-sm font-medium rounded-full"
-            >
-              View in 3D
-            </a>
-          </div>
+          {solarLabsLink ? (
+            <div className="absolute bottom-8 flex justify-center items-center w-full">
+              <a
+                href={solarLabsLink}
+                target="_blank"
+                className="block bg-gradient-to-r shadow from-sky-700 via-sky-500 to-sky-700 leading-none px-5 py-3 text-white text-sm font-medium rounded-full"
+              >
+                View in 3D
+              </a>
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
 
         <div className="px-4 py-5 border border-brand-blue rounded-b-[20px]">

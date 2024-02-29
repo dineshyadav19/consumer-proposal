@@ -1,3 +1,4 @@
+import { formatNumberToPrice } from '@utils/price-calc';
 import { LOAN_OPTIONS } from '../../actions/types';
 
 type Props = {
@@ -15,8 +16,15 @@ const EmiModal = (props: Props) => {
       </h4>
       <div className="flex justify-center">
         <p className="text-center text-sm text-brand-grey-600 font-medium font-archivo max-w-72">
-          Available EMI options for order value <br />₹{' '}
-          {props?.loanOptions && props.loanOptions[0].data[0].order_value}
+          Available EMI options for order value <br />
+          {props?.loanOptions &&
+            formatNumberToPrice(
+              parseInt(
+                convertToFixedDecimalNumber(
+                  props.loanOptions[0].data[0].order_value
+                )
+              )
+            )}
         </p>
       </div>
 
@@ -28,30 +36,30 @@ const EmiModal = (props: Props) => {
               className="rounded-[10px] border border-zinc-300 border-opacity-90 flex flex-col p-3"
             >
               <div className="flex justify-between items-center">
-                <p className="text-xl font-medium">₹ {loan.emi}/ mo.</p>
+                <p className="text-xl font-medium">₹{loan.emi}/ mo.</p>
                 <p className="text-sm font-medium text-brand-green-500">
                   {loan.tenure} months
                 </p>
               </div>
               <p className="text-base text-brand-grey-600 mb-2 mt-1">
-                ₹ {convertToFixedDecimalNumber(loan.down_payment_amount)} down
+                ₹{convertToFixedDecimalNumber(loan.down_payment_amount)} down
                 payment
               </p>
               <div className="text-sm text-brand-grey-500 flex flex-col gap-y-1">
                 <div className="flex justify-between items-center">
                   <p>Loan amount</p>
-                  <p>₹ {loan.order_value}</p>
+                  <p>₹{loan.order_value}</p>
                 </div>
                 <div className="flex justify-between items-center">
                   <p>Down payment</p>
                   <p>
-                    ₹ {convertToFixedDecimalNumber(loan.down_payment_amount)}
+                    ₹{convertToFixedDecimalNumber(loan.down_payment_amount)}
                   </p>
                 </div>
                 <div className="flex justify-between items-center">
                   <p>Total interest</p>
                   <p>
-                    ₹{' '}
+                    ₹
                     {convertToFixedDecimalNumber(
                       loan.interest_total.toString()
                     )}
@@ -59,7 +67,7 @@ const EmiModal = (props: Props) => {
                 </div>
                 <div className="flex justify-between items-center">
                   <p>Total cost (with interest)</p>
-                  <p>₹ {loan.order_value}</p>
+                  <p>₹{loan.order_value}</p>
                 </div>
               </div>
             </div>
