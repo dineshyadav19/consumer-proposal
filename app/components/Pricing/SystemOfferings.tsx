@@ -47,7 +47,7 @@ const SystemOfferings = (props: Props) => {
       case 'economic-modal':
         return <EconomicValueModal />;
       case 'price-breakup-modal':
-        return <PriceBreakup priceBreak={systemValues?.data} />;
+        return <PriceBreakup priceBreak={systemValues?.data as any} />;
       default:
         return <></>;
     }
