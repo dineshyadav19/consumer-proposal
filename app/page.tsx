@@ -27,13 +27,15 @@ export default async function Home({
 
   return (
     <main className="mt-5">
-      <Intro
-        {...{
-          customerName: data.contact_data.customer_name,
-          plantType: data.design_data.product_line,
-          systemSize: data.design_data.dc_capacity,
-        }}
-      />
+      <div id="design">
+        <Intro
+          {...{
+            customerName: data.contact_data.customer_name,
+            plantType: data.design_data.product_line,
+            systemSize: data.design_data.dc_capacity,
+          }}
+        />
+      </div>
 
       <Testimonials />
 
@@ -71,7 +73,9 @@ export default async function Home({
 
       <EconomicValue />
 
-      <SolarComponents />
+      <div id="system-component">
+        <SolarComponents />
+      </div>
 
       <div className="px-4 py-6 bg-brand-blue-100 border justify-start items-center">
         <div className="flex-col justify-start items-center gap-4 inline-flex text-brand-grey-600 font-archivo">
@@ -86,17 +90,23 @@ export default async function Home({
         </div>
       </div>
 
-      <Maintenance />
+      <div id="maintenance-amc">
+        <Maintenance />
+      </div>
 
-      <TrackPlant />
+      <div id="fenice-care-app">
+        <TrackPlant />
+      </div>
 
       <OurSystemInclude />
 
-      <Pricing
-        proposalOutput={data.proposal_data.proposal_output}
-        date={data.proposal_data.proposal_input.created_at}
-        structure={data.design_data.preferred_mms}
-      />
+      <div id="choose-system">
+        <Pricing
+          proposalOutput={data.proposal_data.proposal_output}
+          date={data.proposal_data.proposal_input.created_at}
+          structure={data.design_data.preferred_mms}
+        />
+      </div>
 
       <WhoWeAre />
 
@@ -105,17 +115,21 @@ export default async function Home({
         <Image src={MapImage} alt="" />
       </>
 
-      <JourneyWithUs />
+      <div id="what-next">
+        <JourneyWithUs />
+      </div>
 
       <PastClients />
 
-      <ConnectWithUs
-        {...{
-          gpName: data.deal_data.gp_name,
-          gpContact: data.deal_data.gp_mobile,
-          gpAddress: '',
-        }}
-      />
+      <div id="contact-us">
+        <ConnectWithUs
+          {...{
+            gpName: data.deal_data.gp_name,
+            gpContact: data.deal_data.gp_mobile,
+            gpAddress: '',
+          }}
+        />
+      </div>
 
       <Footer date={data.proposal_data.proposal_input.created_at} />
     </main>

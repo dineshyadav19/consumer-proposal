@@ -1,10 +1,17 @@
+import { getPriceBreakupValues } from '@utils/price-calc';
 import { SYSTEM_PRICE_DATA } from '../../actions/types';
 
 type Props = {
-  priceBreak: SYSTEM_PRICE_DATA | undefined;
+  priceBreak: SYSTEM_PRICE_DATA;
 };
 
 const PriceBreakup = ({ priceBreak }: Props) => {
+  const { msp, addOnMsp, discount } = getPriceBreakupValues({
+    spp: priceBreak?.spp,
+    addOnSpp: priceBreak?.add_on_spp,
+    addOnPrice: priceBreak?.add_on_price,
+    systemPrice: priceBreak?.system_price,
+  });
   return (
     <div className="flex flex-col gap-y-6">
       <h4 className="text-3xl font-semibold font-archivo text-center">
@@ -19,15 +26,15 @@ const PriceBreakup = ({ priceBreak }: Props) => {
         <div className="text-sm text-brand-grey-500 flex flex-col gap-y-3">
           <div className="flex justify-between items-center">
             <p>System price(excl. GST)</p>
-            <p>₹ {priceBreak?.system_price}</p>
+            <p>{msp}</p>
           </div>
           <div className="flex justify-between items-center">
             <p>System add-on price</p>
-            <p>₹ {priceBreak?.add_on_price}</p>
+            <p>{addOnMsp}</p>
           </div>
           <div className="flex justify-between items-center text-brand-green-400">
             <p>Discount</p>
-            <p>₹ {priceBreak?.subsidy_value || '0'}</p>
+            <p>{discount}</p>
           </div>
           <div className="flex justify-between items-center">
             <p>GST @ 13.8%</p>

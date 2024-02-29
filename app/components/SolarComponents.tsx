@@ -7,14 +7,12 @@ import SolarPanel from '@images/solar-panel.png';
 import MCB from '@images/mcb.png';
 import MicroInverter from '@images/micro-inverter.png';
 import StringInverter from '@images/string-inverter.png';
-import QualityCheck from '@images/quality-checks.png';
 import Modal from '../../components/Modal';
 import SteelStructure from './Modals/SteelStructure';
 import SolarPanelComponent from './Modals/SolarPanel';
 import Inverter from './Modals/Inverter';
 import ElectricalSafety from './Modals/ElectricalSafety';
 import { useSearchParams } from 'next/navigation';
-// import SolarInstallationVideo from "@images/So"
 
 type ComponentCardProps = {
   heading: string;
@@ -219,7 +217,7 @@ const SolarComponents = () => {
         />
       </div>
 
-      <div className="mt-20 ">
+      <div className="mt-20" id="installation">
         <h3 className="heading-gradient">
           Our solar installation process at a glance
         </h3>

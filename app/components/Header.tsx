@@ -5,8 +5,6 @@ import { GoChevronRight } from 'react-icons/go';
 import * as Dialog from '@radix-ui/react-dialog';
 import CompanyLogo from '@images/company-logo.svg';
 import NavToggle from '@icons/nav-toggle.svg';
-import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
 
 const navigationMenu = [
   {
@@ -37,10 +35,10 @@ const navigationMenu = [
     navText: 'What next',
     link: 'what-next',
   },
-  {
-    navText: 'About us',
-    link: 'about-us',
-  },
+  // {
+  //   navText: 'About us',
+  //   link: 'about-us',
+  // },
   {
     navText: 'Contact us',
     link: 'contact-us',
@@ -49,8 +47,11 @@ const navigationMenu = [
 
 const Header = () => {
   const [isNavModalOpen, setIsNavModalOpen] = useState(false);
-  const searchParams = useSearchParams();
-  const dealId = searchParams.get('dealId');
+
+  const scrollToSection = (id: string) => {
+    const getAnchorTag = document.querySelector(`#${id}`);
+    getAnchorTag?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   return (
     <>
@@ -85,17 +86,18 @@ const Header = () => {
               <ul className="flex flex-col gap-y-6 p-6">
                 {navigationMenu.map((nav) => {
                   return (
-                    <div key={nav.link}>
-                      <Link
-                        className="flex justify-between border-b border-zinc-300 pb-3"
-                        href={`/?dealId=${dealId}#${nav.link}`}
-                        onClick={() => setIsNavModalOpen(false)}
-                      >
-                        <li className="text-center text-neutral-600 text-xl tracking-wide list-none">
-                          {nav.navText}
-                        </li>
-                        <GoChevronRight className="font-bold w-6 h-6 p-0.5 bg-white text-brand-blue-600" />
-                      </Link>
+                    <div
+                      className="flex justify-between border-b border-zinc-300 pb-3"
+                      onClick={() => {
+                        setIsNavModalOpen(false);
+                        scrollToSection(nav.link);
+                      }}
+                      key={nav.link}
+                    >
+                      <li className="text-center text-neutral-600 text-xl tracking-wide list-none">
+                        {nav.navText}
+                      </li>
+                      <GoChevronRight className="font-bold w-6 h-6 p-0.5 bg-white text-brand-blue-600" />
                     </div>
                   );
                 })}
