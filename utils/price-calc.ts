@@ -4,10 +4,11 @@
 // add_on_discount = add_on_msp - add_on_price
 // total_discount = system_discount + add_on_discount
 
-const formatNumberToPrice = (price: number) =>
+export const formatNumberToPrice = (price: number) =>
   new Intl.NumberFormat('en-IN', {
     style: 'currency',
     currency: 'INR',
+    maximumFractionDigits: 0,
   }).format(price);
 
 function indianNumberStringToNumber(indianNumberString: string) {

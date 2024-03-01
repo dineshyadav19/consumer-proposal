@@ -43,38 +43,32 @@ const PriceBreakup = ({ priceBreak }: Props) => {
 
           <div className="flex justify-between items-center">
             <p>GST @ 13.8%</p>
-            <p>₹ {priceBreak?.gst}</p>
+            <p>₹{priceBreak?.gst}</p>
           </div>
         </div>
       </div>
       <div>
-        <span className="text-center block">Service & addon-ons</span>
+        <span className="text-center block">Service Add-Ons</span>
         <p className="text-center mb-3">
-          ₹ {priceBreak?.total_service_add_on_with_gst}{' '}
+          ₹{priceBreak?.total_service_add_on_with_gst}{' '}
           <span className="text-sm text-brand-grey-600">(incl. GST)</span>
         </p>
         <div className="text-sm text-brand-grey-500 flex flex-col gap-y-3">
           <div className="flex justify-between items-center">
             <p>Name change charges</p>
-            <p>₹ {priceBreak?.name_change_charges}</p>
+            <p>₹{priceBreak?.name_change_charges}</p>
           </div>
           <div className="flex justify-between items-center">
             <p>Load enhancement charges</p>
-            <p>₹ {priceBreak?.load_enhancement_charges}</p>
+            <p>₹{priceBreak?.load_enhancement_charges}</p>
           </div>
           <div className="flex justify-between items-center">
             <p>Net metering charges</p>
-            <p>₹ {priceBreak?.net_metering_charges}</p>
-          </div>
-          <div className="flex justify-between items-center">
-            <p className="grow-[0.6]">
-              Total Service add-ons charges (excl. GST)
-            </p>
-            <p>₹ {priceBreak?.total_service_addon_without_gst}</p>
+            <p>₹{priceBreak?.net_metering_charges}</p>
           </div>
           <div className="flex justify-between items-center">
             <p>GST @ 18%</p>
-            <p>₹ {priceBreak?.gst_on_service}</p>
+            <p>₹{priceBreak?.gst_on_service}</p>
           </div>
         </div>
       </div>
@@ -84,7 +78,7 @@ const PriceBreakup = ({ priceBreak }: Props) => {
           Total payable (incl. GST)
         </p>
         <p className="text-2xl font-medium mt-2 text-center">
-          ₹ {priceBreak?.total_system_and_service_including_gst}
+          ₹{priceBreak?.total_system_and_service_including_gst}
         </p>
       </div>
 

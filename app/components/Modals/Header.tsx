@@ -16,9 +16,13 @@ const Header = ({ heading, subHeading, image }: Props) => {
       <h4 className="mt-4 mb-3 text-3xl font-semibold font-archivo leading-[45px] max-w-[90%]">
         {heading}
       </h4>
-      <div className="py-4">
-        <Image src={image} alt="" />
-      </div>
+      {image ? (
+        <div className="py-4">
+          <Image src={image} alt="" />
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

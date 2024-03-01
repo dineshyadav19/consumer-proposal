@@ -21,7 +21,7 @@ const Maintenance = () => {
   return (
     <div className="mt-4 mb-16">
       <h2 className="heading-gradient mb-8 p-4">
-        Why maintenance is key to get the promised return on investment
+        Why maintenance is key to get the promised return on your investment
       </h2>
       <Image src={MaintenanceFeature} alt="" className="w-full h-fit" />
 

@@ -64,14 +64,17 @@ const Footer = ({ date }: { date: Date }) => {
       </div>
 
       <div className="flex flex-col gap-y-3 text-sm font-medium text-white">
-        <span>Learn more about solar. Read our blog</span>
-        <a
-          className="underline"
+        <span>
+          Learn more about solar.{' '}
+          <Link href="https://feniceenergy.com/blog/">Read our blog</Link>
+        </span>
+        <Link
+          className="underline underline-offset-2"
           href="https://feniceenergy.com/rooftop-solar/solar-guide/"
           target="_blank"
         >
           Download Solar Guide
-        </a>
+        </Link>
       </div>
 
       {/* <span className="block text-brand-grey-400 text-sm font-medium">

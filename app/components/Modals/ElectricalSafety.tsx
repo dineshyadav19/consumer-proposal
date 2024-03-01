@@ -37,7 +37,7 @@ const ElectricalSafety = () => {
           />
           <InfoCard
             heading="Did you know?"
-            subtext="Our Lightning Arrestor and Earthing are compliant with IEC 62305-4/IS 3043-1986; with 3-6 earth pits. Our Wiring Standards are as per IEC60364 to minimize losses"
+            subtext="Our Lightning Arrestor and Earthing are compliant with IEC 62305-4/IS 3043-1986; with 3-6 earth pits. Our Wiring Standards are as per IEC60364 to minimize losses."
           />
         </div>
 

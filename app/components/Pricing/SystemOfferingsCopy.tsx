@@ -47,7 +47,7 @@ const basicSystemoffering = [
     backgroud: 'plain',
   },
   {
-    icon: 'check',
+    icon: 'cross',
     text: 'Cleaning & Maintenance visits ',
     subText: (
       <p className="bg-white py-1 px-4 rounded-[8px] text-sm text-brand-grey-600 w-full">
@@ -58,7 +58,7 @@ const basicSystemoffering = [
     backgroud: 'gradient',
   },
   {
-    icon: 'check',
+    icon: 'cross',
     text: 'Generation Guarantee',
     subText: (
       <p className="bg-white py-1 px-4 rounded-[8px] text-sm text-brand-grey-600 w-full">

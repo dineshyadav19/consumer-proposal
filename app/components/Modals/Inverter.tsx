@@ -152,7 +152,7 @@ const Inverter = () => {
       </div>
 
       <Header
-        image={MicroInverterImage}
+        image={isMicroSelected ? MicroInverterImage : undefined}
         heading={getCurrentInverterData.heading}
         subHeading="Learn more about"
       />
