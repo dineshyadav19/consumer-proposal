@@ -13,12 +13,14 @@ import Modal from '../../../components/Modal';
 import EconomicValueModal from '@components/Modals/EconomicValue';
 import { getProposalDates } from '@utils/date-fn';
 import { useSearchParams } from 'next/navigation';
+import CrossArrow from '@images/cross-arrow.png';
 import {
   Modal_States,
   Props,
   getStructureHeight,
   getSystemOffering,
 } from './utils';
+import { getPriceBreakupValues } from '@utils/price-calc';
 
 const SystemOfferings = (props: Props) => {
   const [modalOpen, setModalOpen] = useState<Modal_States>(undefined);
@@ -53,6 +55,12 @@ const SystemOfferings = (props: Props) => {
     }
   };
 
+  const { discount } = getPriceBreakupValues({
+    spp: systemValues?.data.spp as any,
+    addOnPrice: systemValues?.data?.add_on_price as any,
+    addOnSpp: systemValues?.data?.add_on_spp as string,
+    systemPrice: systemValues?.data?.system_price as string,
+  });
   return (
     <>
       <div className={`${offeringStyle}`}>
@@ -66,10 +74,10 @@ const SystemOfferings = (props: Props) => {
           </div>
 
           <div className="flex flex-col items-center font-archivo">
-            {/* {systemValues?.data.subsidy_value ? (
+            {discount ? (
               <div className="relative justify-center items-center mb-1">
                 <p className="green-blue-gradient text-xl font-semibold text-transparent bg-clip-text max-w-max">
-                  ₹ {systemValues.data.subsidy_value}
+                  {discount}
                 </p>
                 <div className="absolute inset-0 py-2">
                   <Image src={CrossArrow} alt="" />
@@ -77,7 +85,7 @@ const SystemOfferings = (props: Props) => {
               </div>
             ) : (
               <></>
-            )} */}
+            )}
 
             <p className="green-blue-gradient text-4.5xl font-semibold text-transparent bg-clip-text ">
               ₹ {systemValues?.data.total_system_and_service_including_gst}
