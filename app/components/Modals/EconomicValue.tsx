@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Header from './Header';
 import GraphImage from '@images/modal-images/evp-graph.png';
@@ -55,7 +57,7 @@ const EconomicValueModal = () => {
       />
 
       <div className="flex flex-col gap-y-2">
-        <div className="py-[22px] px-2">
+        <div className="py-5 px-2">
           <RustIcon />
           <p className="text-xl leading-none font-medium mt-4 mb-5">
             First year savings
