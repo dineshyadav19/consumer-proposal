@@ -16,39 +16,14 @@ const Modal: React.FC<ModalProps> = ({ isOpen, children, onChange }) => {
         <div className="fixed inset-0 bg-black/30" />
         <Transition.Child
           as={Fragment}
-          enter="ease-out duration-300"
-          enterFrom="opacity-0 scale-95"
-          enterTo="opacity-100 scale-100"
-          leave="ease-in duration-200"
-          leaveFrom="opacity-100 scale-100"
-          leaveTo="opacity-0 scale-95"
+          // enter="ease-out duration-300"
+          // enterFrom="opacity-0 scale-95"
+          // enterTo="opacity-100 scale-100"
+          // leave="ease-in duration-200"
+          // leaveFrom="opacity-100 scale-100"
+          // leaveTo="opacity-0 scale-95"
         >
-          <Dialog.Panel
-            className="
-                fixed 
-                drop-shadow-md 
-                border 
-                border-zinc-300 
-                border-opacity-90
-                top-[50%] 
-                left-[50%] 
-                h-full 
-                w-[95%] 
-                max-h-[90%]
-                max-w-[640px]
-                translate-x-[-50%]
-                translate-y-[-45%]
-                rounded-[20px]
-                px-4 
-                pt-2 
-                pb-6 
-                bg-neutral-50
-                focus:outline-none 
-                z-50
-                overflow-scroll
-                no-scrollbar
-              "
-          >
+          <Dialog.Panel className="dialog-content no-scrollbar">
             <div className="mt-10">{children}</div>
 
             <button
