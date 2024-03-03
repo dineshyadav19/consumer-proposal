@@ -17,6 +17,11 @@ import Pricing from '@components/Pricing';
 import JourneyWithUs from '@components/JourneyWithUs';
 import { getProposalData } from './actions/action';
 import Footer from '@components/Footer';
+import dynamic from 'next/dynamic';
+
+const NoSSR = dynamic(() => import('@components/EconomicValue'), {
+  ssr: false,
+});
 
 export default async function Home({
   searchParams,
@@ -71,7 +76,9 @@ export default async function Home({
         }}
       />
 
-      <EconomicValue />
+      {/* <EconomicValue /> */}
+
+      <NoSSR />
 
       <div id="system-component">
         <SolarComponents />
