@@ -205,7 +205,8 @@ const SystemOfferings = (props: Props) => {
               onClick={() => setModalOpen('lock-price-modal')}
               className="p-5 text-xl text-white font-medium leading-none bg-gradient-to-r from-sky-700 via-sky-500 to-sky-700 rounded-[41px] shadow-inner border border-white border-opacity-50"
             >
-              Lock this price @ ₹25,000
+              Lock this price @ ₹
+              {props.city === 'Varanasi' ? '11,000' : '25,000'}
             </button>
           ) : (
             <div className="button-animation my-3 w-full h-14">
@@ -245,7 +246,7 @@ const SystemOfferings = (props: Props) => {
               >
                 <GoArrowLeft className="w-8 h-8" />
               </div>
-              <LockPrice />
+              <LockPrice city={props.city} />
             </div>
           </Dialog.Content>
         </Dialog.Portal>

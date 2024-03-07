@@ -3,7 +3,7 @@ import React from 'react';
 import { MdRadioButtonChecked, MdRadioButtonUnchecked } from 'react-icons/md';
 import QRCode from '@images/modal-images/payments-qr-code.png';
 
-const LockPrice = () => {
+const LockPrice = ({ city }: { city: string }) => {
   return (
     <>
       <h5 className="heading-gradient text-left my-5">Lock the price</h5>
@@ -17,7 +17,10 @@ const LockPrice = () => {
           </div>
 
           <div className="ml-4 font-archivo">
-            <h2 className="text-base">Pay ₹25,000 as booking advance.</h2>
+            <h2 className="text-base">
+              Pay ₹{city === 'Varanasi' ? '11,000' : '25,000'} as booking
+              advance.
+            </h2>
             <p className="text-sm text-gray-600 mt-1.5">
               Don’t worry, this amount will be adjusted in the final payment{' '}
             </p>

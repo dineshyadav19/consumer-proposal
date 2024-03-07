@@ -9,10 +9,12 @@ const Pricing = ({
   proposalOutput,
   date,
   structure,
+  city,
 }: {
   proposalOutput: Array<PROPOSAL_OUTPUT>;
   date: Date;
   structure: STRUCTURE;
+  city: string;
 }) => {
   const checkIfSmartExist = proposalOutput.find(
     (val) => val.system_type === 'Smart'
@@ -107,6 +109,7 @@ const Pricing = ({
           plantType={plantType}
           proposalData={proposalOutput}
           structure={structure}
+          city={city}
         />
       </div>
     </>

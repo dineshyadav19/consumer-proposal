@@ -18,6 +18,7 @@ export type Props = {
   plantType: Plant_Type;
   proposalData: Array<PROPOSAL_OUTPUT>;
   structure: STRUCTURE;
+  city: string;
 };
 
 const getSystemOffering = (type: Plant_Type) => {
