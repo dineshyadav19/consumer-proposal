@@ -83,7 +83,7 @@ const PriceBreakup = ({ priceBreak }: Props) => {
         </p>
       </div>
 
-      {priceBreak?.subsidy_value ? (
+      {parseInt(priceBreak?.subsidy_value) ? (
         <div className="text-xl font-medium font-archivo text-brand-grey-600 py-3 px-1.5 bg-brand-blue-100 text-center">
           Subsidy : ₹ {priceBreak?.subsidy_value}
         </div>

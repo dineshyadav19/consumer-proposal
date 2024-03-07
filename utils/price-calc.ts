@@ -11,7 +11,7 @@ export const formatNumberToPrice = (price: number) =>
     maximumFractionDigits: 0,
   }).format(price);
 
-function indianNumberStringToNumber(indianNumberString: string) {
+export function indianNumberStringToNumber(indianNumberString: string) {
   // Remove commas from the string
   const stringWithoutCommas = indianNumberString.replace(/,/g, '');
 
