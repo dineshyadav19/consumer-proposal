@@ -47,4 +47,31 @@ const getStructureHeight = (structure: STRUCTURE) => {
   }
 };
 
-export { getStructureHeight, getSystemOffering };
+const getSystemTypeValue = (systemType: Plant_Type) => {
+  switch (systemType) {
+    case 'Basic':
+      return 0;
+    case 'Smart':
+      return 1;
+    case 'Premium':
+      return 2;
+    default:
+      return 3; // For any other system_type not in the order
+  }
+};
+
+const sortProposalOutputArrayBySystemType = (
+  output: Array<PROPOSAL_OUTPUT>
+) => {
+  return [...output].sort((a, b) => {
+    const systemTypeA = getSystemTypeValue(a.system_type);
+    const systemTypeB = getSystemTypeValue(b.system_type);
+    return systemTypeA - systemTypeB;
+  });
+};
+
+export {
+  getStructureHeight,
+  getSystemOffering,
+  sortProposalOutputArrayBySystemType,
+};

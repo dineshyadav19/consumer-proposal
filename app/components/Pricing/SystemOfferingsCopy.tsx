@@ -37,7 +37,7 @@ const basicSystemoffering = [
   {
     icon: 'check',
     text: 'String Inverter',
-    subText: '10 years warranty',
+    subText: '5 years warranty',
     backgroud: 'plain',
   },
   {

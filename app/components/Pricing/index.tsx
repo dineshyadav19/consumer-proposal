@@ -4,6 +4,7 @@ import DownArrow from '@icons/down-arrow.svg';
 import { PROPOSAL_OUTPUT, STRUCTURE } from '../../actions/types';
 import SystemOfferings from './SystemOfferings';
 import { getProposalDates } from '@utils/date-fn';
+import { sortProposalOutputArrayBySystemType } from './utils';
 
 const Pricing = ({
   proposalOutput,
@@ -16,12 +17,15 @@ const Pricing = ({
   structure: STRUCTURE;
   city: string;
 }) => {
-  const checkIfSmartExist = proposalOutput.find(
+  const sortedProposalOutput =
+    sortProposalOutputArrayBySystemType(proposalOutput);
+
+  const checkIfSmartExist = sortedProposalOutput.find(
     (val) => val.system_type === 'Smart'
   );
 
   const getFirstSelectedValue =
-    checkIfSmartExist?.system_type || proposalOutput[0].system_type;
+    checkIfSmartExist?.system_type || sortedProposalOutput[0].system_type;
 
   const [plantType, setPlantType] = useState<
     'Basic' | 'Smart' | 'Premium' | 'Standard'
@@ -84,7 +88,7 @@ const Pricing = ({
           <DownArrow />
         </div>
         <div className="rounded-full bg-brand-grey-100 px-2.5 py-1.5 mb-5 flex items-center gap-x-[18px]">
-          {proposalOutput.map((val) => {
+          {sortedProposalOutput.map((val) => {
             const isActive = val.system_type === plantType;
 
             const activeClass =
@@ -107,7 +111,7 @@ const Pricing = ({
         </div>
         <SystemOfferings
           plantType={plantType}
-          proposalData={proposalOutput}
+          proposalData={sortedProposalOutput}
           structure={structure}
           city={city}
         />

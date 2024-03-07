@@ -21,7 +21,7 @@ const SolarPanelComponent = () => {
         <ListCard
           icon={<Panel />}
           heading="A Grade panels"
-          description="Modules can be of different grades based on the number of microcracks they have. While we cannot see the cracks with naked eye, they are clearly visible during the Electroluminescence Testing and giving grade rating such as A, B (rejects of A) and C (rejects of C). We only ever use 100% certified A-grade modules to ensure superior module performance over 25+ years."
+          description="Modules can be of different grades based on the number of microcracks they have. While we cannot see the cracks with naked eye, they are clearly visible during the Electroluminescence Testing and giving grade rating such as A, B (rejects of A) and C (rejects of B). We only ever use 100% certified A-grade modules to ensure superior module performance over 25+ years."
         />
 
         <div className="mb-5">

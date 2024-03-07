@@ -26,16 +26,19 @@ export const getPriceBreakupValues = ({
   addOnSpp,
   systemPrice,
   addOnPrice,
+  totalPrice,
 }: {
   spp: string;
   addOnSpp: string;
   systemPrice: string;
   addOnPrice: string;
+  totalPrice: string;
 }) => {
   const sppStringToNum = indianNumberStringToNumber(spp);
   const systemPriceToNum = indianNumberStringToNumber(systemPrice);
   const addOnPriceToNum = indianNumberStringToNumber(addOnPrice);
   const addOnStringToNum = indianNumberStringToNumber(addOnSpp);
+  const totalPriceAfterDiscount = indianNumberStringToNumber(totalPrice);
 
   const sppBeforeDiscount = sppStringToNum * 1.15; //msp
   const systemDiscount = sppBeforeDiscount - systemPriceToNum;
@@ -46,10 +49,14 @@ export const getPriceBreakupValues = ({
   const msp = formatNumberToPrice(sppBeforeDiscount);
   const addOnMsp = formatNumberToPrice(addOnBeforeDiscount);
   const discount = totalDiscount > 1 ? formatNumberToPrice(totalDiscount) : 0;
+  const totalPriceBeforeDiscount = formatNumberToPrice(
+    totalPriceAfterDiscount + totalDiscount
+  );
 
   return {
     msp,
     addOnMsp,
     discount,
+    totalPriceBeforeDiscount,
   };
 };

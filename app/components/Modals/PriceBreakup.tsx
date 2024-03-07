@@ -11,6 +11,7 @@ const PriceBreakup = ({ priceBreak }: Props) => {
     addOnSpp: priceBreak?.add_on_spp,
     addOnPrice: priceBreak?.add_on_price,
     systemPrice: priceBreak?.system_price,
+    totalPrice: priceBreak?.total_system_and_service_including_gst,
   });
   return (
     <div className="flex flex-col gap-y-6">

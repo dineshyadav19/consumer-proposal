@@ -55,11 +55,13 @@ const SystemOfferings = (props: Props) => {
     }
   };
 
-  const { discount } = getPriceBreakupValues({
+  const { discount, totalPriceBeforeDiscount } = getPriceBreakupValues({
     spp: systemValues?.data.spp as any,
     addOnPrice: systemValues?.data?.add_on_price as any,
     addOnSpp: systemValues?.data?.add_on_spp as string,
     systemPrice: systemValues?.data?.system_price as string,
+    totalPrice: systemValues?.data
+      .total_system_and_service_including_gst as string,
   });
   return (
     <>
@@ -77,7 +79,7 @@ const SystemOfferings = (props: Props) => {
             {discount ? (
               <div className="relative justify-center items-center mb-1">
                 <p className="green-blue-gradient text-xl font-semibold text-transparent bg-clip-text max-w-max">
-                  {discount}
+                  {totalPriceBeforeDiscount}
                 </p>
                 <div className="absolute inset-0 py-2">
                   <Image src={CrossArrow} alt="" />
