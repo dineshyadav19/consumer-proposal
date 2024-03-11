@@ -20,7 +20,7 @@ const smartSystemoffering = (market: Market) => [
   {
     icon: 'check',
     text: 'Workmanship warranty',
-    subText: `${market === 'Free Market' ? 1 : 5} years`,
+    subText: '5 years',
     backgroud: 'plain',
   },
   {
@@ -55,7 +55,7 @@ const basicSystemoffering = (market: Market) => [
   {
     icon: 'check',
     text: 'Workmanship warranty',
-    subText: `5 years`,
+    subText: `${market === 'Free Market' ? 1 : 5} years`,
     backgroud: 'plain',
   },
   {
