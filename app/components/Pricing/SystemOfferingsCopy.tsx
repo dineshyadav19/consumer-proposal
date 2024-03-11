@@ -55,7 +55,7 @@ const basicSystemoffering = (market: Market) => [
   {
     icon: 'check',
     text: 'Workmanship warranty',
-    subText: `${market === 'Free Market' ? 1 : 5} years`,
+    subText: `${market === 'Free Market' ? '1 year' : '5 years'}`,
     backgroud: 'plain',
   },
   {
