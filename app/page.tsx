@@ -108,12 +108,7 @@ export default async function Home({
       <OurSystemInclude />
 
       <div id="choose-system">
-        <Pricing
-          proposalOutput={data.proposal_data.proposal_output}
-          date={data.proposal_data.proposal_input.created_at}
-          structure={data.design_data.preferred_mms}
-          city={data.deal_data.city}
-        />
+        <Pricing data={data} />
       </div>
 
       <WhoWeAre />

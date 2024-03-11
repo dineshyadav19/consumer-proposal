@@ -1,4 +1,16 @@
-const smartSystemoffering = [
+// If Market = Free,
+//  For Basic, Workmanship = 1, Inverter = 5
+//  For Smart, Workmanship = 5, Inverter = 10
+//  For Premium, Workmanship = 7, Inverter = 20
+
+// If Market = MNRE or Tender,
+//  For Basic, Workmanship = 5, Inverter = 5
+//  For Smart, Workmanship = 5, Inverter = 10
+//  For Premium, Workmanship = 7, Inverter = 20
+
+import { Market } from './utils';
+
+const smartSystemoffering = (market: Market) => [
   {
     icon: 'check',
     text: 'Micro Inverter',
@@ -33,7 +45,7 @@ const smartSystemoffering = [
   },
 ];
 
-const basicSystemoffering = [
+const basicSystemoffering = (market: Market) => [
   {
     icon: 'check',
     text: 'String Inverter',
@@ -43,7 +55,7 @@ const basicSystemoffering = [
   {
     icon: 'check',
     text: 'Workmanship warranty',
-    subText: '5 years',
+    subText: `${market === 'Free Market' ? 1 : 5} years`,
     backgroud: 'plain',
   },
   {
@@ -69,7 +81,7 @@ const basicSystemoffering = [
   },
 ];
 
-const premiumSystemoffering = [
+const premiumSystemoffering = (market: Market) => [
   {
     icon: 'check',
     text: 'Micro Inverter',

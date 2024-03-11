@@ -1,24 +1,15 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import DownArrow from '@icons/down-arrow.svg';
-import { PROPOSAL_OUTPUT, STRUCTURE } from '../../actions/types';
+import { PROPOSAL_DATA, PROPOSAL_OUTPUT, STRUCTURE } from '../../actions/types';
 import SystemOfferings from './SystemOfferings';
 import { getProposalDates } from '@utils/date-fn';
 import { sortProposalOutputArrayBySystemType } from './utils';
 
-const Pricing = ({
-  proposalOutput,
-  date,
-  structure,
-  city,
-}: {
-  proposalOutput: Array<PROPOSAL_OUTPUT>;
-  date: Date;
-  structure: STRUCTURE;
-  city: string;
-}) => {
-  const sortedProposalOutput =
-    sortProposalOutputArrayBySystemType(proposalOutput);
+const Pricing = ({ data }: { data: PROPOSAL_DATA }) => {
+  const sortedProposalOutput = sortProposalOutputArrayBySystemType(
+    data.proposal_data.proposal_output
+  );
 
   const checkIfSmartExist = sortedProposalOutput.find(
     (val) => val.system_type === 'Smart'
@@ -34,7 +25,9 @@ const Pricing = ({
   const planTypeButtonStyles =
     'py-2.5 px-6 text-base tracking-wide text-brand-grey-600 leading-none font-semibold grow';
 
-  const { futureFormattedDate } = getProposalDates(date);
+  const { futureFormattedDate } = getProposalDates(
+    data.proposal_data.proposal_input.created_at
+  );
 
   return (
     <>
@@ -112,8 +105,10 @@ const Pricing = ({
         <SystemOfferings
           plantType={plantType}
           proposalData={sortedProposalOutput}
-          structure={structure}
-          city={city}
+          structure={data.design_data.preferred_mms}
+          city={data.deal_data.city}
+          date={data.proposal_data.proposal_input.created_at}
+          market={data.design_data.market_type as any}
         />
       </div>
     </>

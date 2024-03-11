@@ -14,22 +14,26 @@ export type Modal_States =
   | 'lock-price-modal'
   | undefined;
 
-export type Props = {
+export type System_Offerings = {
   plantType: Plant_Type;
   proposalData: Array<PROPOSAL_OUTPUT>;
   structure: STRUCTURE;
   city: string;
+  date: Date;
+  market: Market;
 };
 
-const getSystemOffering = (type: Plant_Type) => {
+export type Market = 'Free Market' | 'MNRE' | 'Tender Market';
+
+const getSystemOffering = (type: Plant_Type, market: Market) => {
   switch (type) {
     case 'Basic':
     case 'Standard':
-      return basicSystemoffering;
+      return basicSystemoffering(market);
     case 'Smart':
-      return smartSystemoffering;
+      return smartSystemoffering(market);
     case 'Premium':
-      return premiumSystemoffering;
+      return premiumSystemoffering(market);
   }
 };
 

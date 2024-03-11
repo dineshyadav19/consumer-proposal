@@ -56,15 +56,15 @@ const PriceBreakup = ({ priceBreak }: Props) => {
         </p>
         <div className="text-sm text-brand-grey-500 flex flex-col gap-y-3">
           <div className="flex justify-between items-center">
-            <p>Name change charges</p>
+            <p className="flex-[0.4]">Name change charges (DISCOM)</p>
             <p>₹{priceBreak?.name_change_charges}</p>
           </div>
           <div className="flex justify-between items-center">
-            <p>Load enhancement charges</p>
+            <p className="flex-[0.4]">Load enhancement charges (DISCOM)</p>
             <p>₹{priceBreak?.load_enhancement_charges}</p>
           </div>
           <div className="flex justify-between items-center">
-            <p>Net metering charges</p>
+            <p className="flex-[0.4]">Net metering charges (DISCOM)</p>
             <p>₹{priceBreak?.net_metering_charges}</p>
           </div>
           <div className="flex justify-between items-center">

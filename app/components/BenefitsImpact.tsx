@@ -103,7 +103,7 @@ const BenefitsImpact = (props: Props) => {
               ? Math.round(props.monthlyGeneration)
               : Math.round(props.yearlyGeneration)}{' '}
             <span className="text-base text-brand-grey-600 font-medium">
-              units/ month
+              {toggle ? 'units/month' : 'units/year'}
             </span>
           </p>
           <div className="p-2.5 bg-gradient-to-r from-[#DFFFCC] to-white flex gap-x-2 rounded-full items-center">
