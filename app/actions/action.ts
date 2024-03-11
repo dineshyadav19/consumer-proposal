@@ -1,4 +1,3 @@
-import { redirect } from 'next/dist/server/api-utils';
 import { PROPOSAL_API_RESPONSE } from './types';
 
 const API_URL = process.env.NEXT_BACKEND_DEV_ENDPOINT;

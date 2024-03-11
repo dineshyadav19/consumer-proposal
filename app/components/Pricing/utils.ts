@@ -20,17 +20,20 @@ export type System_Offerings = {
   structure: STRUCTURE;
   city: string;
   date: Date;
+  market: Market;
 };
 
-const getSystemOffering = (type: Plant_Type, subsidy: boolean) => {
+export type Market = 'Free Market' | 'MNRE' | 'Tender Market';
+
+const getSystemOffering = (type: Plant_Type, market: Market) => {
   switch (type) {
     case 'Basic':
     case 'Standard':
-      return basicSystemoffering();
+      return basicSystemoffering(market);
     case 'Smart':
-      return smartSystemoffering();
+      return smartSystemoffering(market);
     case 'Premium':
-      return premiumSystemoffering();
+      return premiumSystemoffering(market);
   }
 };
 

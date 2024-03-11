@@ -70,78 +70,80 @@ export type PROPOSAL_OUTPUT = {
   data: SYSTEM_PRICE_DATA;
 };
 
+export type PROPOSAL_DATA = {
+  deal_data: {
+    deal_id: string;
+    deal_nickname: string;
+    amount: string | null;
+    pincode: string;
+    city: string;
+    address: string;
+    lat_long: string;
+    deal_stage_name: string;
+    deal_type: string;
+    status: string;
+    gp_name: string;
+    gp_mobile: string;
+    gp_email: string;
+    gp_company_name: string;
+  };
+  contact_data: {
+    customer_name: string;
+    customer_mobile: string;
+    customer_email: string;
+    customer_whatsapp: string;
+  };
+  design_data: {
+    dc_capacity: string;
+    solarlabs_link: string;
+    solarlabs_screenshot: string | null;
+    roof_top_area: string;
+    preferred_mms: STRUCTURE;
+    market_type: string;
+    sanction_load: string;
+    property_type: string | null;
+    type_of_roof: string;
+    electricity_phase: string;
+    avg_monthly_bill: string;
+    product_line: string;
+    estimated_monthly_generation: number;
+    estimated_yearly_generation: number;
+    no_of_trees_planted: {
+      monthly: number;
+      yearly: number;
+    };
+    coal_burn_avoided: {
+      monthly: number;
+      yearly: number;
+    };
+    avg_monthly_savings: number;
+    yearly_savings: number;
+  };
+  proposal_data: {
+    proposal_input: {
+      discom: string;
+      name_change_required: boolean;
+      add_ons: string;
+      discount_percentage: number;
+      discom_scope: string;
+      no_of_floors: number;
+      non_std_add_on: string;
+      non_std_add_on_spp: number;
+      ceig_cea_approval_required: boolean;
+      amc_package: string | null;
+      amc_tenure: number;
+      created_at: Date;
+      updated_at: Date;
+    };
+    proposal_output: Array<PROPOSAL_OUTPUT>;
+    discom_work: string;
+    earthing_cable: string;
+    proposal_document_url: string;
+  };
+};
+
 export type PROPOSAL_API_RESPONSE = {
   status: number;
   message: string;
-  data: {
-    deal_data: {
-      deal_id: string;
-      deal_nickname: string;
-      amount: string | null;
-      pincode: string;
-      city: string;
-      address: string;
-      lat_long: string;
-      deal_stage_name: string;
-      deal_type: string;
-      status: string;
-      gp_name: string;
-      gp_mobile: string;
-      gp_email: string;
-      gp_company_name: string;
-    };
-    contact_data: {
-      customer_name: string;
-      customer_mobile: string;
-      customer_email: string;
-      customer_whatsapp: string;
-    };
-    design_data: {
-      dc_capacity: string;
-      solarlabs_link: string;
-      solarlabs_screenshot: string | null;
-      roof_top_area: string;
-      preferred_mms: STRUCTURE;
-      market_type: string;
-      sanction_load: string;
-      property_type: string | null;
-      type_of_roof: string;
-      electricity_phase: string;
-      avg_monthly_bill: string;
-      product_line: string;
-      estimated_monthly_generation: number;
-      estimated_yearly_generation: number;
-      no_of_trees_planted: {
-        monthly: number;
-        yearly: number;
-      };
-      coal_burn_avoided: {
-        monthly: number;
-        yearly: number;
-      };
-      avg_monthly_savings: number;
-      yearly_savings: number;
-    };
-    proposal_data: {
-      proposal_input: {
-        discom: string;
-        name_change_required: boolean;
-        add_ons: string;
-        discount_percentage: number;
-        discom_scope: string;
-        no_of_floors: number;
-        non_std_add_on: string;
-        non_std_add_on_spp: number;
-        ceig_cea_approval_required: boolean;
-        amc_package: string | null;
-        amc_tenure: number;
-        created_at: Date;
-        updated_at: Date;
-      };
-      proposal_output: Array<PROPOSAL_OUTPUT>;
-      discom_work: string;
-      earthing_cable: string;
-      proposal_document_url: string;
-    };
-  };
+  data: PROPOSAL_DATA;
 };

@@ -35,10 +35,7 @@ const SystemOfferings = (props: System_Offerings) => {
     (val) => val.system_type === props.plantType
   );
 
-  const systemOfferings = getSystemOffering(
-    props.plantType,
-    parseInt(systemValues?.data.subsidy_value || '') ? true : false
-  );
+  const systemOfferings = getSystemOffering(props.plantType, props.market);
   const { futureFormattedDate } = getProposalDates(props.date);
 
   const getModalChild = (modalOpen: Modal_States) => {
