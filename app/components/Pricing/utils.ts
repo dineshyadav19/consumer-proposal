@@ -19,6 +19,7 @@ export type Props = {
   proposalData: Array<PROPOSAL_OUTPUT>;
   structure: STRUCTURE;
   city: string;
+  date: Date;
 };
 
 const getSystemOffering = (type: Plant_Type) => {

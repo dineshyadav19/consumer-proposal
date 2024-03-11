@@ -114,6 +114,7 @@ const Pricing = ({
           proposalData={sortedProposalOutput}
           structure={structure}
           city={city}
+          date={date}
         />
       </div>
     </>

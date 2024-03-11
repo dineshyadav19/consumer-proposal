@@ -12,7 +12,6 @@ import PriceBreakup from '@components/Modals/PriceBreakup';
 import Modal from '../../../components/Modal';
 import EconomicValueModal from '@components/Modals/EconomicValue';
 import { getProposalDates } from '@utils/date-fn';
-import { useSearchParams } from 'next/navigation';
 import CrossArrow from '@images/cross-arrow.png';
 import {
   Modal_States,
@@ -24,7 +23,6 @@ import { getPriceBreakupValues } from '@utils/price-calc';
 
 const SystemOfferings = (props: Props) => {
   const [modalOpen, setModalOpen] = useState<Modal_States>(undefined);
-  const searchParams = useSearchParams();
 
   const systemOfferings = getSystemOffering(props.plantType);
   const structureHeight = getStructureHeight(props.structure);
@@ -38,9 +36,7 @@ const SystemOfferings = (props: Props) => {
     (val) => val.system_type === props.plantType
   );
 
-  const { futureFormattedDate } = getProposalDates(
-    searchParams.get('generatedOn') as any
-  );
+  const { futureFormattedDate } = getProposalDates(props.date);
 
   const getModalChild = (modalOpen: Modal_States) => {
     switch (modalOpen) {
