@@ -14,7 +14,7 @@ export type Modal_States =
   | 'lock-price-modal'
   | undefined;
 
-export type Props = {
+export type System_Offerings = {
   plantType: Plant_Type;
   proposalData: Array<PROPOSAL_OUTPUT>;
   structure: STRUCTURE;
@@ -22,15 +22,15 @@ export type Props = {
   date: Date;
 };
 
-const getSystemOffering = (type: Plant_Type) => {
+const getSystemOffering = (type: Plant_Type, subsidy: boolean) => {
   switch (type) {
     case 'Basic':
     case 'Standard':
-      return basicSystemoffering;
+      return basicSystemoffering();
     case 'Smart':
-      return smartSystemoffering;
+      return smartSystemoffering();
     case 'Premium':
-      return premiumSystemoffering;
+      return premiumSystemoffering();
   }
 };
 

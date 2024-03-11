@@ -15,16 +15,15 @@ import { getProposalDates } from '@utils/date-fn';
 import CrossArrow from '@images/cross-arrow.png';
 import {
   Modal_States,
-  Props,
+  System_Offerings,
   getStructureHeight,
   getSystemOffering,
 } from './utils';
 import { getPriceBreakupValues } from '@utils/price-calc';
 
-const SystemOfferings = (props: Props) => {
+const SystemOfferings = (props: System_Offerings) => {
   const [modalOpen, setModalOpen] = useState<Modal_States>(undefined);
 
-  const systemOfferings = getSystemOffering(props.plantType);
   const structureHeight = getStructureHeight(props.structure);
 
   const offeringStyle =
@@ -36,6 +35,10 @@ const SystemOfferings = (props: Props) => {
     (val) => val.system_type === props.plantType
   );
 
+  const systemOfferings = getSystemOffering(
+    props.plantType,
+    parseInt(systemValues?.data.subsidy_value || '') ? true : false
+  );
   const { futureFormattedDate } = getProposalDates(props.date);
 
   const getModalChild = (modalOpen: Modal_States) => {

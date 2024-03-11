@@ -1,4 +1,4 @@
-const smartSystemoffering = [
+const smartSystemoffering = () => [
   {
     icon: 'check',
     text: 'Micro Inverter',
@@ -33,7 +33,7 @@ const smartSystemoffering = [
   },
 ];
 
-const basicSystemoffering = [
+const basicSystemoffering = () => [
   {
     icon: 'check',
     text: 'String Inverter',
@@ -69,7 +69,7 @@ const basicSystemoffering = [
   },
 ];
 
-const premiumSystemoffering = [
+const premiumSystemoffering = () => [
   {
     icon: 'check',
     text: 'Micro Inverter',
