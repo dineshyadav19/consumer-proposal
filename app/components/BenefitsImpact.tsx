@@ -90,7 +90,7 @@ const BenefitsImpact = (props: Props) => {
           <div className="p-2.5 bg-gradient-to-r from-[#DFFFCC] to-white flex gap-x-2 rounded-full items-center">
             <Earth />{' '}
             <span className="text-sm text-brand-grey-600">
-              upto 70% bill reduction
+              upto 90% bill reduction
             </span>
           </div>
         </div>
@@ -109,7 +109,7 @@ const BenefitsImpact = (props: Props) => {
           <div className="p-2.5 bg-gradient-to-r from-[#DFFFCC] to-white flex gap-x-2 rounded-full items-center">
             <Earth />{' '}
             <span className="text-sm text-brand-grey-600">
-              meets 70% of your energy requirement
+              meets upto 95% of your energy requirement
             </span>
           </div>
         </div>

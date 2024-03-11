@@ -66,10 +66,7 @@ const ViewIn3D = async ({
             system with{' '}
             <span className="font-bold">{noOfpanels} number of panels</span> and
             a <span className="font-bold">{structure}</span> structure has been
-            accurately designed keeping in account your average electricity bill
-            of Rs.
-            <span className="font-bold">{averageBill}</span> and your shadow
-            free{' '}
+            accurately designed keeping in account of your shadow free{' '}
             <span className="font-bold">
               rooftop area of {rooftopArea} sq.ft.
             </span>{' '}
