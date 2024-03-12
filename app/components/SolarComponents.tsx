@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import React, { ReactNode, useState } from 'react';
-import Structure from '@images/structure.png';
+import Structure from '@images/structure.jpeg';
 import SolarPanel from '@images/solar-panel.png';
 import MCB from '@images/mcb.png';
 import MicroInverter from '@images/micro-inverter.png';
