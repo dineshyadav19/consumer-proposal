@@ -63,8 +63,8 @@ const basicSystemoffering = (market: Market) => [
     text: 'Cleaning & Maintenance visits ',
     subText: (
       <p className="bg-white py-1 px-4 rounded-[8px] text-sm text-brand-grey-600 w-full">
-        Pay just ₹5000 more and upgrade to SMART system, get 5 years of cleaning
-        & health checkup visits.
+        Upgrade to SMART system to get 5 years of cleaning & health checkup
+        visits.
       </p>
     ),
     backgroud: 'gradient',
