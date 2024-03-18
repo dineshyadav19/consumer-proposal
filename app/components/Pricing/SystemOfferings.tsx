@@ -210,7 +210,9 @@ const SystemOfferings = (props: System_Offerings) => {
             <div className="button-animation my-3 w-full h-14">
               <input
                 type="button"
-                value="Lock this price @ ₹25,000"
+                value={`Lock this price @ ₹${
+                  props.city === 'Varanasi' ? '11,000' : '25,000'
+                }`}
                 className="font-inter rounded-[41px] text-white font-semibold leading-none"
                 onClick={() => setModalOpen('lock-price-modal')}
                 style={{ fontSize: '20px' }}
